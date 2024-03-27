@@ -8,7 +8,7 @@ const connection = createConnection({
     database: process.env.DB_NAME
 });
 
-function getSchoolByWilaya(Wilaya){
+function getSchoolByState(state){
 connection.connect((err)=> {
     if(err){
         return console.error(err.message)
@@ -16,9 +16,9 @@ connection.connect((err)=> {
         console.log("DATABASE connected successfuly!")
     }
 
-    let sql = `select * from school WHERE wilaya_sch=?`;
+    let sql = `select * from school WHERE state_sch=?`;
 
-    connection.query(sql, [Wilaya], (error, results, fields) => {
+    connection.query(sql, [State], (error, results, fields) => {
         if(error)
             return console.error(error.message);
         console.log(results)
@@ -28,4 +28,4 @@ connection.connect((err)=> {
 });
 }
 
-getSchoolByWilaya("Blida");
+getSchoolByState("Blida");
