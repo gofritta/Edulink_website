@@ -67,7 +67,7 @@ CREATE TABLE `school` (
   `name_sch` varchar(45) NOT NULL,
   `email_sch` varchar(60) NOT NULL,
   `password_sch` varchar(45) NOT NULL,
-  `wilaya_sch` varchar(45) NOT NULL,
+  `state_sch` varchar(45) NOT NULL,
   `adress_sch` varchar(45) NOT NULL,
   `number_sch` varchar(45) NOT NULL,
   PRIMARY KEY (`id_sch`),
