@@ -1,0 +1,150 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle, #1a2e7c5c, #c7c1d3);
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to right bottom, #6808531d, #e2d9e1 50%, #e2d9e1 50%, #6092c462);
+}
+
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-group label {
+    width: 180px; 
+    margin-right: 10px;
+    flex: 0 0 auto; 
+    text-align: right;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    flex: 1; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.form-group input[type="text#address"],
+.form-group textarea#description {
+    width: calc(50% - 5px); 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.form-group label[for="address"],
+.form-group label[for="description"] {
+    width: 180px; 
+    margin-right: 10px;
+    margin-top: 10px; 
+
+}
+
+label[for="family-name"],
+label[for="phone"] {
+    margin-top: 10px; 
+
+}
+
+
+label[for="first-name"],
+label[for="state"],
+label[for="email"],
+label[for="school-name"] {
+    position: absolute;
+    left: -215px; 
+    width: 310px; 
+    margin-top: 10px; 
+}
+label[for="date-of-birth"] {
+    position: relative; 
+    left: 119px; 
+    margin-top: 10px; 
+
+}
+select {
+    border-radius: 15px;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+  }
+  #month, #day, #year {
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100px;
+    margin-left: 5px;
+  }
+  #day {
+    margin-left: 114px;
+  }
+  
+
+input#first-name,
+input#state,
+input#email,
+input#school-name {
+    margin-left: 100px; 
+
+}
+input#first-name,
+input#full-name,
+textarea#address,
+textarea#description {
+    width: 307px; 
+    height: 20px; 
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 307px; 
+    height: 20px; 
+    font-weight: bold;
+
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group button {
+    margin: 0 auto;
+    display: block;
+    padding: 10px 20px;
+    background-color: #5b1d69;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #3a21a0;
+}
+.scrollable-select {
+    overflow-y: auto;
+  }
