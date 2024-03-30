@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>
+        Search Api test
+    </h1>
+
+    <input type="text" id="state_sch" placeholder="Entrez le nom de la wilaya">
+    <button type="button" id="search-btn">Rechercher</button>
+
+    <div id="response">
+
+    </div>
+    <script>
+
+        const stateInput = document.getElementById('state_sch');
+        const searchBtn = document.getElementById('search-btn');
+
+        searchBtn.addEventListener('click', () => {
+        const state = stateInput.value;
+
+        let request = new XMLHttpRequest();
+        request.open("GET", `http://127.0.0.1:3000/school?state_sch=${state}`)
+        request.responseType = "json"
+        request.send()
+        request.onreadystatechange = function() {
+            let schools = request.response;
+            
+            for (school of schools){
+
+                document.getElementById("response").innerHTML += `<h2>${school.name_sch}</h2>`
+                document.getElementById("response").innerHTML += `<h5> Wilaya: ${state}</h5>`
+                document.getElementById("response").innerHTML += `<h5> Adress: ${school.adress_sch}</h5>`
+                document.getElementById("response").innerHTML += `<h5> Tel: ${school.number_sch}</h5>`
+                document.getElementById("response").innerHTML += `<h5> email: ${school.email_sch}</h5>`
+                console.log(request.response);
+            }
+        } 
+    });
+
+    </script>
+</body>
+</html>
