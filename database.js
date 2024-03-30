@@ -16,7 +16,7 @@ con.connect((err) => {
     console.error("Connected successfully !!");
 });
 
-async function getstudent() {
+ async function getStudent() {
     try {
         const result = await con.query("SELECT * FROM student");
         return result[0];
@@ -25,7 +25,18 @@ async function getstudent() {
         throw error; // Return null or handle the error as needed
     } 
 }
-async function getschool(){
+ async function getStudentID(id){
+    try{
+     const [result] = await con.query(`
+     SELECT * FROM student WHERE id_s = ?
+     `, [id]);
+     return result;
+    }catch(error){
+        console.error("Error:" , error);
+        throw error;
+    }
+}
+ async function getSchool(){
     try{
         const [result] = await con.query("SELECT * FROM school")
         return result;
@@ -34,7 +45,7 @@ async function getschool(){
         throw error;
     }
 }
-async function getschoolByState(state){
+ async function getSchoolByState(state){
     try{
         const [result] = await con.query(`
         SELECT * FROM school WHERE state_sch= ?` , 
@@ -60,7 +71,7 @@ async function insertNewStudent(name , gender , birthdate, email, password){
 /*const resultOfInsertion = await insertNewStudent('Djalil Palermo' , 'male', '2000-08-31', 'djalilLaClasse@gmail.com', 'may7ebonach');
 console.log(resultOfInsertion);*/
 
-Promise.all([getstudent(),getschool(), getschoolByState('Blida')])
+Promise.all([getStudent(),getSchool(), getSchoolByState('Blida')])
 .then(([result1 ,result2, value])=> {
     console.log(result1); // Log the result returned by the query
     console.log(result2);
@@ -70,3 +81,4 @@ Promise.all([getstudent(),getschool(), getschoolByState('Blida')])
     console.error('Error:', error);
     con.end();
 });
+export { getStudent, getSchool, getSchoolByState, getStudentID };
