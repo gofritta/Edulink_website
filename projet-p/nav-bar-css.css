@@ -258,42 +258,54 @@ nav li:first-child {
 }
 .footer{
     height: 300px;
-    padding: 10px;
-    background: linear-gradient(to right , #7a7aba,#5e5eb5 );
-    margin-bottom:0 ;
+    padding: 20px;
+    background: linear-gradient(to right , #DADAF0,#B3B3E6 );
 }
 .footer{
-    position:inherit;
-    bottom: 0;
     width: 100%;
-    height: 300px;
+    margin: auto;
     text-align: center;
-    padding: 20px;
-    z-index: 100;
-    margin-bottom: 0;
-
+    padding:30px 0 ;
 }
-.footer h3{color:#070F2B;
+.footer h3{color:#fff;
     margin-bottom:25px ;
     margin-top: 20px;
     font-weight: 600;
+    margin-left: 84%;
+    white-space: nowrap;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.201);
+
+}
+#services-title {
+    margin-right: auto; 
+    margin-left: 0; 
+}
+#contact-us {
+    margin-top: 40px;
 }
 .icons .fab{
-    color:#070F2B;
+    color:#fff;
     margin: 0 13px;
     cursor:pointer;
     padding:20px 0;
     font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.201);
 }
 .divs-c-s img{
-    margin-top: 1px;
-    margin-bottom: 1px;
-    height: 100px;
-    width: 150px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    height: 150px;
+    width: 255px;
+    margin-left: 50%;
 }
 .divs-c-s h4{
-    color: #070F2B;
+    color: #fff;
+    margin-left: 35%;
+    white-space: nowrap; /* to make sure  the text ytkteb on a single line */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.201);
 }
+
 footer div{
 height: 200px;
 width: 400px;
@@ -303,11 +315,12 @@ float:left;
  list-style: none;
  margin-bottom: 12px;
  color: #fff;
-
+ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.201);
 }
 .divs-c-l ul li a{
     text-decoration: none;
-    color: #070F2B;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.201);
 }
 .divs-c-l{
 
@@ -323,12 +336,14 @@ padding-left:10px;}
         font-size: 12px;
         padding: 15px 45px;
         border: 3px #b4b2f0 groove;
-        border-radius: 19px;
+        border-radius: 23px;
         font-weight: 600;
         letter-spacing: 0.5px;
         text-transform: uppercase;
-        margin-top: 40px;
+        margin-top: 30px;
         cursor: pointer;
+        margin-left: 50%;
+        
     
     
 }
@@ -339,27 +354,28 @@ padding-left:10px;}
 .divs-c-l h3{
     padding-left: 30px;
 }
-.footer {
-    padding: 20px;
-    background: linear-gradient(to right,#d6d6f1,#bcbce6);;
-    margin-bottom: 0;
-    text-align: center;
-    padding: 30px 0;
+.icons .fa{
+    color:#fff;
+    margin: 0 13px;
+    cursor:pointer;
+    padding:20px 0;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.201);
 }
-
+.icons{ display: flex;
+    justify-content: center;
+ margin-left: 49%;
+}
+.edu{
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+}
 @media(max-width:700px){
  footer{
     font-size: 10px;
    height: 100%;
  }
- .footer {
-    padding: 20px;
-    background: linear-gradient(to right , #7a7aba, #5e5eb5);
-    margin-bottom: 0;
-    text-align: center;
-    padding: 30px 0;
-}
-
  footer div{
     font-size: 10px;
     height: 120px;
@@ -377,10 +393,19 @@ float:left;
     font-size: 10px;
 }
 }
+.icons ul li{
+    padding: 5px;
+    margin: 5px;
+}
+.divs-c-l, .divs-c-s, .divs-c-r {
+    float: left;
+    margin-top: 20px; 
+}
+
 svg{   
     margin-right: 0;
     margin-top: auto;
-    margin-bottom: -19px;
+    margin-bottom: -5px;
 }
 .pfp{  
     height: 100px;

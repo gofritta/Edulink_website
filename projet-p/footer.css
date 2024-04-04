@@ -14,6 +14,15 @@
     margin-bottom:25px ;
     margin-top: 20px;
     font-weight: 600;
+    margin-left: 84%;
+    white-space: nowrap;
+}
+#services-title {
+    margin-right: auto; 
+    margin-left: 0; 
+}
+#contact-us {
+    margin-top: 40px;
 }
 .icons .fab{
     color:#fff;
@@ -23,14 +32,18 @@
     font-size: 20px;
 }
 .divs-c-s img{
-    margin-top: 1px;
-    margin-bottom: 1px;
-    height: 100px;
-    width: 150px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    height: 150px;
+    width: 255px;
+    margin-left: 50%;
 }
 .divs-c-s h4{
     color: #fff;
+    margin-left: 40%;
+    white-space: nowrap; /* to make sure  the text ytkteb on a single line */
 }
+
 footer div{
 height: 200px;
 width: 400px;
@@ -66,6 +79,7 @@ padding-left:10px;}
         text-transform: uppercase;
         margin-top: 30px;
         cursor: pointer;
+        margin-left: 50%;
     
     
 }
@@ -84,7 +98,9 @@ padding-left:10px;}
     font-size: 20px;
 }
 .icons{ display: flex;
-    justify-content: center;}
+    justify-content: center;
+ margin-left: 49%;
+}
 .edu{
     display: flex;
     justify-content: space-between; 
@@ -115,4 +131,8 @@ float:left;
 .icons ul li{
     padding: 5px;
     margin: 5px;
+}
+.divs-c-l, .divs-c-s, .divs-c-r {
+    float: left;
+    margin-top: 20px; 
 }
