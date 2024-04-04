@@ -1,50 +1,69 @@
-!DOCTYPE html>
+<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educational Website</title>
+    <title>Home page</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="popup2.css">
     
 </head>
 
 <body>
     <nav class="sidebar">
-        <ul>
-          <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
-        
-          <li><a class="active" href="#">HOME</a></li>
-          <li><a href="#">about</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Join Us</a></li>
-        </ul>
-      </nav>
-      <nav>
-  
-        <label class="logo"><img src="edulink0.png" alt="" /></label>
-        <ul>
-          <li><a class="hideOnMobile" class="active" href="#">HOME</a></li>
-          <li><a class="hideOnMobile" href="#">about</a></li>
-          <li><a  class="hideOnMobile" href="#">Contact</a></li>
-          <li><a class="hideOnMobile" href="#">Join Us</a></li>
-          <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
-        </ul>
-      </nav>
-      <script>
-      function showSidebar(){
-        const sidebar = document.querySelector('.sidebar')
-        sidebar.style.display = 'flex'
-      }
-      function hideSidebar(){
-        const sidebar = document.querySelector('.sidebar')
-        sidebar.style.display = 'none'
-      }
-    </script>
+  <ul>
+    <li><a class="active" href="#">HOME</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a class="join-us-buttonn" href="#">Join Us</a></li>
+    <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+  </ul>
+</nav>
+<nav>
+  <label class="logo"><img src="edulink0.png" alt="" /></label>
+  <ul>
+    <li><a class="hideOnMobile active" href="#">HOME</a></li>
+    <li><a class="hideOnMobile" href="#">About</a></li>
+    <li><a class="hideOnMobile" href="#">Contact</a></li>
+    <li><a class="hideOnMobile join-us-button" href="#">Join Us</a></li>
+    <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+  </ul>
+</nav>
+<script>
+  function showSidebar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'flex';
+  }
+  function hideSidebar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'none';
+  }
+</script>
+
 
 <section>
     <img id="logo1" src="edulink0.png" alt="Logo" class="logo"> 
     <p >..............SLOGAN...........</p>
     <button class="start-button">Get Started</button>
+    <!-- Popup HTML -->
+    <div id="popup-container" class="popup center">
+        <div class="icon">
+            <i class="fa fa-question"></i>
+        </div>
+        <div class="title">
+          Welcome!
+        </div>
+        <div class="description">
+          Please select your role:
+        </div>
+        <div class="buttons">
+            <button id="student-btn">Student</button>
+            <button id="school-manager-btn">School Manager</button>
+        </div>
+    </div>
+
+
     <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 289.501C0 289.501 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V290H0V289.501Z" fill="#AC6CFF" fill-opacity="0.05"/>
         <path d="M4.98315 289.568C4.98315 289.568 156.326 168.82 698.702 168.82C1241.08 168.82 1480 39 1480 39V290H4.98315V289.568Z" fill="#AC6CFF" fill-opacity="0.15"/>
@@ -167,8 +186,8 @@
         </svg>
         
 </section>
-
-
+<script src="popup2.js"></script>
+<script src="index1.js"></script>
 
 
 
