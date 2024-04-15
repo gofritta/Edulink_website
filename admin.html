@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Interface</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <ul>
+          <li><a class="active" href="#">HOME</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a class="join-us-buttonn" href="#">Join Us</a></li>
+          <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+        </ul>
+      </nav>
+      <nav>
+        <label class="logo"><img src="edulink0.png" alt="" /></label>
+        <ul>
+          <li><a class="hideOnMobile active" href="#">HOME</a></li>
+          <li><a class="hideOnMobile" href="#">About</a></li>
+          <li><a class="hideOnMobile" href="#">Contact</a></li>
+          <li><a class="hideOnMobile join-us-button" href="#">Join Us</a></li>
+          <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+        </ul>
+      </nav>
+      <script>
+        function showSidebar(){
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.style.display = 'flex';
+        }
+        function hideSidebar(){
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.style.display = 'none';
+        }
+      </script>
+      
+
+
+<div class="main-content">
+ 
+    <div class="title-section">
+        <h1>Received Requests</h1>
+        <p class="subtitle">Unlocking Access: Admin's Gateway to Elevate Educational Journeys</p>
+        <hr class="divider">
+    </div>
+
+    
+    <div class="container">
+        <div class="request-box">
+            <div class="request-details">
+                <h2>School Name</h2>
+                <p>Registered on: April 15, 2024</p> <!--untill we implement wthe part where we display the date automatically here -->
+
+            </div>
+            <button class="details-button">Details</button>
+        </div>
+
+
+       
+        <div class="right-side">
+            <img src="icon1.png" alt="Icon 1">
+            <img src="icon2.png" alt="Icon 2">
+            <img src="icon3.png" alt="Icon 3">
+           
+        </div>
+    </div>
+    <div class="svg-container">
+        <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        </svg> 
+    </div>
+   
+</div>
+
+</body>
+</html>
