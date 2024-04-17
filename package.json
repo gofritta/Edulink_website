@@ -1,19 +1,27 @@
 {
-  
     "type": "module",
-  "name": "edulinkwebsite",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
+    "name": "edulinkwebsite",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "keywords": [],
-  "description": "",
-  "dependencies": {
+    
+    },
+
+    "author": "",
+    "license": "ISC", 
+    "keywords": [],
+    "description": "",
+    "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "mysql2": "^3.9.2"
-  }
+    
+},
+  
+"devDependencies": {
+       
+    "nodemon": "^3.1.0"
+    
+    }
 }
