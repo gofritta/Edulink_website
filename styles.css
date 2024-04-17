@@ -118,21 +118,21 @@ section {
 }
 svg{
     margin-top: auto;
-    margin-bottom: -1.4%;
-    margin-left: -12px;
+    margin-bottom: -1.6%;
+    margin-left: -10vw;
 }
 .start-button {
     background-color: #ecdffb;
     color: #7d3ec6;
     padding: 10px 20px;
-    border: none;
+    border: solid #7a36a40b;
     border-radius: 15px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-bottom: -1%;
     margin-top: 5%;
-    
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     display: inline-block;
     text-align: center;
 }
@@ -185,10 +185,12 @@ p{
     background-color: #7a36a4;
     color: #fff;
     padding: 10px 20px;
-    border: none;
+    border: solid #2f0d452f;
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .how-it-works .learn-more:hover {
@@ -232,18 +234,22 @@ p{
     border: 1px solid #ccc;
     border-radius: 15px;
     text-align: center;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .find-best .search-button {
     background-color: #171249;
     color: #fff;
     padding: 10px 20px;
-    border: none;
+    border: 2px solid #b4b2cd;
     border-radius: 15px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-left: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .find-best .search-button:hover {
@@ -294,12 +300,14 @@ p{
 .student-feedback .view-details-button {
     background-color: #1f1992;
     color: #fff;
-    border: none;
+    border: 2px solid #e3e1f885;
     padding: 8px 16px;
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .student-feedback .view-details-button:hover {
@@ -401,6 +409,7 @@ p{
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    
 }
 
 .school:hover .view-details {
