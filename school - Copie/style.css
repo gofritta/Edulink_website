@@ -206,6 +206,13 @@ svg {
     padding: 20px 0;
     font-size: 20px;
 }
+.icons .fa {
+    color: #070F2B;
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 20px 0;
+    font-size: 20px;
+}
 
 .divs-c-s img {
     margin-top: 1px;
