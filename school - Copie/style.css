@@ -140,14 +140,15 @@ nav li:first-child {
 }
 
 h1 {
-    padding-left: 60px;
+    padding-left: 2vw;
     color: #1b1022;
     font-size: 45px;
     font-family: 'Times New Roman', Times, serif;
+    margin-top: -2vw;
 }
 
 p {
-    padding-left: 70px;
+    padding-left: 2.5vw;
     color: #6e566e;
     font-size: 15px;
 }
@@ -175,12 +176,12 @@ svg {
     color: #ffffff;
     border: none;
     margin-top: auto;
-    margin-bottom: -1.7956%;
+    margin-bottom: -1.085%;
 }
 
 .footer {
     border: none;
-    height: 300px;
+    height: 18vw;
     padding: 20px;
     background: linear-gradient(to right, #c0c0ce, #adadcc);
 }
@@ -217,12 +218,14 @@ svg {
 .divs-c-s img {
     margin-top: 1px;
     margin-bottom: 1px;
-    height: 100px;
-    width: 150px;
+    margin-left: 30%;
+    height: 10vw;
+    width: 20vw;
 }
 
 .divs-c-s h4 {
     color: #070F2B;
+    margin-left: 22%;
 }
 
 footer div {

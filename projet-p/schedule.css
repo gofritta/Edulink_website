@@ -112,8 +112,11 @@ nav li:first-child {
     height: 80px;
 }
 .title h1{
-   padding-left: 40px;
-    padding-bottom: 5px;
+    padding-left: 2vw;
+    color: #1b1022;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 0vw;
 
 }
 .title p{
@@ -128,8 +131,8 @@ nav li:first-child {
   .line {
     display: inline-block;
     width: 90%;
-    height: 1px; 
-    background-color: black; 
+    height: 0.5px; 
+    background-color: rgba(0, 0, 0, 0.481); 
   }
 
   .footer{
