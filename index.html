@@ -3,43 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"  />
-    <meta name="viewport" content="width=device-width , initial-scale=1.0">
-    <title>Document</title>
+    <title>Home page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="popup2.css">
+    
 </head>
+
 <body>
-    <div class="wrapper">
-        <h1>Our Schools</h1>
-        <i id="left" class="fa-solid fa-angle-left"></i>
-        <ul class="carousel">
-            <li class="card">
-                <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
-                <h2>Ecole Metidja</h2>
-                <span> Bienvenue à l'école de Metidja</span>
-                <button class="button">View More</button>
-            </li>
-            <li class="card">
-                <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
-                <h2>Ecole Imtiaza</h2>
-                <span> Bienvenue à l'école de Imtiaz</span>
-                <button class="button">View More</button>
-            </li>
-            <li class="card">
-                <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
-                <h2>Ecole Sim</h2>
-                <span> Bienvenue à l'école de sim </span>
-                <button class="button">View More</button>
-            </li>
-            <li class="card">
-                <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
-                <h2>Ecole Chaima</h2>
-                <span> Bienvenue à l'école de Chaima</span>
-                <button class="button">View More</button>
-            </li>
-        </ul>
-        <i id="right" class="fa-solid fa-angle-right"></i>
+    <nav class="sidebar">
+  <ul>
+    <li><a class="active" href="#">HOME</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a class="join-us-buttonn" href="#">Join Us</a></li>
+    <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+  </ul>
+</nav>
+<nav>
+  <label class="logo"><img src="edulink0.png" alt="" /></label>
+  <ul>
+    <li><a class="hideOnMobile active" href="#">HOME</a></li>
+    <li><a class="hideOnMobile" href="#">About</a></li>
+    <li><a class="hideOnMobile" href="#">Contact</a></li>
+    <li><a class="hideOnMobile join-us-button" href="#">Join Us</a></li>
+    <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+  </ul>
+</nav>
+<script>
+  function showSidebar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'flex';
+  }
+  function hideSidebar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'none';
+  }
+</script>
+
+
+<section>
+    <img id="logo1" src="edulink0.png" alt="Logo" class="logo"> 
+    <p >..............SLOGAN...........</p>
+    <button class="start-button">Get Started</button>
+    <!-- Popup HTML -->
+    <div id="popup-container" class="popup center">
+        <div class="icon">
+            <i class="fa fa-question"></i>
+        </div>
+        <div class="title">
+          Welcome!
+        </div>
+        <div class="description">
+          Please select your role:
+        </div>
+        <div class="buttons">
+            <a href="sing in page/index.html"><button id="student-btn">Student</button></a>
+            <a href="registration.html"> <button id="school-manager-btn">School Manager</button></a>
+        </div>
     </div>
+
+
+    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 289.501C0 289.501 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V290H0V289.501Z" fill="#AC6CFF" fill-opacity="0.05"/>
+        <path d="M4.98315 289.568C4.98315 289.568 156.326 168.82 698.702 168.82C1241.08 168.82 1480 39 1480 39V290H4.98315V289.568Z" fill="#AC6CFF" fill-opacity="0.15"/>
+        <path d="M0 289.539C0 289.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V290H0V289.539Z" fill="#AC6CFF" fill-opacity="0.1"/>
+        </svg>        
+</section>
+
+<section class="how-it-works">
+    <h2 class="section-title">How it works?</h2>
+    <div class="content">
+        <div class="video">
+            <!-- Embed your video here -->
+            <iframe width="450" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="text">
+            <p>Bla bla bla bla ..........................bla bla bla...........................bla bla bla..........................bla vla bla.
+            </p>
+            <button class="learn-more">Learn More</button>
+        </div>
+    </div>
+    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#0A1A7D" fill-opacity="0.1"/>
+        <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.1"/>
+        </svg>
+        
+        
+        
+</section>
+<section class="find-best">
+    <h2 class="section-title">Find  What Suits You Best</h2>
+    <div class="content">
+         <img class="find-best-image" src="grid0.png" alt="A description of the image" >
+    </div>
+    <div class="search-container">
+        <input type="text" placeholder="Search..." class="search-box">
+        <button class="search-button">Search</button>
+      </div>
+      <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#8F4CC3" fill-opacity="0.05"/>
+        <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#F6BFFF" fill-opacity="0.05"/>
+        <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#571E83" fill-opacity="0.05"/>
+        </svg>
+</section>
+
+<section class="popular-school" style="margin-top: auto;">
+    <h2 class="section-title">Explore Our Popular Schools</h2>
+    <div class="school-container">
+        <div class="school">
+            <img src="school1.jpg" alt="School 1">
+            <div class="school-details">
+                <h3>School Name 1</h3>
+                <p>Description of the school.</p>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+                </div>
+                <button class="view-details">View Details</button>
+            </div>
+        </div>
+        
+        <div class="school">
+            <!-- School 2 content -->
+            <img src="school1.jpg" alt="School 2">
+            <div class="school-details">
+                <h3>School Name 2</h3>
+                <p>Description of the school.</p>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+                </div>
+                <button class="view-details">View Details</button>
+            </div>
+        </div>
+        <div class="school">
+            <!-- School 3 content -->
+            <img src="school1.jpg" alt="School 3">
+            <div class="school-details">
+                <h3>School Name 3</h3>
+                <p>Description of the school.</p>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+                </div>
+                <button class="view-details">View Details</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="student-feedback">
+    <h2 class="section-title">Student Feedback</h2>
+    <div class="feedback-content">
+        <div class="student-picture">
+            <img src="student1.jpg" alt="Student Picture">
+        </div>
+        <div class="feedback-text">
+            <p>ut maximus lacus convallis. Nullam vitae velit nec neque blandit congue. Ut ut urna ac nisi pellentesque feugiat. Vivamus vestibulum risus sit amet ipsum aliquet, eget tincidunt lectus vehicula. Integer nec neque ullamcorper, gravida eros vel, fermentum metus. Cras et dui a nisl egestas sodales. Nam nec rhoncus nisi, sit amet bibendum nunc.</p>
+            <button class="view-details-button">View Details</button>
+        </div>
+    </div>
+    <div class="related-pictures">
+        <img src="related1.jpg" alt="Related Picture 1">
+        <img src="related2.jpg" alt="Related Picture 2">
+        <img src="related3.jpg" alt="Related Picture 3">
+    </div>
+    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        </svg>
+        
+</section>
+<script src="popup2.js"></script>
+<script src="index1.js"></script>
+
+
+
+
+  
+
+<footer>
+    
+</footer>
+
 </body>
 </html>
