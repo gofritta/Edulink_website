@@ -48,16 +48,13 @@ nav a:hover,a.active {
 }
 
 label.logo {
-    color: #90799f;
-    font-size: 30px;
-    line-height: 80px;
-    padding: 0 50px;
-    font-weight: bold;
+    
     img{
      size: 100px; 
-     width: 220px; 
+     width: 190px; 
      height: auto; 
      padding-top: 12px;
+     margin-left: 2vw;
     }
 }
 nav li:first-child {
@@ -209,9 +206,12 @@ html, body {
     padding: 10px 20px;
     background-color: #5b1d69;
     color: #fff;
-    border: none;
+    border: 2px solid #15081788;
     border-radius: 15px;
     cursor: pointer;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+
+
 }
 
 .details-button:hover {
@@ -221,4 +221,85 @@ html, body {
     text-align: center;
     margin-top: -8.5%; 
     margin-left: -13.5%;
+}
+/* Add this in your existing CSS file or <style> tag */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Start with opacity 0 */
+}
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 300ms ease-in-out; /* Opacity transition */
+}
+.modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 19px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 35%;
+    text-align: center;
+    transform: translate(-50%, -50%) scale(0.5); /* Start with scale down and center */
+    opacity: 0; /* Start with opacity 0 */
+    transition: transform 500ms ease-in-out, top 500ms ease-in-out, opacity 300ms ease-in-out; /* Transform and opacity transitions */
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    z-index: 999; /* Ensure it's above other content */
+}
+.modal.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Scale up and center */
+    top: 50%; /* Center modal vertically */
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+}
+#accept{
+    background-color: #4caf4f6a; 
+    color: white;
+}
+
+#contact{
+    background-color: #4c53af56; 
+    color: white;
+    
+}
+
+#decline{
+    background-color: #f4000058; 
+    color: white;
+}
+.details-info{
+    text-align: left;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
 }

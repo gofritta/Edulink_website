@@ -75,8 +75,26 @@
         <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.05"/>
         </svg> 
     </div>
-   
+   <!-- Modal details popup -->
+   <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>School Details</h2>
+        <div class="details-info">
+        <p><strong>School Name:</strong> <span id="modalSchoolName"></span></p><br>
+        <p><strong>Owner Name:</strong> <span id="modalOwnerName"></span></p><br>
+        <p><strong>Address:</strong> <span id="modalAddress"></span></p><br>
+        <p><strong>Email:</strong> <span id="modalEmail"></span></p><br>
+        <p><strong>Phone:</strong> <span id="modalPhone"></span></p>
+      </div>
+        <div class="modal-buttons">
+            <button id="accept" onclick="acceptRequest()">Accept</button>
+            <button id="contact" onclick="contactOwner()">Contact</button>
+            <button id="decline" onclick="declineRequest()">Decline</button>
+        </div>
+    </div>
 </div>
-
+</div>
+<script src="admin.js"></script>
 </body>
 </html>

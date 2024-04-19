@@ -36,7 +36,7 @@ nav ul li {
 
     display: inline-block;
     line-height: 80px;
-    margin: 0 5px;
+    margin: 0 10px;
     font-family: 'Times New Roman';
 
 }
@@ -59,11 +59,10 @@ a.active {
 }
 
 .logo img {
-    size: 100px;
-    width: 220px;
+    width: 190px;
     height: auto;
-    padding-left: 40px;
     padding-top: 12px;
+    margin-left: 2vw ;
 
 }
 
