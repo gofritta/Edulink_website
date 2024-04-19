@@ -10,17 +10,13 @@ body {
     justify-content: center;
     min-height: 100vh;
     padding: 0 35px;
-    background: linear-gradient(to left top , #dcdde2,#c7c1d3);
 }
 .wrapper {
-    max-width: 1100px;
-    width: 100%;
+    width: auto;
     position: relative;
+    height: auto;
 }
-.wrapper h1 {
-    text-align: center;
-    margin: 40px;
-}
+
 .wrapper i{
     height: 50px;
     width: 50px;
@@ -35,11 +31,24 @@ body {
     transform: translateY(-50%);
     box-shadow: 0 3px 6px rgb(0, 0, 0,0.23);
 }
-.wrapper i:first-child {
-    left: -22px;
+.wrapper #left {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    left: -5vw; /* Adjust this value to move the left arrow further to the left */
 }
+
 .wrapper i:last-child {
-    right: -22px;
+    right: -5vw;
 }
 .wrapper .carousel {
     display: grid;
@@ -75,13 +84,15 @@ body {
     height: 342px;
     list-style: none;
     background: #fff;
-    border-radius: 8px;
+    border-radius: 19px;
     cursor: pointer;
     display: flex;
     padding-bottom: 15px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+
 }
 .card .img {
     background: #8B53FF;
@@ -111,14 +122,14 @@ body {
     color: #FFF;
     padding: 8px 16px;
     background-color: #523db1;
-    border-radius: 6px;
+    border-radius: 15px;
     margin: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
     
 .card button:hover {
-    background: #000000;
+    background: #b3a8ef;
     }
     
 @media screen and (max-width: 900px){
