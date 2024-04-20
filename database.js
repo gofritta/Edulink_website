@@ -13,9 +13,9 @@ async function getStudent(pool) {
   }
 }
 // gets student name (used for login )
-async function getStudentName(pool, name){
+async function getStudentByEmail(pool, email){
     try{
-        const result = await pool.query( `SELECT * FROM student WHERE name_s = ? `, [name]);
+        const result = await pool.query( `SELECT * FROM student WHERE email_s = ? `, [email]);
        
         if (result.length > 0){
         return result[0];
@@ -88,7 +88,7 @@ Promise.all(getStudent())
    /* console.error('Error:', error);
     con.end();
 })
-const result = await getStudentName(pool , "ikhlas el haouari");
+const result = await getStudentByEmail(pool , "tfmtourifiga@gmail.com");
 console.log(result);*/
-export {getStudent, getSchool, getSchoolByState, getStudentID, insertNewStudent, getStudentName};
+export {getStudent, getSchool, getSchoolByState, getStudentID, insertNewStudent, getStudentByEmail};
 
