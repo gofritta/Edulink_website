@@ -98,5 +98,73 @@
     </div>
   
     <script src="script.js"></script>
+
+    <script>
+      //kayen two wahda for lofin button w wahda l register
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const registerForm = document.getElementById('registerForm');
+        const loginForm = document.getElementById('loginForm');
+      
+        registerForm.addEventListener('submit', event => {
+          event.preventDefault();
+      
+          const formData = new FormData(registerForm);
+      
+          fetch('http://your-backend-url/api/register', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            window.location.href = 'student_search.html';
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+            // Handle error: display error message to the user
+          });
+        });
+      // hadi for login 
+        loginForm.addEventListener('submit', event => {
+          event.preventDefault();
+      
+          const loginEmail = document.getElementById('loginEmail').value;
+          const loginPassword = document.getElementById('loginPassword').value;
+      
+          fetch('http://your-backend-url/api/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: loginEmail, password: loginPassword })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            window.location.href = 'student_search.html';
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+            // Handle error: display error message to the user
+          });
+        });
+      
+        const showRegisterButton = document.getElementById('showRegister');
+        const showLoginButton = document.getElementById('showLogin');
+        const toggleContainer = document.getElementById('toggle');
+      
+        showRegisterButton.addEventListener('click', () => {
+          toggleContainer.classList.add('right-panel-active');
+        });
+      
+        showLoginButton.addEventListener('click', () => {
+          toggleContainer.classList.remove('right-panel-active');
+        });
+      });
+      </script>
+      
   </body>
 </html>
