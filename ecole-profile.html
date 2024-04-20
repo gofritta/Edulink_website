@@ -14,25 +14,46 @@
   <body>
     <nav class="sidebar">
       <ul>
-        <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
-      
-        <li><a class="active" href="#">HOME</a></li>
-        <li><a href="#">about</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Join Us</a></li>
+          <li><a class="active" href="#">HOME</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+              <div class="dropdown-content">
+                  </a><a href="#">My Account</a>
+                  <a href="#">Log Out</a>
+              </div>
+          </li>
+          <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
       </ul>
-    </nav>
-    <nav>
-
-      <label class="logo"><img src="edulinklogo.png" alt="" /></label>
+  </nav>
+  
+  <nav>
+      <label class="logo"><img src="edulink0.png" alt="Logo" /></label>
       <ul>
-        <li><a class="hideOnMobile" class="active" href="#">HOME</a></li>
-        <li><a class="hideOnMobile" href="#">about</a></li>
-        <li><a  class="hideOnMobile" href="#">Contact</a></li>
-        <li><a class="hideOnMobile" href="#">Join Us</a></li>
-        <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+          <li><a class="hideOnMobile active" href="#">HOME</a></li>
+          <li><a class="hideOnMobile" href="#">About</a></li>
+          <li><a class="hideOnMobile" href="#">Contact</a></li>
+          <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+              <div class="dropdown-content">
+                  <a href="#">My Account</a>
+                  <a href="#">Log Out</a>
+              </div>
+          </li>
+          <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
       </ul>
-    </nav>
+  </nav>
+  
+  <script>
+      function showSidebar() {
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.style.display = 'block';
+      }
+  
+      function hideSidebar() {
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.style.display = 'none';
+      }
+  </script>
  <section>
     <div class="profil">
         <div class="info-p">
@@ -44,17 +65,17 @@
             <h4> School Name:</h4>
             <h4>Contact:</h4>
             <h4>Localisation:</h4>
-            <a href="/student_regist.html"><button class="Inscription">Inscription</button></a>
+            <a href="student_regist.html"><button class="Inscription">Inscription</button></a>
 
           </div>
         </div>
         <div class="info-c">
       <div class="button-content">
         <button class="content-a">SUBJECTS ></button>
-        <a href="schedule.html"><button class="content-b">SCHEDULE ></button></a>
+        <button class="content-b">SCHEDULE ></button>
     </div>
     <div class="button-content">
-        <a href="/teachers section/indext.html"><button class="content-c">TEACHERS ></button></a>
+        <a href="teachers section/indext.html"><button class="content-c">TEACHERS ></button></a>
         <button class="content-d">REVIEWS ></button>
     </div>
     </div>    

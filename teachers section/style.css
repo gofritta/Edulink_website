@@ -35,8 +35,11 @@ nav ul {
 nav ul li {
 
     display: inline-block;
-    line-height: 80px;
+    line-height: 80
+    margin: 0 10px;
+=======
     margin: 0 5px;
+
     font-family: 'Times New Roman';
 
 }
@@ -59,11 +62,18 @@ a.active {
 }
 
 .logo img {
+
+    width: 190px;
+    height: auto;
+    padding-top: 12px;
+    margin-left: 2vw ;
+=======
     size: 100px;
     width: 220px;
     height: auto;
     padding-left: 40px;
     padding-top: 12px;
+
 
 }
 
@@ -136,6 +146,16 @@ nav li:first-child {
    margin-bottom: 0px;
 }
 h1 {
+
+    padding-left: 2vw;
+    color: #1b1022;
+    font-size: 45px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: -2vw;
+}
+p {
+    padding-left: 2.5vw;
+=======
     padding-left: 60px;
     color: #1b1022;
     font-size: 45px;
@@ -143,6 +163,7 @@ h1 {
 }
 p {
     padding-left: 70px;
+
     color: #6e566e;
     font-size: 15px;
 }
@@ -244,12 +265,18 @@ svg{
     border: none;
     margin-top: auto;
     margin-bottom: -21.678px;
-   
+
+    margin-bottom: -1.085%;
+
 
 }
 .footer {
     border:none;
+
+    height: 23vw;
+
     height: 300px;
+
     padding: 20px;
     background: linear-gradient(to right,#c0c0ce,#adadcc);
 }
@@ -286,12 +313,22 @@ svg{
  .divs-c-s img {
      margin-top: 1px;
      margin-bottom: 1px;
+
+     margin-left: 30%;
+    height: 10vw;
+    width: 20vw;
+
      height: 100px;
      width: 150px;
+
  }
 
  .divs-c-s h4 {
      color: #070F2B;
+
+     margin-left: 22%;
+
+
  }
 
  footer div {
@@ -337,6 +374,11 @@ svg{
      -moz-border-radius: 23px;
      -ms-border-radius: 23px;
      -o-border-radius: 23px;
+
+     margin-left: 22%;
+
+
+
 }
 
  .button-footer:hover {
