@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>schedule</title>
+    <link rel="stylesheet" href="schedule.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="sidebar">
+      <ul>
+        <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+      
+        <li><a class="active" href="#">HOME</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Join Us</a></li>
+      </ul>
+    </nav>
+    <nav>
+
+      <label class="logo"><img src="edulinklogo.png" alt="" /></label>
+      <ul>
+        <li><a class="hideOnMobile" class="active" href="#">HOME</a></li>
+        <li><a class="hideOnMobile" href="#">about</a></li>
+        <li><a  class="hideOnMobile" href="#">Contact</a></li>
+        <li><a class="hideOnMobile" href="#">Join Us</a></li>
+        <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+      </ul>
+    </nav>
+    <section>
+      <div class="title">  <h1>SCHEDULE SECTION</h1>
+        <p>Find you path, navigate with schedules</p>
+        <div class="line-wrapper">
+            <div class="line"></div>
+          </div></div>
+        <embed class="pdf" src="1er (2).pdf" type="application/pdf" width="70%" height="500px" />
+        <button class="button-pdf">save</button>
+        <svg width="100%" height="200" viewBox="0 0 1480 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ddddf6" />
+                    <stop offset="100%" stop-color="#5e5eb5" />
+                </linearGradient>
+            </defs>
+            <path d="M0 199.5C0 199.5 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V200H0V199.5Z" fill="url(#waveGradient)" fill-opacity="0.05"/>
+            <path d="M4.98315 199.568C4.98315 199.568 156.326 149.82 698.702 149.82C1241.08 149.82 1480 39 1480 39V200H4.98315V199.568Z" fill="url(#waveGradient)" fill-opacity="0.15"/>
+            <path d="M0 199.539C0 199.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V200H0V199.539Z" fill="url(#waveGradient)" fill-opacity="0.1"/>
+        </svg>
+    </section>
+    <footer class="footer">
+     
+        <div class="divs-c-l"> 
+            <h3>OUR SERVICES
+            </h3><ul>           
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Term Of Use</a></li>
+            </div>
+
+         <div class="divs-c-s"> 
+            
+            <img src="edulinklogo.png" alt="" />
+            <h4>your ultimate guide for educational excellence!</h4>
+            <button class="button-footer">JOIN US</button>
+          </ul></div>
+          <div> 
+            <h3>CONTACT US</h3>
+            <div class="icons">    
+          <i class="fab fa-facebook" ></i>
+         <i class="fab fa-twitter" ></i>
+         <i class="fab fa-instagram" ></i>
+          <i class="fa fa-envelope" ></i>
+           </div></div>
+   </footer>
+    <script>
+        
+    function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+  </script>
+
+   
+  </body>
+</html>

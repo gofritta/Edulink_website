@@ -19,7 +19,7 @@
         <li><a class="sidebarr" href="#">HOME</a></li>
         <li><a class="sidebarr" href="#">about</a></li>
         <li><a class="sidebarr" href="/teachers section/index.html">Contact</a></li>
-        <li><a class="sidebarr" href="/sing in page/index.html">Join Us</a></li>
+        <li><a class="sidebarr" href="/sing in page/indexs.html">Join Us</a></li>
       </ul>
     </nav>
     <nav>
@@ -34,22 +34,24 @@
     </nav>
 
     
- 
+    <div >
+      <!--nav-bar-->
+    </div>
     <div class="container" id="container">
       <div class="form-container sign-up">
-        <form id="signup-form">
+        <form>
           <h1>Creat Account</h1>
           <div class="social-icons">
             <a href="" class="icon"><i class="fa-brands fa-google"></i></a>
             <a href="" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
-          <span> use your email for registation</span>
+          <span>or use your email for registation</span>
 
-          <input type="text" placeholder="Name" id="name" name="name" pattern="[A-Za-z ]+" title="Please enter only alphabetic characters" maxlength="50" required />
+          <input type="text" placeholder="Name" id="name" name="name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" maxlength="50" required />
           <input type="email" placeholder="Email"  id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address" required/>
-          <input type="password" placeholder="Password" required/>
-          <input type="date"  id="birthdate" name="birthdate" pattern="" required/>
+          <input type="password" placeholder="Password" id="password" pattern="[a-zA-Z0-9._%+-*]" title="Please enter a valid Password!" required/>
+          <input type="date"  id="birthdate" name="birthdate" placeholder="birthdate" id="birthdate" pattern="\d{2}\/\d{2}\/\d{4}" title="Please enter your Birthdate" required/>
           <label for="gender">Gender:</label>
           <select id="gender" name="gender" required>
                     <option value="male">Male</option>
@@ -58,30 +60,29 @@
 
         
           
-          <button type="submit" class="hiddenn">Sign Up ></button>
+          <button class="hiddenn">Sign Up ></button>
         </form>
       </div>
 
       <div class="form-container sign-in">
-        <form id="login-form">
+        <form>
           <h1>Log In</h1>
           <div class="social-icons">
             <a href=" " class="icon"><i class="fa-brands fa-google"></i></a>
             <a href=" " class="icon"><i class="fa-brands fa-facebook-f"></i></a>
             <a href=" " class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
-          <span> use your e-mail </span>
+          <span>or use your e-mail </span>
 
-          <input type="email" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address" required/>
+          <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
           <a href=" ">Forget your Password?</a>
-          <button type="submit" class="hiddenn">Log In ></button>
+          <button class="hiddenn">Log In ></button>
         </form>
       </div>
       <div class="toggel-container" id="toggel">
-      
+        <!--  <i class="fa fa-times" onclick="hideMenu()"></i>-->
         <div class="toggel">
-          
           <div class="toggle-panel toggle-left">
             <h1>Welcome Back!</h1>
             <p>Enter your personal informations</p>
@@ -93,59 +94,77 @@
             <button class="hidden" id="register">Sign Up ></button>
           </div>
 
-        </div>
         
-      </div>
     </div>
   
-    <script src="script.js">
+    <script src="script.js"></script>
 
-  const signupForm = document.getElementById('signup-form');
-  const loginForm = document.getElementById('login-form');
-
-// Sign up form event listener:
-
-  signupForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const formData = new FormData(this);// Automatically collects data from all form fields
-
-    // Perform the fetch request with the FormData object containing all input values:
-
-    fetch('/student/register', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json()) // parse the response body as JSON
-    .then(data => {
-      console.log(data);
-      // Handle success or error responses from the backend
-    })
-    .catch(error => console.error('Error:', error));
-  });
-
-
-// Log in form event listener:
-
-  loginForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const formData = new FormData(this);  // Collect data from all inputs in the form
-    fetch('/student/login', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json()) // parse the response body as JSON
-    .then(data => {
-      console.log(data);
-      // Handle success or error responses from the backend
-    })
-    .catch(error => console.error('Error:', error));
-  });
-
-     
-
-
-
-
-    </script>
+    <script>
+      //kayen two wahda for lofin button w wahda l register
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const registerForm = document.getElementById('registerForm');
+        const loginForm = document.getElementById('loginForm');
+      
+        registerForm.addEventListener('submit', event => {
+          event.preventDefault();
+      
+          const formData = new FormData(registerForm);
+      
+          fetch('http://your-backend-url/api/register', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            window.location.href = 'student_search.html';
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+            // Handle error: display error message to the user
+          });
+        });
+      // hadi for login 
+        loginForm.addEventListener('submit', event => {
+          event.preventDefault();
+      
+          const loginEmail = document.getElementById('loginEmail').value;
+          const loginPassword = document.getElementById('loginPassword').value;
+      
+          fetch('http://your-backend-url/api/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: loginEmail, password: loginPassword })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            window.location.href = 'student_search.html';
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+            // Handle error: display error message to the user
+          });
+        });
+      
+        const showRegisterButton = document.getElementById('showRegister');
+        const showLoginButton = document.getElementById('showLogin');
+        const toggleContainer = document.getElementById('toggle');
+      
+        showRegisterButton.addEventListener('click', () => {
+          toggleContainer.classList.add('right-panel-active');
+        });
+      
+        showLoginButton.addEventListener('click', () => {
+          toggleContainer.classList.remove('right-panel-active');
+        });
+      });
+      </script>
+      
   </body>
 </html>

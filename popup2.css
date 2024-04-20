@@ -1,0 +1,90 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+body {
+    background: #ddd;
+    font-family: "Raleway";
+  }
+  
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .popup {
+    width: 350px;
+    padding: 30px 20px;
+    background: #f5f5f5;
+    border-radius: 15px;
+    box-sizing: border-box;
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    top: -200%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+  }
+  
+  .popup.active {
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  }
+  
+  .popup .icon {
+    margin: 5px 0px;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #9341d2;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 60px;
+  }
+  
+  .popup .icon i.fa {
+    font-size: 30px;
+    color: #9341d2;
+  }
+  
+  .popup .title {
+    margin: 5px 0px;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  
+  .popup .description {
+    color: #222;
+    font-size: 15px;
+    padding: 5px;
+  }
+  
+  .popup .buttons {
+    margin-top: 15px;
+    display: flex;
+  justify-content: space-between;
+  }
+  
+  .popup .buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background: #060741;
+    color: #f5f5f5;
+    border: 2px solid #060741;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  .popup .buttons button:hover {
+    color: #060741;
+    background: #f5f5f5;
+  }
+  

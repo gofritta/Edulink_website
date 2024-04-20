@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search student</title>
+    <link rel="stylesheet" href="student_search.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"  />
+    <script src="student_search.js" defer></script>
+    <script src="pfp_student.js" defer></script>
+
+
+</head>
+<body>
+
+<nav class="sidebar">
+    <ul>
+        <li><a class="active" href="#">HOME</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+            <div class="dropdown-content">
+
+                </a><a href="#">My Account</a>
+
+                <a href="#">My Account</a>
+
+                <a href="#">Log Out</a>
+            </div>
+        </li>
+        <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+    </ul>
+</nav>
+
+<nav>
+    <label class="logo"><img src="edulink0.png" alt="Logo" /></label>
+    <ul>
+        <li><a class="hideOnMobile active" href="#">HOME</a></li>
+        <li><a class="hideOnMobile" href="#">About</a></li>
+        <li><a class="hideOnMobile" href="#">Contact</a></li>
+        <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+            <div class="dropdown-content">
+                <a href="#">My Account</a>
+                <a href="#">Log Out</a>
+            </div>
+        </li>
+        <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+    </ul>
+</nav>
+
+<script>
+    function showSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'block';
+    }
+
+    function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'none';
+    }
+</script>
+<div class="title-section">
+    <h1>Hello, Student's Name!</h1>
+    <p class="subtitle">Let's Find What Suits You Best</p>
+    <hr class="divider">
+    <div class="search-box">
+        <input type="text" placeholder="Search..." id="search-input">
+        <button type="button" id="search-button">Search</button>
+    </div>
+</div>
+
+<div class="wrapper">
+       
+    <i id="left" class="fa-solid fa-angle-left"></i>
+    <ul class="carousel">
+        <li class="card">
+            <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
+            <h2>Ecole Metidja</h2>
+            <span> Bienvenue à l'école de Metidja</span>
+
+            <a href="ecole-profile.html"><button class="button">View More</button></a>
+
+            <button class="button">View More</button>
+
+        </li>
+        <li class="card">
+            <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
+            <h2>Ecole Imtiaza</h2>
+            <span> Bienvenue à l'école de Imtiaz</span>
+
+            <a href="ecole-profile.html"><button class="button">View More</button></a>
+=======
+            <button class="button">View More</button>
+
+        </li>
+        <li class="card">
+            <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
+            <h2>Ecole Sim</h2>
+            <span> Bienvenue à l'école de sim </span>
+
+            <a href="ecole-profile.html"><button class="button">View More</button></a>
+
+            <button class="button">View More</button>
+
+        </li>
+        <li class="card">
+            <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
+            <h2>Ecole Chaima</h2>
+            <span> Bienvenue à l'école de Chaima</span>
+
+            <a href="ecole-profile.html"><button class="button">View More</button></a>
+
+            <button class="button">View More</button>
+
+        </li>
+    </ul>
+    <i id="right" class="fa-solid fa-angle-right"></i>
+</div>
+<div id="placeholder" style="display: block;">
+    <img id="placeholder-icon" src="pin.gif" alt="Placeholder Icon" />
+    <p>Enter the state you live in the search bar and click on 'Search' to see the results.</p>
+</div>
+
+
+</body>
+</html>
+

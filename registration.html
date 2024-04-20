@@ -1,3 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<link rel="stylesheet" href="registration.css">
+<link rel="stylesheet" href="popup.css">
+<script src="popup.js"></script>
+</head>
+<body>
+
+    
+<div class="container">
+    <h1>Registration</h1>
+    <div class="subtitle">Fill your details for registration</div>
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" maxlength="25" required />
+            <label for="family-name">Family Name:</label>
+            <input type="text" id="family-name" name="family-name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" maxlength="25" required>
+        </div>
+        <div class="form-group">
+            <label for="date-of-birth">Date Of Birth:</label>
+            
+              <div class="scrollable-select">
+                <select id="day" name="day" required>
+                  <option value="" disabled selected>Day</option>
+                  <!-- JavaScript will do the job  -->
+                </select>
+              </div>
+
+              <!-- Month select -->
+             <div class="scrollable-select">
+               <select id="month" name="month" required>
+                 <option value="" disabled selected>Month</option>
+               </select>
+              </div>
+  
+             <!-- Year select -->
+             <div class="scrollable-select">
+               <select id="year" name="year" required>
+                 <option value="" disabled selected>Year</option>
+               </select>
+            </div>
+  
+
+        </div>
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" maxlength="20" required>
+            <label for="address">Full Address:</label>
+            <textarea id="address" name="address" rows="4" pattern="[a-zA-Z0-9\s,'.-]+" title="Please enter a valid address" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="email">Your E-mail:</label>
+            <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address" required>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="0[5-7|2][0-9]{8}" title="Please enter a valid phone number" required>
+        </div>
+        <div class="form-group">
+            <label for="school-name">School Name:</label>
+            <input type="text" id="school-name" name="school-name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" maxlength="50" required>
+            <label for="description">Brief Description:</label>
+            <textarea id="description" name="description" rows="4" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" maxlength="200" required></textarea>
+        </div>
+        <div class="form-group">
+            <button id="open-popup-btn"  type="submit" disabled>Register</button>
+            <div class="popup center">
+                <div class="icon">
+                  <i class="fa fa-check"></i>
+                </div>
+                <div class="title">
+                  Success!!
+                </div>
+                <div class="description">
+                  Registration submitted successfully!
+                  <br>Pending admin approval. 
+                  You will receive a confirmation once your account is activated.
+                </div>
+                <div class="dismiss-btn">
+                  <button id="dismiss-popup-btn">
+                    Dismiss
+                  </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    const daySelect = document.getElementById("day");
+
+for (let i = 1; i <= 31; i++) {
+  const option = document.createElement("option");
+  option.text = i < 10 ? "0" + i : i;
+  option.value = i < 10 ? "0" + i : i;
+  daySelect.add(option);
+}
+
+const monthSelect = document.getElementById("month");
+const yearSelect = document.getElementById("year");
+
+//for months
+const months = [
+        "January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"
+    ];
+
+    months.forEach((month, index) => {
+        const option = document.createElement("option");
+        option.text = month;
+        option.value = index + 1 < 10 ? "0" + (index + 1) : (index + 1);
+        monthSelect.add(option);
+    });
+
+    // for years
+    const currentYear = new Date().getFullYear();
+    const yearsRange = 60; // gdah men year available 
+
+    for (let i = currentYear; i >= currentYear - yearsRange; i--) {
+        const option = document.createElement("option");
+        option.text = i;
+        option.value = i;
+        yearSelect.add(option);
+    }
+
+    // Function to update the number of days based on the selected month and year
+    function updateDays() {
+        const selectedMonth = parseInt(monthSelect.value);
+        const selectedYear = parseInt(yearSelect.value);
+        const daySelect = document.getElementById("day");
+        daySelect.innerHTML = ""; // Clear existing options ida ghlet yaeni
+
+        let daysInMonth;
+        switch (selectedMonth) {
+            case 2: // February
+                daysInMonth = (selectedYear % 4 === 0 && (selectedYear % 100 !== 0 || selectedYear % 400 === 0)) ? 29 : 28; //ida kant leap year wla la
+                break;
+            case 4: // April
+            case 6: //ect
+            case 9: 
+            case 11: 
+                daysInMonth = 30;
+                break;
+            default:
+                daysInMonth = 31;
+                break;
+        }
+
+        // Generate day options
+        for (let i = 1; i <= daysInMonth; i++) {
+            const option = document.createElement("option");
+            option.text = i < 10 ? "0" + i : i;
+            option.value = i < 10 ? "0" + i : i;
+            daySelect.add(option);
+        }
+    }
+
+    // Update days when month or year changes koul month w yamatou (year)
+    monthSelect.addEventListener("change", updateDays);
+    yearSelect.addEventListener("change", updateDays);
+
+    // Initialize days based on the current month and year
+    updateDays();
+
+
+</script>
+<script src="registration.js"></script>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +239,7 @@
             <textarea id="description" name="description" rows="4" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" maxlength="200" required></textarea>
         </div>
         <div class="form-group">
-            <button type="submit">Register</button>
+            <a href="popup.html"><button type="submit">Register</button></a>
         </div>
     </form>
 </div>
@@ -151,3 +326,4 @@ const months = [
 </script>
 </body>
 </html>
+
