@@ -1,4 +1,7 @@
 {
+
+    "liveServer.settings.port": 5501
+
   "liveServer.settings.port": 5501,
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
@@ -57,4 +60,5 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false
+
 }

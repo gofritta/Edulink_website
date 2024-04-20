@@ -148,6 +148,9 @@ nav li:first-child {
 h1 {
 
     padding-left: 2vw;
+=======
+
+    padding-left: 2vw;
     color: #1b1022;
     font-size: 45px;
     font-family: 'Times New Roman', Times, serif;
@@ -155,14 +158,20 @@ h1 {
 }
 p {
     padding-left: 2.5vw;
-=======
+
     padding-left: 60px;
+
     color: #1b1022;
     font-size: 45px;
     font-family: 'Times New Roman', Times, serif;
+    margin-top: -2vw;
 }
 p {
+
+    padding-left: 2.5vw;
+
     padding-left: 70px;
+
 
     color: #6e566e;
     font-size: 15px;
@@ -269,9 +278,15 @@ svg{
     margin-bottom: -1.085%;
 
 
+    margin-bottom: -1.085%;
+
+
 }
 .footer {
     border:none;
+
+    height: 23vw;
+
 
     height: 23vw;
 
@@ -313,6 +328,10 @@ svg{
  .divs-c-s img {
      margin-top: 1px;
      margin-bottom: 1px;
+     margin-left: 30%;
+    height: 10vw;
+    width: 20vw;
+
 
      margin-left: 30%;
     height: 10vw;
@@ -321,12 +340,17 @@ svg{
      height: 100px;
      width: 150px;
 
+
  }
 
  .divs-c-s h4 {
      color: #070F2B;
+     margin-left: 22%;
+
+
 
      margin-left: 22%;
+
 
 
  }
@@ -374,6 +398,10 @@ svg{
      -moz-border-radius: 23px;
      -ms-border-radius: 23px;
      -o-border-radius: 23px;
+     margin-left: 22%;
+
+
+
 
      margin-left: 22%;
 
