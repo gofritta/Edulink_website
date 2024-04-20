@@ -108,8 +108,3 @@ function adjustCarouselContent() {
 
 carousel.addEventListener("scroll", adjustCarouselContent);
 
-
-
-
-
-

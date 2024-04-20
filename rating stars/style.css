@@ -1,0 +1,18 @@
+.star-rating {
+    font-size: 0;
+    /* Remove white space between inline-block elements */
+}
+
+.star {
+    font-size: 24px;
+    color: rgb(105, 109, 109);
+    color: #e6e6e6;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.star:hover,
+.star.active {
+    color: rgb(92, 11, 146);
+    /* Color the star gold on hover and when active */
+}
