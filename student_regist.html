@@ -53,10 +53,32 @@
         </form>
     </div>
     <script>
-        document.getElementById('registration-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    window.location.href = 'student_search.html'; 
-});
+       document.addEventListener('DOMContentLoaded', () => {
+            const registrationForm = document.getElementById('registration-form');
+
+            registrationForm.addEventListener('submit', event => {
+                event.preventDefault(); // Prevent default form submission behavior
+
+                const formData = new FormData(registrationForm);
+
+                // Make a fetch request lel backend 
+                fetch('http://your-backend-url/api/register', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    // Redirect to student_search.html after successful registration
+                    window.location.href = 'student_search.html';
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                    // Handle error: display error message to the user
+                });
+            });
+        });
 
     </script>
 </body>
