@@ -16,8 +16,9 @@
           <li><a class="join-us-buttonn" href="#">Join Us</a></li>
           <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
         </ul>
-      </nav>
-      <nav>
+    </nav>
+
+    <nav>
         <label class="logo"><img src="edulink0.png" alt="" /></label>
         <ul>
           <li><a class="hideOnMobile active" href="#">HOME</a></li>
@@ -26,8 +27,9 @@
           <li><a class="hideOnMobile join-us-button" href="#">Join Us</a></li>
           <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
         </ul>
-      </nav>
-      <script>
+    </nav>
+
+    <script>
         function showSidebar(){
           const sidebar = document.querySelector('.sidebar');
           sidebar.style.display = 'flex';
@@ -36,65 +38,110 @@
           const sidebar = document.querySelector('.sidebar');
           sidebar.style.display = 'none';
         }
-      </script>
-      
+    </script>
 
-
-<div class="main-content">
- 
-    <div class="title-section">
-        <h1>Received Requests</h1>
-        <p class="subtitle">Unlocking Access: Admin's Gateway to Elevate Educational Journeys</p>
-        <hr class="divider">
-    </div>
-
+   <div class="main-content">
+        <div class="title-section">
+            <h1>Received Requests</h1>
+            <p class="subtitle">Unlocking Access: Admin's Gateway to Elevate Educational Journeys</p>
+            <hr class="divider">
+        </div>
     
-    <div class="container">
-        <div class="request-box">
-            <div class="request-details">
-                <h2>School Name</h2>
-                <p>Registered on: April 15, 2024</p> <!--untill we implement wthe part where we display the date automatically here -->
-
+        <div class="container">
+            <div class="request-box">
+                <div class="request-details">
+                    <h2>School Name</h2>
+                    <p>Registered on: April 15, 2024</p> <!-- Until we implement the part where we display the date automatically here -->
+                </div>
+                <button class="details-button-school">Details</button> <!-- Changed class to details-button-school -->
             </div>
-            <button class="details-button">Details</button>
+    
+            <div class="right-side">
+                <img src="computer0.gif" alt="Icon 1">
+                <img src="curved-arrow-with-broken-line (1).png" alt="Icon 2">
+                <img src="question0.gif" alt="Icon 3">
+            </div>
         </div>
-
-
-       
-        <div class="right-side">
-            <img src="computer0.gif" alt="Icon 1">
-            <img src="curved-arrow-with-broken-line (1).png" alt="Icon 2">
-            <img src="question0.gif" alt="Icon 3">
-           
+    
+        <div class="svg-container">
+            <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
+                <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#0A1A7D" fill-opacity="0.05"/>
+                <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.05"/>
+            </svg> 
         </div>
-    </div>
-    <div class="svg-container">
-        <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
-        <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#0A1A7D" fill-opacity="0.05"/>
-        <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.05"/>
-        </svg> 
-    </div>
-   <!-- Modal details popup -->
-   <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>School Details</h2>
-        <div class="details-info">
+    
+        <!-- Modal for School Details -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal"> <!-- Correction: Utilisation de la classe "modal" -->
+      <span class="close" onclick="closeModal()">&times;</span> <!-- Changed onclick function to closeModal() -->
+      <h2>School Details</h2>
+      <div class="details-info">
         <p><strong>School Name:</strong> <span id="modalSchoolName"></span></p><br>
         <p><strong>Owner Name:</strong> <span id="modalOwnerName"></span></p><br>
         <p><strong>Address:</strong> <span id="modalAddress"></span></p><br>
         <p><strong>Email:</strong> <span id="modalEmail"></span></p><br>
         <p><strong>Phone:</strong> <span id="modalPhone"></span></p>
       </div>
-        <div class="modal-buttons">
-            <button id="accept" onclick="acceptRequest()">Accept</button>
-            <button id="contact" onclick="contactOwner()">Contact</button>
-            <button id="decline" onclick="declineRequest()">Decline</button>
-        </div>
+      <div class="modal-buttons">
+          <button id="accept" onclick="acceptRequest()">Accept</button>
+          <button id="contact" onclick="contactOwner()">Contact</button>
+          <button id="decline" onclick="declineRequest()">Decline</button>
+      </div>
+  </div>
+</div>
     </div>
-</div>
-</div>
-<script src="admin.js"></script>
+
+
+
+
+    <div class="main-content">
+      <div class="title-section">
+          <h1>Received Rapports From Students</h1>
+          <p class="subtitle">Unlocking Access: Admin's Gateway to Elevate Educational Journeys</p>
+          <hr class="divider">
+      </div>
+  
+      <div class="container">
+          <div class="request-box">
+              <div class="request-details">
+                  <h2>Student Name</h2>
+                  <p>Sent on: April 15, 2024</p> <!-- Until we implement the part where we display the date automatically here -->
+              </div>
+              <button class="details-button-student">Details</button> <!-- Changed class to details-button-student -->
+          </div>
+  
+          <div class="right-side">
+              <img src="computer0.gif" alt="Icon 1">
+              <img src="curved-arrow-with-broken-line (1).png" alt="Icon 2">
+              <img src="alert.gif" alt="Icon 3">
+          </div>
+      </div>
+  
+      <div class="svg-container">
+          <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
+              <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#0A1A7D" fill-opacity="0.05"/>
+              <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.05"/>
+          </svg> 
+      </div>
+  
+      <!-- Modal for Student Rapport Details -->
+      <div class="modal-overlay" id="modalOverlay2">
+          <div class="modal">
+              <span class="close" onclick="closeModalRapportStudent()">&times;</span>
+              <h2>Student Rapport Details</h2>
+              <div class="details-info">
+                  <p><strong>Student Name:</strong> <span id="modalStudentName"></span></p><br>
+                  <p><strong>Problem:</strong> <span id="modalProblem"></span></p><br>
+              </div>
+              <div class="modal-buttons">
+                  <button id="Done" onclick="doneRequestS()">Done</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <script src="admin.js"></script>
 </body>
 </html>

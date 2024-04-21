@@ -201,8 +201,15 @@ html, body {
     margin-top: -5vw;
 }
 
+.right-side img[src="alert.gif"] {
+    width: 8vw; 
+    height: auto; 
+    margin-bottom: 1vw; 
+    margin-right: 14vw;
+    margin-top: -5vw;
+}
 
-.details-button {
+.details-button-school{
     padding: 10px 20px;
     background-color: #5b1d69;
     color: #fff;
@@ -210,13 +217,27 @@ html, body {
     border-radius: 15px;
     cursor: pointer;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
-
-
 }
-
-.details-button:hover {
+.details-button-school:hover {
     background-color: #3a21a0;
 }
+
+.details-button-student{
+    padding: 10px 20px;
+    background-color: #5b1d69;
+    color: #fff;
+    border: 2px solid #15081788;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.details-button-student:hover {
+    background-color: #3a21a0;
+}
+
+
+
+
 .svg-container {
     text-align: center;
     margin-top: -8.5%; 
@@ -292,6 +313,11 @@ html, body {
     background-color: #4c53af56; 
     color: white;
     
+}
+
+#done{
+    background-color: #962c2c58; 
+    color: rgb(187, 64, 64);
 }
 
 #decline{
