@@ -37,7 +37,7 @@ nav ul li a {
     color: #1B1A55;
     font-size: 16px;
     padding: 7px 13px;
-    border-radius: 5px;
+    border-radius: 15px;
     text-transform: uppercase;
 }
 
@@ -51,8 +51,8 @@ nav a:hover,a.active {
     size: 100px;
     width: 220px;
     height: auto;
-    padding-left: 50px;
-
+    padding-left: 3vw;
+    margin-top: 1vw;
 }
 nav li:first-child {
     margin-right: auto;
@@ -141,7 +141,6 @@ nav li:first-child {
 }
 .content-a{
     flex-basis: 50%; 
-    border-radius: 10px;
     margin-left: 5px;
     margin-right:20px;
     margin-top:20px;
@@ -155,12 +154,43 @@ nav li:first-child {
     color:#000;
     border-color: transparent;
     display: inline-block;
-    display: inline-block;
     min-width: 190px; 
     min-height: 120px;
     cursor: pointer;
     transition:0.5s;
 }
+
+.content-a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+    background-image: url('document.png'); /* Replace 'your-icon.png' with your icon path */
+    background-size: cover; /* Adjust background size if needed */
+    background-repeat: no-repeat;
+    opacity: 0; /* Initially hide the icon */
+    transition: opacity 0.5s; /* Apply transition effect */
+    transform: translate(-50%, -50%); /* Center the icon */
+}
+
+.content-a:hover::before {
+    opacity: 1; /* Show the icon on hover */
+}
+
+.content-a span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+}
+
+.content-a:hover span {
+    opacity: 0; /* Hide the text on hover */
+}
+
 .content-b{
     flex-basis: 50%; 
     border-radius: 10px;
@@ -169,22 +199,48 @@ nav li:first-child {
     margin-top:20px;
     margin-bottom:1px;
     position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);   
-    align-content: center;
     display: inline-block;
-    min-width: 190px; 
+    min-width: 190px;
     min-height: 120px;
-    background-color:#5654a0;
-    color:#fff;
-    border-color: transparent;
-    cursor: pointer;
-    transition:0.5s;
+    background-color: #5654a0;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border: none;
+}
+.content-b::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+    background-image: url('schedule.png'); /* Replace 'your-icon.png' with your icon path */
+    background-size: cover; /* Adjust background size if needed */
+    background-repeat: no-repeat;
+    opacity: 0; /* Initially hide the icon */
+    transition: opacity 0.5s; /* Apply transition effect */
+    transform: translate(-50%, -50%); /* Center the icon */
+}
+
+.content-b:hover::before {
+    opacity: 1; /* Show the icon on hover */
+}
+
+.content-b span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+}
+
+.content-b:hover span {
+    opacity: 0; /* Hide the text on hover */
 }
 .content-c{
     flex-basis: 50%; 
-    border-radius: 5px;
     margin-left: 10px;
     margin-right:20px;
     margin-top:20px;
@@ -203,9 +259,40 @@ nav li:first-child {
     cursor: pointer;
     transition:0.5s;
 }
+
+.content-c::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+    background-image: url('teaching.png'); /* Replace 'your-icon.png' with your icon path */
+    background-size: cover; /* Adjust background size if needed */
+    background-repeat: no-repeat;
+    opacity: 0; /* Initially hide the icon */
+    transition: opacity 0.5s; /* Apply transition effect */
+    transform: translate(-50%, -50%); /* Center the icon */
+}
+
+.content-c:hover::before {
+    opacity: 1; /* Show the icon on hover */
+}
+
+.content-c span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+}
+
+.content-c:hover span {
+    opacity: 0; /* Hide the text on hover */
+}
+
 .content-d{
     flex-basis: 50%; 
-    border-radius: 5px;
     margin-left: 10px;
     margin-right:20px;
     margin-top:20px;
@@ -224,6 +311,38 @@ nav li:first-child {
     cursor: pointer;
     transition:0.5s;
 }
+
+.content-d::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+    background-image: url('commenting.png'); /* Replace 'your-icon.png' with your icon path */
+    background-size: cover; /* Adjust background size if needed */
+    background-repeat: no-repeat;
+    opacity: 0; /* Initially hide the icon */
+    transition: opacity 0.5s; /* Apply transition effect */
+    transform: translate(-50%, -50%); /* Center the icon */
+}
+
+.content-d:hover::before {
+    opacity: 1; /* Show the icon on hover */
+}
+
+.content-d span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+}
+
+.content-d:hover span {
+    opacity: 0; /* Hide the text on hover */
+}
+
 .info-p img{
     border-radius: 100px;
 }
@@ -461,3 +580,4 @@ margin-left: 20px;
 margin-top: 20px;
 padding-bottom: 5px;
 }
+

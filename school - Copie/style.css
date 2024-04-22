@@ -47,7 +47,7 @@ nav ul li a {
     color: #624972;
     font-size: 16px;
     padding: 7px 13px;
-    border-radius: 5px;
+    border-radius: 15px;
     text-transform: uppercase;
 }
 
@@ -63,8 +63,8 @@ a.active {
     size: 100px;
     width: 220px;
     height: auto;
-    padding-left: 40px;
-    padding-top: 12px;
+    padding-left: 3vw;
+    margin-top: 1vw;
 
 }
 
@@ -135,19 +135,19 @@ nav li:first-child {
 
 
 .Tliste {
-    margin-top: 3%;
+    margin-top: 1vw;
     margin-bottom: 0px;
 }
 
 h1 {
-    padding-left: 60px;
+    margin-left: 2vw;
     color: #1b1022;
     font-size: 45px;
     font-family: 'Times New Roman', Times, serif;
 }
 
 p {
-    padding-left: 70px;
+    margin-left: 3vw;
     color: #6e566e;
     font-size: 15px;
 }
