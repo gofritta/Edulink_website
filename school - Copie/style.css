@@ -47,7 +47,7 @@ nav ul li a {
     color: #624972;
     font-size: 16px;
     padding: 7px 13px;
-    border-radius: 5px;
+    border-radius: 15px;
     text-transform: uppercase;
 }
 
@@ -63,8 +63,8 @@ a.active {
     size: 100px;
     width: 220px;
     height: auto;
-    padding-left: 40px;
-    padding-top: 12px;
+    padding-left: 3vw;
+    margin-top: 1vw;
 
 }
 
@@ -135,20 +135,19 @@ nav li:first-child {
 
 
 .Tliste {
-    margin-top: 3%;
+    margin-top: 1vw;
     margin-bottom: 0px;
 }
 
 h1 {
-    padding-left: 2vw;
+    margin-left: 2vw;
     color: #1b1022;
     font-size: 45px;
     font-family: 'Times New Roman', Times, serif;
-    margin-top: -2vw;
 }
 
 p {
-    padding-left: 2.5vw;
+    margin-left: 3vw;
     color: #6e566e;
     font-size: 15px;
 }
@@ -176,12 +175,12 @@ svg {
     color: #ffffff;
     border: none;
     margin-top: auto;
-    margin-bottom: -1.085%;
+    margin-bottom: -1.7956%;
 }
 
 .footer {
     border: none;
-    height: 18vw;
+    height: 300px;
     padding: 20px;
     background: linear-gradient(to right, #c0c0ce, #adadcc);
 }
@@ -218,14 +217,12 @@ svg {
 .divs-c-s img {
     margin-top: 1px;
     margin-bottom: 1px;
-    margin-left: 30%;
-    height: 10vw;
-    width: 20vw;
+    height: 100px;
+    width: 150px;
 }
 
 .divs-c-s h4 {
     color: #070F2B;
-    margin-left: 22%;
 }
 
 footer div {

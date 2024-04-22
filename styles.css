@@ -47,16 +47,12 @@ nav a:hover,a.active {
 }
 
 label.logo {
-    color: #90799f;
-    font-size: 30px;
-    line-height: 80px;
-    padding: 0 50px;
-    font-weight: bold;
     img{
-     size: 100px; 
-     width: 220px; 
-     height: auto; 
-     padding-top: 12px;
+        size: 100px;
+        width: 220px;
+        height: auto;
+        padding-left: 3vw;
+        margin-top: 1vw;
     }
 }
 nav li:first-child {

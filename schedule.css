@@ -37,7 +37,7 @@ nav ul li a {
     color: #614972;
     font-size: 16px;
     padding: 7px 13px;
-    border-radius: 5px;
+    border-radius: 15px;
     text-transform: uppercase;
 }
 
@@ -52,8 +52,8 @@ nav a:hover,a.active {
     size: 100px;
     width: 220px;
     height: auto;
-    padding-left: 50px;
-
+    padding-left: 3vw;
+    margin-top: 1vw;
 }
 nav li:first-child {
     margin-right: auto;
@@ -107,25 +107,25 @@ nav li:first-child {
    border: 5px #b4b2f0 groove;
 }
 .title{
- margin-top: 20px;
+ margin-top: 0vw;
     width: 100%;
-    height: 80px;
+    height: auto;
 }
 .title h1{
     padding-left: 2vw;
     color: #1b1022;
-    font-size: 40px;
+    font-size: 45px;
     font-family: 'Times New Roman', Times, serif;
     margin-top: 0vw;
 
 }
-.title p{
-    padding-left: 30px;
-    padding-bottom: 0;
+ p{
+    margin-left: 2vw;
+    color: #6e566e;
 }
 .line-wrapper {
-    margin-top: 0;
     text-align: center; 
+    margin-top: -1vw;
   }
 
   .line {
