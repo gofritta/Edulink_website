@@ -41,6 +41,7 @@ body {
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="tel"],
+.form-group input[type="password"],
 .form-group textarea {
     flex: 1; 
     padding: 10px;
@@ -113,7 +114,7 @@ input#school-name {
 input#first-name,
 input#full-name,
 textarea#address,
-textarea#description {
+input#password {
     width: 307px; 
     height: 20px; 
 }
