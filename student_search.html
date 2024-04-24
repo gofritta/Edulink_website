@@ -84,7 +84,7 @@
 
             <span id="bienvenue1">  </span>
 
-            <a href="ecole-profile.html?id=1"><button id="view-more-btn" class="button">View More</button></a>
+            <a href="projet-p/ecole-profile.html?id=1"><button id="view-more-btn" class="button">View More</button></a>
 
 
         </li>
@@ -94,7 +94,7 @@
             <h2 id="titre2"></h2>
             <span id="bienvenue2"></span>
 
-            <a href="ecole-profile.html?id=2"><button id="view-more-btn" class="button">View More</button></a>
+            <a href="projet-p/ecole-profile.html?id=2"><button id="view-more-btn" class="button">View More</button></a>
 
             
 
@@ -104,7 +104,7 @@
             <h2 id="titre3"></h2>
             <span id="bienvenue3" style="font-size: 2Opx;"></span>
 
-            <a href="ecole-profile.html?id=3"><button id="view-more-btn" class="button">View More</button></a>
+            <a href="projet-p/ecole-profile.html?id=3"><button id="view-more-btn" class="button">View More</button></a>
 
             
         </li>
@@ -169,7 +169,7 @@ viewMoreButtons.forEach(button => {
   button.addEventListener('click', (event) => {
     event.preventDefault();
     const schoolId = event.target.parentNode.querySelector('a').href.split('?id=')[1];
-    window.location.href = `ecole-profile.html?id=${index}`;
+    window.location.href = `projet-p/ecole-profile.html?id=${index}`;
   });
 });
 
