@@ -4,12 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const popupContainer = document.querySelector(".popup");
     const registrationForm = document.getElementById("registration-form");
 
-    // Function to open the popup
     function openPopup() {
         popupContainer.classList.add("active");
     }
 
-    // Function to close the popup
     function closePopup() {
         popupContainer.classList.remove("active");
     }
@@ -23,16 +21,15 @@ document.addEventListener("DOMContentLoaded", function() {
         const email = document.getElementById("email").value.trim();
         const phone = document.getElementById("phone").value.trim();
         const schoolName = document.getElementById("school-name").value.trim();
-        const description = document.getElementById("description").value.trim();
+        const password = document.getElementById("password").value.trim();
 
         return firstName !== '' && familyName !== '' && state !== '' &&
                address !== '' && email !== '' && phone !== '' &&
-               schoolName !== '' && description !== '';
+               schoolName !== '' && password !== '';
     }
 
-    // Event listener for the "Register" button
     openPopupButton.addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default button behavior
+        event.preventDefault(); 
 
         if (checkFormValidity()) {
             // All required fields are filled, open the popup
@@ -48,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Event listener for form submission
     registrationForm.addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault(); 
 
         if (checkFormValidity()) {
             // All required fields are filled, open the popup

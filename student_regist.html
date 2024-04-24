@@ -8,55 +8,41 @@
 </head>
 <body>
     <div class="container">
-        <h1>    Student Registration    </h1>
+        <h1>Student Registration</h1>
         <form id="registration-form">
+            <p>To register in this school, we kindly request that you select the subject of your interest. This information will be sent along with your other details to the school's administration.</p>
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" pattern="[A-Za-z ]+" title="Please enter only alphabetic characters" maxlength="50" required>
-            </div>
-            <div class="form-group">
-                <label for="birthdate">Birthdate:</label>
-                <input type="date" id="birthdate" name="birthdate" pattern="" required>
-            </div>
-            <div class="form-group">
-                <label for="gender">Gender:</label>
-                <select id="gender" name="gender" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address" required>
-            </div>
-            <div class="form-group">
-                <label for="subject">Subject:</label>
+                <label for="subject">Subject of Interest:</label>
                 <select id="subject" name="subject" required>
                     <option value="Math">Math</option>
                     <option value="Physics">Physics</option>
-                    <option value="Science">Experimental sciences</option>
-                    <option value="Arabic">Arabic</option>
-                    <option value="English">English</option>
-                    <option value="French">French</option>
-                    <option value="Philosophy">Philosophy</option>
-                    <option value="His/Geo">His/Geo</option>
-                    <option value="Islamic sciences">Islamic sciences</option>
-                    <option value="German">German</option>
-                    <option value="Spanish">Spanish</option>
-                    <option value="Civil Engineering">Civil Engineering</option>
-                    <option value="Mechanical Engineering">Mechanical Engineering</option>
-                    <option value="Electrical Engineering">Electrical Engineering</option>
                     
                 </select>
             </div>
             <button type="submit" id="registerButton">Register</button>
         </form>
     </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2>Success!</h2>
+            <p>Your registration request has been sent successfully.</p>
+            <button class="dismiss-btn" onclick="dismissModal()">Dismiss</button>
+        </div>
+    </div>
+
     <script>
+        function dismissModal() {
+            // Redirect to student_search.html
+            window.location.href = 'student_search.html';
+        }
+
         document.getElementById('registration-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    window.location.href = 'student_search.html'; 
-});
+            event.preventDefault();
+            // Simulate form submission (replace with actual submission logic)
+            // For now, show the success modal
+            document.getElementById('successModal').style.display = 'block';
+        });
 
     </script>
 </body>
