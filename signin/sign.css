@@ -57,7 +57,7 @@ nav ul li a {
     color: #624972;
     font-size: 16px;
     padding: 7px 13px;
-    border-radius: 5px;
+    border-radius: 15px;
     text-transform: uppercase;
 }
 
@@ -79,8 +79,8 @@ nav.active {
     size: 100px;
     width: 220px;
     height: auto;
-    padding-left: 40px;
-    padding-top: 12px;
+    padding-left: 3vw;
+    margin-top: 1vw;
 
 }
 

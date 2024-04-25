@@ -63,3 +63,37 @@ button {
 button:hover {
     background-color: #3a21a0;
 }
+p {
+text-align: center ;
+margin-top: 2.5vw;
+margin-bottom: 2vw;
+padding: 10px;
+color: #3f2e41a3;
+}
+
+ /* CSS for the popup hna  */
+ .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20vw;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.dismiss-btn {
+    margin-top: 20px;
+}

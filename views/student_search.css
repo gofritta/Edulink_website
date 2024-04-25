@@ -58,9 +58,12 @@ label.logo {
 }
 
 .logo img {
-    width: 190px;
+    size: 100px;
+    width: 220px;
     height: auto;
-    padding-top: 12px;
+    padding-left: 3vw;
+    margin-top: 1vw;
+    margin-left: -1.5vw;
 }
 
 .sidebar {

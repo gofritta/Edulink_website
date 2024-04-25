@@ -50,11 +50,11 @@ nav a:hover,a.active {
 label.logo {
     
     img{
-     size: 100px; 
-     width: 190px; 
-     height: auto; 
-     padding-top: 12px;
-     margin-left: 2vw;
+        size: 100px;
+        width: 220px;
+        height: auto;
+        padding-left: 3vw;
+        margin-top: 1vw;
     }
 }
 nav li:first-child {

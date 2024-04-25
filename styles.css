@@ -47,16 +47,12 @@ nav a:hover,a.active {
 }
 
 label.logo {
-    color: #90799f;
-    font-size: 30px;
-    line-height: 80px;
-    padding: 0 50px;
-    font-weight: bold;
     img{
-     size: 100px; 
-     width: 220px; 
-     height: auto; 
-     padding-top: 12px;
+        size: 100px;
+        width: 220px;
+        height: auto;
+        padding-left: 3vw;
+        margin-top: 1vw;
     }
 }
 nav li:first-child {
@@ -334,7 +330,7 @@ p{
     border-radius: 0px;
     background: linear-gradient(to bottom, #EFE9F6, #ffffff);
     margin-bottom: 0px;
-    
+    margin-top: -1vw;
 }
 .popular-school .section-title {
     text-align: center;
@@ -353,21 +349,27 @@ p{
 .school {
     display: flex;
     position: relative; 
-    width: 25%; 
-    margin: 0 15px; /* Add margin for spacing between school boxes */
+    width: 65%; 
+    margin: 0 40px; /* Add margin for spacing between school boxes */
     margin-top: 0;
     background-color: #fff; 
-    border-radius: 10px; 
+    border-radius: 15px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     padding: 20px;
-    height: 8cm;
+    height: 9cm;
+    transition: transform 0.3s ease;
+    /* Use flexbox for easy centering */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .school img {
     width: 200px; 
     height: auto;
-    margin-bottom: 10px; /* Add space between the image and school info */
     display: block;
+    margin-top: -4vw;
 }
 
 .school-info {
@@ -378,13 +380,14 @@ p{
     line-height: 1.5;
 }
 
-.school-info h3 {
-    margin-bottom: 10px; 
+.school h3 {
+    margin-top: 20px;
 }
 
 .rating {
     color: gold;
-    margin-bottom: 10px; 
+    margin-bottom: -1.5vw; 
+    display: none;
 }
 
 .rating .star {
@@ -408,14 +411,30 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 15px;
+    /* Initially hide the view details button */
+    opacity: 0;
+    transition: opacity 0.3s ease;
     
 }
 
 .school:hover .view-details {
     background-color: #670154;
     opacity: 1;
-    border-radius: 10px;
+    border-radius: 15px;
+}
+.school:hover {
+    /* Scale the school card to make it zoom in when hovered */
+    transform: scale(1.1);
+}
+.school-details {
+    /* Initially hide the school details */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.school:hover .school-details {
+    /* Show the school details when the school card is hovered */
+    opacity: 1;
 }
 
 

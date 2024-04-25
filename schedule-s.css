@@ -37,7 +37,7 @@ nav ul li a {
     color: #614972;
     font-size: 16px;
     padding: 7px 13px;
-    border-radius: 15px;
+    border-radius: 5px;
     text-transform: uppercase;
 }
 
@@ -52,9 +52,8 @@ nav a:hover,a.active {
     size: 100px;
     width: 220px;
     height: auto;
-    padding-left: 3vw;
-    margin-top: 1vw;
-
+    padding-left: 50px;
+    margin-top: 10px;
 }
 nav li:first-child {
     margin-right: auto;
@@ -261,71 +260,4 @@ svg{
     margin-right: 0;
     margin-top: auto;
     margin-bottom: -19px;
-}
-.button-pdf {
-  appearance: button;
-  background-color: #8159a7;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display:flex;
-  font-family: din-round,sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: .8px;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  overflow: visible;
-  padding: 12px 26px;
-  text-align: center;
-  text-transform: uppercase;
-  touch-action: manipulation;
-  transform: translateZ(0);
-  transition: filter .2s;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100px;
-  margin-left: 900px;
-  margin-top: 10px;
-  margin-bottom: 0;
-}
-
-.button-pdf:after {
-  background-clip: padding-box;
-  background-color: #a177c7;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  bottom: -4px;
-  content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.button-pdf:main,
-.button-pdf:focus {
-  user-select: auto;
-}
-
-.button-pdf9:hover:not(:disabled) {
-  filter: brightness(1.1);
-  -webkit-filter: brightness(1.1);
-}
-
-.button-pdf:disabled {
-  cursor: auto;
-}
-
-.button-pdf:active {
-  border-width: 4px 0 0;
-  background: none;
 }

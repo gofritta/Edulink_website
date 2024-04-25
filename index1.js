@@ -41,3 +41,22 @@ document.addEventListener("DOMContentLoaded", function() {
         
     });
 });
+
+document.querySelectorAll('.school').forEach(function(school) {
+    var button = school.querySelector('.view-details');
+    var rating = school.querySelector('.rating');
+
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        rating.style.display = 'block';
+        button.style.display = 'none';
+    });
+
+    school.addEventListener('mouseenter', function() {
+        if (rating.style.display === 'block') {
+            rating.style.display = 'none';
+            button.style.display = 'block';
+        }
+    });
+});
+
