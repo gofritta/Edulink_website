@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search student</title>
-    <link rel="stylesheet" href="student_search.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="/views/student_search.css"> <!-- Link to your CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"  />
-    <script src="student_search.js" defer></script>
-    <script src="pfp_student.js" defer></script>
+    <script src="/views/student_search.js" defer></script>
+    <script src="/views/pfp_student.js" defer></script>
 
 
 </head>
@@ -18,7 +18,7 @@
         <li><a class="active" href="#">HOME</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-        <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+        <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="/views/user.png" alt="Pfp" /></a>
             <div class="dropdown-content">
 
                 </a><a href="#">My Account</a>
@@ -33,12 +33,12 @@
 </nav>
 
 <nav>
-    <label class="logo"><img src="edulink0.png" alt="Logo" /></label>
+    <label class="logo"><img src="/views/edulink0.png" alt="Logo" /></label>
     <ul>
         <li><a class="hideOnMobile active" href="#">HOME</a></li>
         <li><a class="hideOnMobile" href="#">About</a></li>
         <li><a class="hideOnMobile" href="#">Contact</a></li>
-        <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+        <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="/views/user.png" alt="Pfp" /></a>
             <div class="dropdown-content">
                 <a href="#">My Account</a>
                 <a href="#">Log Out</a>
@@ -47,20 +47,8 @@
         <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
     </ul>
 </nav>
-
-<script>
-    function showSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'block';
-    }
-
-    function hideSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'none';
-    }
-</script>
 <div class="title-section">
-    <h1>Hello, Student's Name!</h1>
+    <h1>Hello, <span><%= studentName %></span>!</h1>
     <p class="subtitle">Let's Find What Suits You Best</p>
     <hr class="divider">
     <div class="search-box">
@@ -78,7 +66,7 @@
             <h2>Ecole Metidja</h2>
             <span> Bienvenue à l'école de Metidja</span>
 
-            <a href="ecole-profile.html"><button class="button">View More</button></a>
+            <a href="ecole-profile.html"><button class="button">View More</button></a><!-- linking with pages-->
 
             
 
@@ -117,11 +105,28 @@
     <i id="right" class="fa-solid fa-angle-right"></i>
 </div>
 <div id="placeholder" style="display: block;">
-    <img id="placeholder-icon" src="pin.gif" alt="Placeholder Icon" />
+    <img id="placeholder-icon" src="/views/pin.gif" alt="Placeholder Icon" />
     <p>Enter the state you live in the search bar and click on 'Search' to see the results.</p>
 </div>
 
+<script>
+    // Retrieve the student's name from the variable passed by Express.js
+    const studentName = '<%= studentName %>';
+    
+    // Update the content of the span element with the student's name
+    const studentNameElement = document.getElementById('student-name');
+    //studentNameElement.textContent = studentName;
+
+    function showSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'block';
+    }
+
+    function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
-

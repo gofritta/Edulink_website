@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration student</title>
+    <link rel="stylesheet" href="student_regist.css">
+</head>
+<body>
+    <div class="container">
+        <h1>    Student Registration    </h1>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" pattern="[A-Za-z]+" title="Please enter only alphabetic characters" maxlength="50" required>
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate" pattern="" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <select id="subject" name="subject" required>
+                    <option value="Math">Math</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Science">Experimental sciences</option>
+                    <option value="Arabic">Arabic</option>
+                    <option value="English">English</option>
+                    <option value="French">French</option>
+                    <option value="Philosophy">Philosophy</option>
+                    <option value="His/Geo">His/Geo</option>
+                    <option value="Islamic sciences">Islamic sciences</option>
+                    <option value="German">German</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Electrical Engineering">Electrical Engineering</option>
+                    
+                </select>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
