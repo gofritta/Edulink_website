@@ -75,20 +75,5 @@ async function insertNewStudent(pool, name, email, gender, birthdate, hashedPass
         throw error; ;
     }
 }
-// some testing displaying 
-/* const resultOfInsertion = await insertNewStudent('Djalil Palermo' , 'male', '2000-08-31', 'djalilLaClasse@gmail.com', 'may7ebonach');
-console.log(resultOfInsertion);
-Promise.all(getStudent())
-.then((result1 )=> {
-    console.log(result1); // Log the result returned by the query
-  console.log(result2);
-    console.log(value);
-   // con.end();
-//}).catch(error => {
-   /* console.error('Error:', error);
-    con.end();
-})
-const result = await getStudentByEmail(pool , "tfmtourifiga@gmail.com");
-console.log(result);*/
-export {getStudent, getSchool, getSchoolByState, getStudentID, insertNewStudent, getStudentByEmail};
 
+export {getStudent, getSchool, getSchoolByState, getStudentID, insertNewStudent, getStudentByEmail};
