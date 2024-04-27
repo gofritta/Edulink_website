@@ -66,8 +66,9 @@
     <hr class="divider">
 
     <!--- Search section ***********************************************************-->
+   
     <div class="search-box">
-        <input type="text" placeholder="Search..." id="search-input">
+        <input  type="text" placeholder="Search..." id="search-input">
         <button type="button" id="search-button">Search</button>
     </div>
 </div>
@@ -126,13 +127,15 @@
     searchBtn.addEventListener('click', () => {
     const state = stateInput.value;
 
+    /*
     let request = new XMLHttpRequest();
     request.open("GET", `http://127.0.0.1:3000/school?state_sch=${state}`)
     request.responseType = "json"
     request.send()
     request.onreadystatechange = function() {
         let schools = request.response;
-            
+                    
+            console.log(schools)
             document.getElementById("titre1").innerHTML = `Ecole ${schools[0].name_sch}`
             document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${schools[0].name_sch} `
             document.getElementById("titre2").innerHTML = `Ecole ${schools[1].name_sch}`
@@ -149,7 +152,7 @@
             const school2ID = JSON.stringify(schools[1].id_sch);
             const school3ID = JSON.stringify(schools[3].id_sch);
 
-        */
+        
         const school1ID = schools[0].id_sch;
         const school2ID = schools[1].id_sch;
         const school3ID = schools[2].id_sch;
@@ -160,7 +163,40 @@
              
             console.log(request.response);
         
-    } 
+    }
+    */
+    fetch(`http://127.0.0.1:3000/school?state_sch=${state}`, {
+    method: 'GET'
+    })
+    .then(response => response.json())
+    .then(response => {
+    console.log(response)
+    document.getElementById("titre1").innerHTML = `Ecole ${response[0].name_sch}`
+    document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${response[0].name_sch} `
+    document.getElementById("titre2").innerHTML = `Ecole ${response[1].name_sch}`
+    document.getElementById("bienvenue2").innerHTML = ` Bienvenue à l'école de ${response[1].name_sch} `
+    
+    const school1ID = response[0].id_sch;
+    const school2ID = response[1].id_sch;
+    
+    localStorage.setItem('school1', school1ID);
+    localStorage.setItem('school2', school2ID);
+
+    if(response[2]){
+        document.getElementById("titre3").innerHTML = `Ecole ${response[2].name_sch}`
+        document.getElementById("bienvenue3").innerHTML = ` Bienvenue à l'école de ${response[2].name_sch} `
+    
+        const school3ID = response[2].id_sch;
+        localStorage.setItem('school3', school3ID);
+        }
+
+    
+     
+    })
+    .catch((error) =>
+        console.error(error)
+    );
+
 });
 
 const viewMoreButtons = document.querySelectorAll('.view-more-btn');

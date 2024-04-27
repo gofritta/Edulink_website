@@ -131,8 +131,9 @@
     if(index == 2)
         schoolId = localStorage.getItem('school2');
     if(index == 3)
-        schoolId = localStorage.getItem('school3')
+        schoolId = localStorage.getItem('school3');
     
+
         let request = new XMLHttpRequest();
         request.open("GET", `http://127.0.0.1:3000/school/id?id_sch=${schoolId}`)
         request.responseType = "json"
