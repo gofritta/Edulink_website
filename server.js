@@ -6,10 +6,10 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from 'path';
 import session from 'express-session';
-import passport from 'passport';
+import passport from './auth.js';
 import.meta.url;
 import bodyParser from "body-parser";
-import ejs from 'ejs';
+import ejs, { name } from 'ejs';
 
 const app = express();
 const PORT = 3000 || process.env.PORT;
@@ -40,8 +40,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-console.log(session)
+ const router = express.Router();
 // using express-falsh for flash messages 
 
 // Route for serving the student registration HTML file
@@ -124,8 +123,57 @@ app.post("/student/register",checkNotAuthenticated, async (req, res) => {
       res.redirect("/student/login");
     }
   });  
- //routes
+  //google authentication
+ // Route for Google authentication
+app.get('/auth/google',
+passport.authenticate('google', { scope: ['profile', 'email'] })
+);
 
+// Callback route after Google authentication
+app.get('/auth/google/callback',
+passport.authenticate('google', { failureRedirect: '/student/login' }),
+(req, res) => {
+  req.session.user = {
+    id: req.user.id,
+    name: req.user.name
+  };
+  res.redirect('/student/homepage');
+});
+//facebook authentication
+app.get('/auth/facebook',
+passport.authenticate('facebook', { scope: ['profile', 'email'] })
+);
+
+// Callback route after Facebook authentication
+app.get('/auth/facebook/callback',
+passport.authenticate('facebook', { failureRedirect: '/student/login' }),
+(req, res) => {
+  // Successful authentication
+  req.session.user = {
+    id: req.user.id,
+    name: req.user.name
+  };
+  res.redirect('/student/homepage');
+});
+
+//LinkedIn authentication
+app.get('/auth/linkedin',
+passport.authenticate('linkedin', { scope: ['profile', 'email'] })
+);
+
+// Callback route after LinkedIn authentication
+app.get('/auth/linkedin/callback',
+passport.authenticate('linkedin', { failureRedirect: '/student/login' }),
+(req, res) => {
+  // Successful authentication
+  req.session.user = {
+    id: req.user.id,
+    name: req.user.name
+  };
+  res.redirect('/student/homepage');
+});
+
+  //routes
  app.get('/', checkAuthenticated, (req, res) => {
   res.sendFile('index.html', { root: __dirname});
 });
@@ -137,7 +185,6 @@ app.get('/student/login', checkNotAuthenticated, (req, res) => {
 });
 app.get('/student/register', checkNotAuthenticated, (req, res) => {
   res.render('index'); 
-
 });
 
 // function to check authentication

@@ -40,9 +40,9 @@
         <form id="signup-form" action="/student/register" method="POST">
           <h1>Creat Account</h1>
           <div class="social-icons">
-            <a href="" class="icon"><i class="fa-brands fa-google"></i></a>
-            <a href="" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="/auth/google"  id="google-auth-btn" class="icon"><i class="fa-brands fa-google"></i></a>
+            <a href="/auth/facebook" id="facebook-auth-btn"-auth-btn" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="/auth/linkedin" id="linked-auth-btn" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
           <span> use your email for registation</span>
 
@@ -67,9 +67,9 @@
           
           <h1>Log In</h1>
           <div class="social-icons">
-            <a href=" " class="icon"><i class="fa-brands fa-google"></i></a>
-            <a href=" " class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href=" " class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="/auth/google" id="google-auth-btn" class="icon"><i class="fa-brands fa-google"></i></a>
+            <a href="/auth/facebook" id="facebook-auth-btn" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="/auth/linkedin" id="linked-auth-btn" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
           <span> use your e-mail </span>
 
@@ -141,6 +141,30 @@
       // Handle success or error responses from the backend
     })
     .catch(error => console.error('Error:', error));
+  });
+  // Get the Google authentication button element
+  const googleAuthBtn = document.getElementById('google-auth-btn');
+
+  // Add click event listener to the Google authentication button
+  googleAuthBtn.addEventListener('click', function() {
+    // Redirect the user to /auth/google
+    window.location.href = '/auth/google';
+  });
+  //Get the Facebook authentication button element
+  const facebookAuthBtn = document.getElementById('facebook-auth-btn');
+
+  // Add click event listener to the Facebook authentication button
+  facebookAuthBtn.addEventListener('click', function() {
+    // Redirect the user to /auth/facebook
+    window.location.href = '/auth/facebook';
+  });
+  //Get the linkedin authentication button element
+  const linkedinAuthBtn = document.getElementById('linkedin-auth-btn');
+
+  // Add click event listener to the Facebook authentication button
+  linkedinAuthBtn.addEventListener('click', function() {
+    // Redirect the user to /auth/facebook
+    window.location.href = '/auth/linkedin';
   });
     </script>
   </body>
