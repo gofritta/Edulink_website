@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search student</title>
-    <link rel="stylesheet" href="/views/student_search.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="student_search.css"> <!-- Link to your CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"  />
-    <script src="/views/student_search.js" defer></script>
-    <script src="/views/pfp_student.js" defer></script>
+    <script src="student_search.js" defer></script>
+    <script src="pfp_student.js" defer></script>
 
 
 </head>
@@ -25,7 +25,7 @@
 
                 <a href="#">My Account</a>
 
-                <a href="/logout">Log Out</a>
+                <a href="#">Log Out</a>
             </div>
         </li>
         <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
@@ -41,12 +41,13 @@
         <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
             <div class="dropdown-content">
                 <a href="#">My Account</a>
-                <a href="/logout">Log Out</a>
+                <a href="#">Log Out</a>
             </div>
         </li>
         <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
     </ul>
 </nav>
+
 <script>
     function showSidebar() {
         const sidebar = document.querySelector('.sidebar');
@@ -60,7 +61,7 @@
 </script>
 
 <div class="title-section">
-    <h1>Hello, <span><%= studentName %></span></h1>
+    <h1>Hello, Student's Name!</h1>
     <p class="subtitle">Let's Find What Suits You Best</p>
     <hr class="divider">
 
@@ -119,23 +120,6 @@
 </div>
 
 <script>
-    // Retrieve the student's name from the variable passed by Express.js
-    const studentName = '<%= studentName %>';
-    
-    // Update the content of the span element with the student's name
-    const studentNameElement = document.getElementById('student-name');
-    studentNameElement.textContent = studentName;
-
-    function showSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'block';
-    }
-
-    function hideSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'none';
-    }
-
 
     document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById('search-input');
@@ -206,6 +190,7 @@
         });
     });
     
+    
     const stateInput = document.getElementById('search-input');
     const searchBtn = document.getElementById('search-button');
 
@@ -256,31 +241,6 @@ viewMoreButtons.forEach(button => {
   });
   
 });
-
-// Function to handle logout
-function handleLogout() {
-    fetch('/logout', { method: 'GET' }) // Send a GET request to the logout route
-      .then(response => {
-        if (response.redirected) {
-          // If the server responds with a redirection, redirect the user to the specified location
-          window.location.href = response.url;
-        }
-      })
-      .catch(error => {
-        console.error('Error logging out:', error);
-      });
-  }
-
-  // Add event listener to the logout link
-  document.addEventListener('DOMContentLoaded', function() {
-    const logoutLink = document.querySelector('a[href="/logout"]');
-    if (logoutLink) {
-      logoutLink.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-        handleLogout(); // Call the function to handle logout
-      });
-    }
-  });
 
 </script>
 

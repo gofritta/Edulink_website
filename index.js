@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { json } from 'express';
 import mysql from 'mysql2';
 import bodyParser from 'body-parser';
 
@@ -151,6 +151,21 @@ app.post('/accept', (req, res)=> {
   });
 });
 
+//Router pour school sign-in les demandes des écoles par Admin
+app.get('/schoolsignin', (req,res) => {
+
+  const email_sch = req.query.email_sch;
+  const password_sch = req.query.password_sch;
+
+  db.query(`select * from school where email_sch=? and password_sch=?`, [email_sch, password_sch], (error, results) => {
+    if(error){
+      res.status(500).send(error.message);
+    }else{
+      console.log('Login with succèss');
+      res.json(results);
+    }
+  });
+});
 
 // Démarrer le serveur
 app.listen(PORT, () => {
