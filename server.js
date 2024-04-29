@@ -9,6 +9,7 @@ import session from 'express-session';
 import passport from './auth.js';
 import.meta.url;
 import bodyParser from "body-parser";
+import cors from 'cors';
 import ejs, { name } from 'ejs';
 
 const app = express();
@@ -17,6 +18,7 @@ const PORT = 3000 || process.env.PORT;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 //app.use(express.urlencoded({ extended: true }));
@@ -57,18 +59,36 @@ app.get("/student", async(req, res) => {
         res.status(500).send("Something broke!")
     }
 });
+/*app.get('/school', (req, res) => {
+  const state = req.query.state;
+
+  
+  const sql = `SELECT * FROM school WHERE state_sch = ?`;
+
+  
+  db.query(sql, [state], (error, results) => {
+    if (error) {
+      res.status(500).send(error.message);
+    } else {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.json(results);
+    }
+  });
+});*/
+
 // Search for school by their State
-app.get("/school" , async(req, res) => {
-  const state = req.query.state_sch;
-  try{
-    const schools = await getSchoolByState(pool , state)
-     res.status(201).send("School is found successfully!");
-     res.json(schools);
-  }catch(error){
-    console.error(error);
-     res.status(500).send("Error retreiving School.");
+app.get('/student/homepage/school', async (req, res) => {
+  const state = req.query.state;
+
+  try {
+      const schools = await getSchoolByState(pool, state);
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.json(schools);
+  } catch (error) {
+      console.error("Error:", error);
+      res.status(500).send("Internal Server Error");
   }
-})
+});
 
 // User registration 
 app.post("/student/register",checkNotAuthenticated, async (req, res) => {
@@ -216,6 +236,9 @@ app.get('/student/login', checkNotAuthenticated, (req, res) => {
 app.get('/student/register', checkNotAuthenticated, (req, res) => {
   res.render('index'); 
 });
+/*app.get('/student/homepage/school', checkAuthenticated, (req, res) =>{
+  res.render('student_search')
+})*/
 app.get('/school/enroll', checkAuthenticated, (req, res) => {
   res.render('ecole-profile')
 });

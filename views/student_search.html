@@ -18,7 +18,7 @@
         <li><a class="active" href="#">HOME</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-        <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+        <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="/views/user.png" alt="Pfp" /></a>
             <div class="dropdown-content">
 
                 </a><a href="#">My Account</a>
@@ -33,7 +33,7 @@
 </nav>
 
 <nav>
-    <label class="logo"><img src="edulink0.png" alt="Logo" /></label>
+    <label class="logo"><img src="/views/edulink0.png" alt="Logo" /></label>
     <ul>
         <li><a class="hideOnMobile active" href="#">HOME</a></li>
         <li><a class="hideOnMobile" href="#">About</a></li>
@@ -68,7 +68,7 @@
    
     <div class="search-box">
         <input  type="text" placeholder="Search..." id="search-input">
-        <button type="button" id="search-button">Search</button>
+        <button type="button" id="search-button" onclick="search()">Search</button>
     </div>
 </div>
 
@@ -114,7 +114,7 @@
     <i id="right" class="fa-solid fa-angle-right"></i>
 </div>
 <div id="placeholder" style="display: block;">
-    <img id="placeholder-icon" src="pin.gif" alt="Placeholder Icon" />
+    <img id="placeholder-icon" src="/views/pin.gif" alt="Placeholder Icon" />
     <p>Enter the state you live in the search bar and click on 'Search' to see the results.</p>
 </div>
 
@@ -206,45 +206,44 @@
         });
     });
     
-    const stateInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-button');
-
-    searchBtn.addEventListener('click', () => {
-    const state = stateInput.value;
-
-    fetch(`http://127.0.0.1:3000/school?state_sch=${state}`, {
-    method: 'GET'
-    })
-    .then(response => response.json())
-    .then(response => {
-    console.log(response)
-    document.getElementById("titre1").innerHTML = `Ecole ${response[0].name_sch}`
-    document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${response[0].name_sch} `
-    document.getElementById("titre2").innerHTML = `Ecole ${response[1].name_sch}`
-    document.getElementById("bienvenue2").innerHTML = ` Bienvenue à l'école de ${response[1].name_sch} `
-    
-    const school1ID = response[0].id_sch;
-    const school2ID = response[1].id_sch;
-    
-    localStorage.setItem('school1', school1ID);
-    localStorage.setItem('school2', school2ID);
-
-    if(response[2]){
-        document.getElementById("titre3").innerHTML = `Ecole ${response[2].name_sch}`
-        document.getElementById("bienvenue3").innerHTML = ` Bienvenue à l'école de ${response[2].name_sch} `
-    
-        const school3ID = response[2].id_sch;
-        localStorage.setItem('school3', school3ID);
-        }
 
     
-     
-    })
-    .catch((error) =>
-        console.error(error)
-    );
+    function search(){
+   
+   const stateInput = document.getElementById('search-input');
+   const state = stateInput.value;
+   console.log(state);
+   fetch(` http://localhost:3000/student/homepage/school?state=${state}`)
+   .then(response => response.json())
+   .then(response => {
+   console.log(response)
+   document.getElementById("titre1").innerHTML = `Ecole ${response[0].name_sch}`
+   document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${response[0].name_sch} `
+   document.getElementById("titre2").innerHTML = `Ecole ${response[1].name_sch}`
+   document.getElementById("bienvenue2").innerHTML = ` Bienvenue à l'école de ${response[1].name_sch} `
+   
+   const school1ID = response[0].id_sch;
+   const school2ID = response[1].id_sch;
+   
+   localStorage.setItem('school1', school1ID);
+   localStorage.setItem('school2', school2ID);
 
-});
+   if(response[2]){
+       document.getElementById("titre3").innerHTML = `Ecole ${response[2].name_sch}`
+       document.getElementById("bienvenue3").innerHTML = ` Bienvenue à l'école de ${response[2].name_sch} `
+   
+       const school3ID = response[2].id_sch;
+       localStorage.setItem('school3', school3ID);
+       }
+
+   
+    
+   })
+   .catch((error) =>
+       console.error(error)
+   );
+
+}
 
 const viewMoreButtons = document.querySelectorAll('.view-more-btn');
 
