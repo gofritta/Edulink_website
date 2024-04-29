@@ -3,14 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
     text-decoration: none;
     list-style: none;
 
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
     background: radial-gradient(circle, #1a2e7c5c, #c7c1d3);
     display: flex;
     justify-content: center;
@@ -27,6 +27,7 @@ body {
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
 }
 
 
@@ -37,7 +38,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
     text-decoration: none;
     list-style: none;
 }
@@ -50,6 +51,7 @@ body {
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
 }
 
 
@@ -88,7 +90,7 @@ nav ul li a {
     color: #624972;
     font-size: 16px;
     padding: 7px 13px;
-    border-radius: 5px;
+    border-radius: 15px;
     text-transform: uppercase;
 }
 
@@ -214,10 +216,12 @@ nav li:first-child {
 .form-group select {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 15px;
     margin-right: 10px;
-    border: 2px solid #888;
+    border: 2.5px solid #d1cbd1;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+font-size: medium;
 }
 
 button {
@@ -231,6 +235,9 @@ button {
     cursor: pointer;
     border: 2px solid #3a0c33;
     box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+font-size: medium;
 }
 
 button:hover {

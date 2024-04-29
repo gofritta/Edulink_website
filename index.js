@@ -167,6 +167,8 @@ app.get('/schoolsignin', (req,res) => {
   });
 });
 
+
+
 // Démarrer le serveur
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
