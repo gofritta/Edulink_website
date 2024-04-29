@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Get form elements
-    const firstNameInput = document.getElementById("first-name");
-    const familyNameInput = document.getElementById("family-name");
-    const stateInput = document.getElementById("state");
-    const addressInput = document.getElementById("address");
-    const emailInput = document.getElementById("email");
-    const phoneInput = document.getElementById("phone");
-    const schoolNameInput = document.getElementById("school-name");
-    const passwordInput = document.getElementById("password");
+    const firstNameInput = document.getElementById("firstName");
+    const familyNameInput = document.getElementById("lastName");
+    const stateInput = document.getElementById("statesch");
+    const addressInput = document.getElementById("adresssch");
+    const emailInput = document.getElementById("emailsch");
+    const phoneInput = document.getElementById("numbersch");
+    const schoolNameInput = document.getElementById("namesch");
+    const passwordInput = document.getElementById("passwordsch");
     const registerButton = document.getElementById("open-popup-btn");
 
     // Function to check if all required fields are filled
@@ -22,11 +22,12 @@ document.addEventListener("DOMContentLoaded", function() {
                passwordInput.value.trim() !== '';
     }
 
+    // Function to enable/disable the Register button based on form validity
     function updateRegisterButton() {
         registerButton.disabled = !checkFormValidity();
     }
 
-    //used to update button state
+    // Event listeners for input fields to update button state
     firstNameInput.addEventListener("input", updateRegisterButton);
     familyNameInput.addEventListener("input", updateRegisterButton);
     stateInput.addEventListener("input", updateRegisterButton);

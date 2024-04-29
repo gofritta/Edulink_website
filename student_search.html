@@ -21,10 +21,7 @@
         <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
             <div class="dropdown-content">
 
-                </a><a href="#">My Account</a>
-
-                <a href="#">My Account</a>
-
+                <a href="modal.html"><button type="button" class="dropdown-btn">My Account</button></a>
                 <a href="#">Log Out</a>
             </div>
         </li>
@@ -40,7 +37,7 @@
         <li><a class="hideOnMobile" href="#">Contact</a></li>
         <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
             <div class="dropdown-content">
-                <a href="#">My Account</a>
+                <a href="modal.html"><button type="button" class="dropdown-btn">My Account</button></a>
                 <a href="#">Log Out</a>
             </div>
         </li>
@@ -66,8 +63,9 @@
     <hr class="divider">
 
     <!--- Search section ***********************************************************-->
+   
     <div class="search-box">
-        <input type="text" placeholder="Search..." id="search-input">
+        <input  type="text" placeholder="Search..." id="search-input">
         <button type="button" id="search-button">Search</button>
     </div>
 </div>
@@ -84,7 +82,7 @@
 
             <span id="bienvenue1">  </span>
 
-            <a href="projet-p/ecole-profile.html?id=1"><button id="view-more-btn" class="button">View More</button></a>
+            <a href="./projet-p/ecole-profile.html?id=1"><button id="view-more-btn" class="button">View More</button></a>
 
 
         </li>
@@ -94,7 +92,7 @@
             <h2 id="titre2"></h2>
             <span id="bienvenue2"></span>
 
-            <a href="projet-p/ecole-profile.html?id=2"><button id="view-more-btn" class="button">View More</button></a>
+            <a href="./projet-p/ecole-profile.html?id=2"><button id="view-more-btn" class="button">View More</button></a>
 
             
 
@@ -104,7 +102,7 @@
             <h2 id="titre3"></h2>
             <span id="bienvenue3" style="font-size: 2Opx;"></span>
 
-            <a href="projet-p/ecole-profile.html?id=3"><button id="view-more-btn" class="button">View More</button></a>
+            <a href="./projet-p/ecole-profile.html?id=3"><button id="view-more-btn" class="button">View More</button></a>
 
             
         </li>
@@ -119,6 +117,76 @@
 </div>
 
 <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const suggestionsContainer = document.createElement('div');
+        suggestionsContainer.id = 'suggestions';
+        searchInput.parentNode.appendChild(suggestionsContainer);
+    
+        // List of acceptable Algerian states
+        const acceptableStates = [
+            "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa",
+            "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa",
+            "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif",
+            "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine",
+            "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh",
+            "Illizi", "Bordj Bou Arréridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt",
+            "El Oued", "Khenchela", "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma",
+            "Aïn Témouchent", "Ghardaïa", "Relizane"
+        ];
+    
+        // Function to filter and display suggestions based on user input
+        function displaySuggestions(input) {
+            const userInput = input.value.trim().toLowerCase();
+            const matchingStates = acceptableStates.filter(state =>
+                state.toLowerCase().startsWith(userInput)
+            );
+    
+            // Clear previous suggestions
+            suggestionsContainer.innerHTML = '';
+    
+            if (userInput.length > 0) {
+                matchingStates.forEach(state => {
+                    const suggestion = document.createElement('div');
+                    suggestion.textContent = state;
+                    suggestion.classList.add('suggestion');
+                    suggestion.addEventListener('click', () => {
+                        searchInput.value = state;
+                        suggestionsContainer.style.display = 'none';
+                    });
+                    suggestionsContainer.appendChild(suggestion);
+                });
+                suggestionsContainer.style.display = 'block';
+            } else {
+                suggestionsContainer.style.display = 'none';
+            }
+        }
+    
+        // Event listeners for input changes and button click
+        searchInput.addEventListener('input', () => {
+            displaySuggestions(searchInput);
+        });
+    
+        searchButton.addEventListener('click', () => {
+            const selectedState = searchInput.value.trim();
+            if (acceptableStates.includes(selectedState)) {
+                alert(`Searching for: ${selectedState}`);
+                // Implement your search logic here
+            } else {
+                alert('Please enter a valid Algerian state');
+            }
+        });
+    
+        // Hide suggestions when clicking outside the input and suggestions container
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.search-box')) {
+                suggestionsContainer.style.display = 'none';
+            }
+        });
+    });
+    
     
     const stateInput = document.getElementById('search-input');
     const searchBtn = document.getElementById('search-button');
@@ -126,41 +194,38 @@
     searchBtn.addEventListener('click', () => {
     const state = stateInput.value;
 
-    let request = new XMLHttpRequest();
-    request.open("GET", `http://127.0.0.1:3000/school?state_sch=${state}`)
-    request.responseType = "json"
-    request.send()
-    request.onreadystatechange = function() {
-        let schools = request.response;
-            
-            document.getElementById("titre1").innerHTML = `Ecole ${schools[0].name_sch}`
-            document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${schools[0].name_sch} `
-            document.getElementById("titre2").innerHTML = `Ecole ${schools[1].name_sch}`
-            document.getElementById("bienvenue2").innerHTML = ` Bienvenue à l'école de ${schools[1].name_sch} `
-            document.getElementById("titre3").innerHTML = `Ecole ${schools[2].name_sch}`
-            document.getElementById("bienvenue3").innerHTML = ` Bienvenue à l'école de ${schools[2].name_sch} `
-            
-            /*const schoolDataString = JSON.stringify(schools);
+    fetch(`http://127.0.0.1:3000/school?state_sch=${state}`, {
+    method: 'GET'
+    })
+    .then(response => response.json())
+    .then(response => {
+    console.log(response)
+    document.getElementById("titre1").innerHTML = `Ecole ${response[0].name_sch}`
+    document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${response[0].name_sch} `
+    document.getElementById("titre2").innerHTML = `Ecole ${response[1].name_sch}`
+    document.getElementById("bienvenue2").innerHTML = ` Bienvenue à l'école de ${response[1].name_sch} `
+    
+    const school1ID = response[0].id_sch;
+    const school2ID = response[1].id_sch;
+    
+    localStorage.setItem('school1', school1ID);
+    localStorage.setItem('school2', school2ID);
 
-            localStorage.setItem('ecolesWilaya', schoolDataString);
+    if(response[2]){
+        document.getElementById("titre3").innerHTML = `Ecole ${response[2].name_sch}`
+        document.getElementById("bienvenue3").innerHTML = ` Bienvenue à l'école de ${response[2].name_sch} `
+    
+        const school3ID = response[2].id_sch;
+        localStorage.setItem('school3', school3ID);
+        }
 
-            /*
-            const school1ID = JSON.stringify(schools[0].id_sch);
-            const school2ID = JSON.stringify(schools[1].id_sch);
-            const school3ID = JSON.stringify(schools[3].id_sch);
+    
+     
+    })
+    .catch((error) =>
+        console.error(error)
+    );
 
-        */
-        const school1ID = schools[0].id_sch;
-        const school2ID = schools[1].id_sch;
-        const school3ID = schools[2].id_sch;
-
-            localStorage.setItem('school1', school1ID);
-            localStorage.setItem('school2', school2ID);
-            localStorage.setItem('school3', school3ID);
-             
-            console.log(request.response);
-        
-    } 
 });
 
 const viewMoreButtons = document.querySelectorAll('.view-more-btn');
@@ -169,8 +234,9 @@ viewMoreButtons.forEach(button => {
   button.addEventListener('click', (event) => {
     event.preventDefault();
     const schoolId = event.target.parentNode.querySelector('a').href.split('?id=')[1];
-    window.location.href = `projet-p/ecole-profile.html?id=${index}`;
+    window.location.href = `./project-p/ecole-profile.html?id=${index}`;
   });
+  
 });
 
 </script>

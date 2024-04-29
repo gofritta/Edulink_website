@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login School</title>
+    <link rel="stylesheet" href="school-login.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <ul>
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+            <li><a class="sidebarr" href="#">HOME</a></li>
+            <li><a class="sidebarr" href="">Contact</a></li>
+            <li><a class="sidebarr" href="/registration.html">registration</a></li>
+        </ul>
+    </nav>
+    <nav>
+        <label class="logo"><img src="edulink0.png" alt="" /></label>
+        <ul>
+            <li><a class="hideOnMobile" href="#">HOME</a></li>
+            <li><a class="hideOnMobile" href="">Contact</a></li>
+            <li><a class="hideOnMobile" href="/registration.html">registration</a></li>
+            <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>School Login</h1>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="username_or_email">Username or Email:</label>
+                <input type="text" id="username_or_email" name="username_or_email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="button" id="">Login</button>
+        </form>
+    </div>
+
+   
+
+    <script src="script.js"></script>
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'flex';
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
+
+       
+    </script>
+</body>
+</html>

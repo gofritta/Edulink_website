@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     text-decoration: none;
     list-style: none;
 
@@ -133,10 +133,309 @@ nav li:first-child {
 
 }
 
+.star-rating {
+    font-size: 0;
+    /* Remove whte space between inline-block elements */
+}
+
+.star {
+    font-size: 24px;
+    color: rgb(105, 109, 109);
+    color: #e6e6e6;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.star:hover,
+.star.active {
+    color: #624972;
+
+}
+
+.wrapper {
+    width: auto;
+    position: relative;
+    height: auto;
+}
+
+.wrapper i {
+    height: 50px;
+    width: 50px;
+    background: #fff;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 60%;
+    font-size: 1.25rem;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px rgb(0, 0, 0, 0.23);
+}
+
+.wrapper #left {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    left: -5vw;
+    /* Adjust this value to move the left arrow further to the left */
+}
+
+.wrapper i:last-child {
+    right: -5vw;
+}
+
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3)-12px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel :where(.card, .img) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+    height: 27vw;
+    list-style: none;
+    background: #fff;
+    border-radius: 19px;
+    cursor: pointer;
+    display: flex;
+    padding-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 3vw;
+    border: 4px solid #6d6b7e14;
+}
+
+.card .img {
+    background: #8B53FF;
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+}
+
+.card .img img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fff;
+}
+
+.card h2 {
+    font-weight: 500;
+    font-size: 1.56rem;
+    margin: 30px 0 5px;
+}
+
+.card span {
+    color: #6a6d78;
+    font-size: 1.31rem;
+}
+
+.card button {
+    border: none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    background-color: #523db1;
+    border-radius: 15px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.2);
+    border: 2px solid #33333361;
+
+}
+
+.card button:hover {
+    background: #b3a8ef;
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-template-columns: calc((100%/2)-9PX);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper .carousel {
+        grid-template-columns: 100%;
+    }
+}
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    padding: 0;
+    transition: transform 0.5s ease;
+}
+
+.card {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    width: 300px;
+    /* Largeur de chaque carte d'école */
+}
+
+#placeholder {
+    color: #75357cb3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#placeholder-icon {
+    width: 50px;
+    height: 50px;
+    margin-left: 50%;
+
+}
+
+#profile-picture {
+    width: 32px;
+    height: 30px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 10px;
+    text-decoration: none;
+    display: block;
+    border-radius: 0;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+
+}
+
+/* Dropdown button styles */
+.dropdown-btn {
+
+    text-decoration: none;
+    display: block;
+    border: none;
+    /* Remove border */
+    background: none;
+    /* Remove background */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: black;
+    /* Make text transparent */
+    font-size: 18px;
+    /* Set font size to 0 to hide text */
+}
+
+/* Apply hover effect to dropdown button */
+.dropdown-btn:hover {
+    color: #ddd;
+    /* Change to match the hover effect color */
+}
+
+
+#suggestions {
+    display: none;
+    position: absolute;
+    top: 100%;
+    /* Position below the search box */
+    left: 0;
+    width: 74%;
+    background-color: #fff;
+    border: 2px solid #d4d3d3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* Ensure it appears above other elements */
+    max-height: 200px;
+    /* Limit max height to avoid excessive scrolling */
+    overflow-y: auto;
+    /* Enable vertical scrolling if needed */
+    border-radius: 15px;
+}
+
+/* Style for individual suggestions */
+.suggestion {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.suggestion:hover {
+    background-color: #f5f5f5;
+}
+
 
 .Tliste {
     margin-top: 1vw;
     margin-bottom: 0px;
+    align-items: center;
+    
 }
 
 h1 {
@@ -153,7 +452,7 @@ p {
 }
 
 hr {
-    margin: 5px 70px;
+    margin: 5px 30px;
     color: #0035f7;
 }
 
@@ -317,30 +616,34 @@ footer div {
 }
 .profil {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    /* Alignez le contenu à gauche */
     align-items: center;
-    margin-bottom: 0px;
-    
+    margin-bottom: 20px;
+    /* Ajoutez de l'espace en bas */
 }
+
 
 
 
 .info-c {
     flex-basis: 40%;
-    overflow: hidden;
+    
     border-radius: 10px;
-    margin-left: 10px;
+    margin-left: 100px;
     margin-top: 40px;
-    margin-right: 20px;
+    margin-right: 50%;
     margin-bottom: 20px;
     padding: 20px;
 
 }
 
 .button-content {
+    
     display: flex;
-    justify-content: center;
-    align-items: center;
+        justify-content: space;
+        margin-bottom: 20px;
+        /* Adjust this margin as needed */
 }
 
 .content-a {
@@ -359,6 +662,43 @@ footer div {
     min-height: 120px;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 15px;
+}
+.content-a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+    background-image: url('document.png');
+    /* Replace 'your-icon.png' with your icon path */
+    background-size: cover;
+    /* Adjust background size if needed */
+    background-repeat: no-repeat;
+    opacity: 0;
+    /* Initially hide the icon */
+    transition: opacity 0.5s;
+    /* Apply transition effect */
+    transform: translate(-50%, -50%);
+    /* Center the icon */
+}
+
+.content-a:hover::before {
+    opacity: 1;
+    /* Show the icon on hover */
+}
+
+.content-a span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+}
+.content-a:hover span {
+    opacity: 0;
+    /* Hide the text on hover */
 }
 
 .content-b {
@@ -376,6 +716,46 @@ footer div {
     border-color: transparent;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 15px;
+
+}
+
+.content-b::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+    background-image: url('schedule.png');
+    /* Replace 'your-icon.png' with your icon path */
+    background-size: cover;
+    /* Adjust background size if needed */
+    background-repeat: no-repeat;
+    opacity: 0;
+    /* Initially hide the icon */
+    transition: opacity 0.5s;
+    /* Apply transition effect */
+    transform: translate(-50%, -50%);
+    /* Center the icon */
+}
+
+.content-b:hover::before {
+    opacity: 1;
+    /* Show the icon on hover */
+}
+
+.content-b span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+}
+
+.content-b:hover span {
+    opacity: 0;
+    /* Hide the text on hover */
 }
 
 .content-c {
@@ -393,6 +773,46 @@ footer div {
     min-height: 120px;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 15px;
+
+}
+
+.content-c::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+    background-image: url('teaching.png');
+    /* Replace 'your-icon.png' with your icon path */
+    background-size: cover;
+    /* Adjust background size if needed */
+    background-repeat: no-repeat;
+    opacity: 0;
+    /* Initially hide the icon */
+    transition: opacity 0.5s;
+    /* Apply transition effect */
+    transform: translate(-50%, -50%);
+    /* Center the icon */
+}
+
+.content-c:hover::before {
+    opacity: 1;
+    /* Show the icon on hover */
+}
+
+.content-c span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+}
+
+.content-c:hover span {
+    opacity: 0;
+    /* Hide the text on hover */
 }
 
 .content-d {
@@ -410,12 +830,56 @@ footer div {
     min-height: 120px;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 15px;
+
 }
+
+.content-d::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+    background-image: url('commenting.png');
+    /* Replace 'your-icon.png' with your icon path */
+    background-size: cover;
+    /* Adjust background size if needed */
+    background-repeat: no-repeat;
+    opacity: 0;
+    /* Initially hide the icon */
+    transition: opacity 0.5s;
+    /* Apply transition effect */
+    transform: translate(-50%, -50%);
+    /* Center the icon */
+}
+
+.content-d:hover::before {
+    opacity: 1;
+    /* Show the icon on hover */
+}
+
+.content-d span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+}
+
+.content-d:hover span {
+    opacity: 0;
+    /* Hide the text on hover */
+}
+
+
 .content-a,
 .content-b,
 .content-c,
-.content-d{
-    margin: 20px 20px;
+.content-d {
+    margin: 10px 20px;
+    min-width: 220px;
+    
 }
 
 
@@ -426,4 +890,24 @@ footer div {
 .content-d:hover {
     background-color: #c3c3f5;
 }
+.right-side {
+    width: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.content-container{
+    display: flex;
+    justify-content: space;
+    align-items: flex-start;
+
+}
+
+.animation {
+    margin-top: 100px;
+    margin-right: 500px;
+    width: 200px;
+    height: auto;
+   
+}
