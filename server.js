@@ -1,6 +1,6 @@
 import express from "express";
 import bcrypt from 'bcrypt';
-import {getStudent, insertNewStudent,getStudentByEmail  , getSchoolByState} from './database.js';
+import {getStudent, insertNewStudent,getStudentByEmail  , getSchoolByState, insertSubject} from './database.js';
 import pool from './connection.js'; 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -26,7 +26,8 @@ app.use(express.static(publicPath));
 app.use(express.static(__dirname + '/public'));
 app.set('views', [
   path.join(__dirname, 'views'),
-  path.join(__dirname, 'signin')
+  path.join(__dirname, 'signin'),
+  path.join(__dirname, 'projet-p')
 ]);
 
 app.set('view engine', 'ejs');
@@ -172,6 +173,35 @@ passport.authenticate('linkedin', { failureRedirect: '/student/login' }),
   };
   res.redirect('/student/homepage');
 });
+//student registration to school
+app.post('/school/enroll', checkAuthenticated, async (req, res) => {
+  const subject = req.body.subject;
+  const student = req.session.user.name;
+  const school = req.body.name;
+  try {
+    if(subject){
+      const result = await insertSubject(pool, subject, student, school);
+    }else(res.send("Your enrollement attempt was unsuccessful "))
+    if(result === 1){
+      req.session.user = {
+        email: student[0].email_s,
+        name : student[0].name_s
+    };
+      res.redirect('/student/homepage');
+    }else{
+      res.send("unfortunately , your enrollement wasn't successful.")
+    }
+  } catch (error) {
+    console.error(error)
+    res.status(500).send("Internal Server Error");
+  }
+ 
+})
+//logout
+app.get('/logout', (req, res) => {
+  req.session.destroy(); // Destroy the session obv
+  res.redirect('/');
+});
 
   //routes
  app.get('/', checkAuthenticated, (req, res) => {
@@ -185,6 +215,9 @@ app.get('/student/login', checkNotAuthenticated, (req, res) => {
 });
 app.get('/student/register', checkNotAuthenticated, (req, res) => {
   res.render('index'); 
+});
+app.get('/school/enroll', checkAuthenticated, (req, res) => {
+  res.render('ecole-profile')
 });
 
 // function to check authentication

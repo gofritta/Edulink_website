@@ -25,7 +25,7 @@
 
                 <a href="#">My Account</a>
 
-                <a href="#">Log Out</a>
+                <a href="/logout">Log Out</a>
             </div>
         </li>
         <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
@@ -41,7 +41,7 @@
         <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
             <div class="dropdown-content">
                 <a href="#">My Account</a>
-                <a href="#">Log Out</a>
+                <a href="/logout">Log Out</a>
             </div>
         </li>
         <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
@@ -187,6 +187,31 @@ viewMoreButtons.forEach(button => {
     window.location.href = `projet-p/ecole-profile.html?id=${index}`;
   });
 });
+
+// Function to handle logout
+function handleLogout() {
+    fetch('/logout', { method: 'GET' }) // Send a GET request to the logout route
+      .then(response => {
+        if (response.redirected) {
+          // If the server responds with a redirection, redirect the user to the specified location
+          window.location.href = response.url;
+        }
+      })
+      .catch(error => {
+        console.error('Error logging out:', error);
+      });
+  }
+
+  // Add event listener to the logout link
+  document.addEventListener('DOMContentLoaded', function() {
+    const logoutLink = document.querySelector('a[href="/logout"]');
+    if (logoutLink) {
+      logoutLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        handleLogout(); // Call the function to handle logout
+      });
+    }
+  });
 
 </script>
 

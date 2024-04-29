@@ -127,7 +127,17 @@ CREATE TABLE `work for` (
   KEY `id_t2_idx` (`id_t`),
   CONSTRAINT `id_sch2` FOREIGN KEY (`id_sch`) REFERENCES `school` (`id_sch`),
   CONSTRAINT `id_t2` FOREIGN KEY (`id_t`) REFERENCES `teacher` (`id_t`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
+CREATE TABLE inscription (
+    student_id INT,
+    school_id INT,
+    subjects_enrolled JSON, -- Attribute to store enrolled subjects as JSON
+    PRIMARY KEY (student_id, school_id),
+    FOREIGN KEY (student_id) REFERENCES student(id_s),
+    FOREIGN KEY (school_id) REFERENCES school(id_school)
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
