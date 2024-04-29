@@ -14,27 +14,37 @@
   <body>
     <nav class="sidebar">
       <ul>
-        <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
-      
-        <li><a class="active" href="#">HOME</a></li>
-        <li><a href="#">about</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Join Us</a></li>
+          <li><a class="active" href="#">HOME</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+              <div class="dropdown-content">
+  
+                  <a href="modal.html"><button type="button" class="dropdown-btn">My Account</button></a>
+                  <a href="#">Log Out</a>
+              </div>
+          </li>
+          <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
       </ul>
-    </nav>
-    <nav>
-
-      <label class="logo"><img src="edulink0.png" alt="" /></label>
+  </nav>
+  
+  <nav>
+      <label class="logo"><img src="edulink0.png" alt="Logo" /></label>
       <ul>
-        <li><a class="hideOnMobile" class="active" href="#">HOME</a></li>
-        <li><a class="hideOnMobile" href="#">about</a></li>
-        <li><a  class="hideOnMobile" href="#">Contact</a></li>
-        <li><a class="hideOnMobile" href="#">Join Us</a></li>
-        <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+          <li><a class="hideOnMobile active" href="#">HOME</a></li>
+          <li><a class="hideOnMobile" href="#">About</a></li>
+          <li><a class="hideOnMobile" href="#">Contact</a></li>
+          <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+              <div class="dropdown-content">
+                  <a href="modal.html"><button type="button" class="dropdown-btn">My Account</button></a>
+                  <a href="#">Log Out</a>
+              </div>
+          </li>
+          <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
       </ul>
-    </nav>
+  </nav>
     <section>
-      <div class="title">  <h1>SCHEDULE SECTION</h1>
+      <div class="title">  <h1>Schedule Section</Section></h1>
         <p>Find you path, navigate with schedules</p>
         <div class="line-wrapper">
             <div class="line"></div>
