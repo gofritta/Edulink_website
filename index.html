@@ -8,7 +8,10 @@
     <title>Home page</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="popup2.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
 </head>
 
 <body>
@@ -43,9 +46,19 @@
 </script>
 
 
-<section>
-    <img id="logo1" src="edulink0.png" alt="Logo" class="logo"> 
-    <p >..............SLOGAN...........</p>
+<section class="video-section">
+    <video autoplay muted loop>
+      <source src="introvid.mp4" type="video/mp4">
+    </video>
+     <!-- <img src="icon1.png" alt="Location Icon 1" class="location-pin pin1">
+    <img src="icon2.png" alt="Location Icon 2" class="location-pin pin2">
+    <img src="icon3.png" alt="Location Icon 3" class="location-pin pin3">
+    <img src="icon4.png" alt="Location Icon 4" class="location-pin pin4">
+    <img src="icon5.png" alt="Location Icon 5" class="location-pin pin5">
+    <img src="icon6.png" alt="Location Icon 6" class="location-pin pin6">
+   ...add more icons as needed -->
+   <img id="logo1" src="edulink0.png" alt="Logo" class="logo"> 
+    <p id="p1" ></p>
     <button class="start-button">Get Started</button>
     <!-- Popup HTML -->
     <div id="popup-container" class="popup center">
@@ -65,7 +78,7 @@
     </div>
 
 
-    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg2">
         <path d="M0 289.501C0 289.501 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V290H0V289.501Z" fill="#AC6CFF" fill-opacity="0.05"/>
         <path d="M4.98315 289.568C4.98315 289.568 156.326 168.82 698.702 168.82C1241.08 168.82 1480 39 1480 39V290H4.98315V289.568Z" fill="#AC6CFF" fill-opacity="0.15"/>
         <path d="M0 289.539C0 289.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V290H0V289.539Z" fill="#AC6CFF" fill-opacity="0.1"/>
@@ -73,17 +86,19 @@
 </section>
 
 
-<section class="how-it-works">
-    <h2 class="section-title">How it works?</h2>
-    <div class="content">
-        <div class="video">
+<section class="how-it-works parallax-section" id="section2">
+    <h1 class="section-title reveal">How it works?</h1>
+    <div class="content reveal">
+        <div class="video2">
             <!-- Embed your video here -->
-            <iframe width="450" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+            <video autoplay muted loop>
+                <source src="vid02.mov" type="video/mp4">
+              </video>
         </div>
         <div class="text">
             <p>Bla bla bla bla ..........................bla bla bla...........................bla bla bla..........................bla vla bla.
             </p>
-            <button class="learn-more">Learn More</button>
+            
             
         </div>
     </div>
@@ -96,25 +111,25 @@
         
         
 </section>
-<section class="find-best">
-    <h2 class="section-title">Find  What Suits You Best</h2>
-    <div class="content">
+<section class="find-best parallax-section" id="section3">
+    <h1 class="section-title reveal">Find  What Suits You Best</h1>
+    <div class="content reveal">
          <img class="find-best-image" src="grid0.png" alt="A description of the image" >
-    </div>
+   
     <div class="search-container">
         <input type="text" placeholder="Search..." class="search-box">
         <button class="search-button">Search</button>
-      </div>
-      <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+      </div> </div>
+      <svg id="svg1" width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#8F4CC3" fill-opacity="0.05"/>
         <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#F6BFFF" fill-opacity="0.05"/>
         <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#571E83" fill-opacity="0.05"/>
         </svg>
 </section>
 
-<section class="popular-school">
-    <h2 class="section-title">Explore Our Popular Schools</h2>
-    <div class="school-container">
+<section class="popular-school parallax-section" id="section4">
+    <h1 class="section-title reveal">Explore Our Popular Schools</h1>
+    <div class="school-container reveal">
         <div class="school" data-name="School Name 1" data-description="Description of School 1">
             <img src="OIP.jpg" alt="School 1">
             <h3>School Name 1</h3>
@@ -162,22 +177,22 @@
     </div>
 </section>
 
-<section class="student-feedback">
-    <h2 class="section-title">Student Feedback</h2>
+<section class="student-feedback parallax-section" id="section5">
+    <h1 class="section-title reveal">Student Feedback</h1>
 
-    <div class="feedback-content">
+    <div class="feedback-content reveal">
         <div class="student-picture">
-            <img src="student1.jpg" alt="Student Picture">
+            <img class="student-picture-img" src="Screenshot 2024-04-26 201945.png" alt="Student Picture" data-text="ut maximus lacus convallis. Nullam vitae velit nec neque blandit congue.">
         </div>
         <div class="feedback-text">
-            <p>ut maximus lacus convallis. Nullam vitae velit nec neque blandit congue. Ut ut urna ac nisi pellentesque feugiat. Vivamus vestibulum risus sit amet ipsum aliquet, eget tincidunt lectus vehicula. Integer nec neque ullamcorper, gravida eros vel, fermentum metus. Cras et dui a nisl egestas sodales. Nam nec rhoncus nisi, sit amet bibendum nunc.</p>
+            <p>ut maximus lacus convallis. Nullam vitae velit nec neque blandit congue.</p>
             <button class="view-details-button">View Details</button>
         </div>
     </div>
-    <div class="related-pictures">
-        <img src="related1.jpg" alt="Related Picture 1">
-        <img src="related2.jpg" alt="Related Picture 2">
-        <img src="related3.jpg" alt="Related Picture 3">
+    <div class="related-pictures reveal">
+        <img src="studentboy1.png" alt="Related Picture 1" data-text="the other woman has time to manicure her nails the other woman is perfect where her rival fails" id="std1">
+        <img src="studentgirl2.png" alt="Related Picture 2" data-text="hello i want to say that this website is so amazing thank you" id="std2">
+        <img src="studentboy2.png" alt="Related Picture 3" data-text="why jazz puts women int the mood for love" id="std3">
     </div>
     <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
@@ -194,8 +209,30 @@
 
   
 
-<footer>
-    
+<footer class="footer">
+     
+    <div class="divs-c-l"> 
+        <h3>OUR SERVICES
+        </h3><ul>           
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Term Of Use</a></li>
+        </div>
+
+     <div class="divs-c-s"> 
+        
+        <img src="edulinklogo.png" alt="" />
+        <h4>your ultimate guide for educational excellence!</h4>
+        <button class="button-footer">JOIN US  ></button>
+      </ul></div>
+      <div> <div class="icons">
+        <h3>CONTACT US</h3>
+        <i class="fab fa-facebook" ></i>
+        <i class="fab fa-twitter" ></i>
+        <i class="fab fa-instagram" ></i>
+        <i class="fa fa-envelope" ></i>
+       </div></div>
 </footer>
 
 </body>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,19 +38,25 @@
           <div class="pfp">
             <img src="profil.jpg" alt="" />
           </div>
+
+          <!--Information ******************************************************-->
+
           <div class="info-eco">
             <h1>Informations</h1>
-            <h4> School Name:</h4>
-            <h4>Contact:</h4>
-            <h4>Localisation:</h4>
+            <h4 id="sch_name"></h4>
+            <h4 id="contact"></h4>
+            <h4 id="adresse"></h4>
             <a href="/student_regist.html"><button class="Inscription">Inscription</button></a>
 
           </div>
+
+          <!---*****************************************************************-->
+
         </div>
         <div class="info-c">
       <div class="button-content">
-        <a href="/report.html"><button class="content-a"><span>REPORT ></span></button></a>
-        <a href="/schedule-s.html"><button class="content-b"><span>SCHEDULE ></span></button></a>
+        <button class="content-a"><span>REPORT ></span></button>
+        <a href="schedule.html"><button class="content-b"><span>SCHEDULE ></span></button></a>
     </div>
     <div class="button-content">
         <a href="/teachers section/index.html"><button class="content-c"><span>TEACHERS ></span></button></a>
@@ -111,5 +116,37 @@
       sidebar.style.display = 'none'
     }
   </script> 
+      
+  <script>
+    
+    // Récupérer l'ID de l'école depuis l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const index = urlParams.get('id');
+    console.log(index);
+    // Récupérer l'ID de l'école depuis localStorage
+      let schoolId = 0;
+    if(index == 1) 
+        schoolId = localStorage.getItem('school1');
+    if(index == 2)
+        schoolId = localStorage.getItem('school2');
+    if(index == 3)
+        schoolId = localStorage.getItem('school3');
+    
+
+        let request = new XMLHttpRequest();
+        request.open("GET", `http://127.0.0.1:3000/school/id?id_sch=${schoolId}`)
+        request.responseType = "json"
+        request.send()
+        request.onreadystatechange = function() {
+            let school = request.response;
+      
+                document.getElementById("sch_name").innerHTML = `School name: ${school[0].name_sch}</h2>`
+                document.getElementById("contact").innerHTML = `Contact: ${school[0].number_sch}`
+                document.getElementById("adresse").innerHTML = `Adress: ${school[0].adress_sch}`
+                
+                console.log(request.response);
+            }
+
+  </script>
   </body>
 </html>

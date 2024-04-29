@@ -8,6 +8,8 @@
 </head>
 <body>
 
+    
+
     <nav class="sidebar">
         <ul>
           <li><a class="active" href="#">HOME</a></li>
@@ -50,8 +52,8 @@
         <div class="container">
             <div class="request-box">
                 <div class="request-details">
-                    <h2>School Name</h2>
-                    <p>Registered on: April 15, 2024</p> <!-- Until we implement the part where we display the date automatically here -->
+                    <h2 id="namesch"></h2>
+                    <p id="reg-date"></p> <!-- Until we implement the part where we display the date automatically here -->
                 </div>
                 <button class="details-button-school">Details</button> <!-- Changed class to details-button-school -->
             </div>
@@ -86,14 +88,14 @@
       <div class="modal-buttons">
           <button id="accept" onclick="acceptRequest()">Accept</button>
           <button id="contact" onclick="contactOwner()">Contact</button>
-          <button id="decline" onclick="declineRequest()">Decline</button>
+          <button id="decline" onclick="declineSchools()">Decline</button>
       </div>
   </div>
 </div>
     </div>
 
 
-
+<!--********************************************************************************************************-->
 
     <div class="main-content">
       <div class="title-section">
@@ -104,7 +106,7 @@
   
       <div class="container">
           <div class="request-box">
-              <div class="request-details">
+              <div id="admin-home"class="request-details">
                   <h2>Student Name</h2>
                   <p>Sent on: April 15, 2024</p> <!-- Until we implement the part where we display the date automatically here -->
               </div>
@@ -141,7 +143,22 @@
           </div>
       </div>
   </div>
+  
+  <script>
+    fetch("http://localhost:3000/school-pending", {
+        method: 'GET'
+        })
+        .then(response => response.json())
+        .then(response => {
+            document.getElementById('namesch').innerHTML = response[0].namesch;
+            document.getElementById('reg-date').innerHTML = `Registered on: ${response[0].registerdate.substring(0, 10)}`;
+        })
+        .catch(error => alert("Erreur : " + error)); 
+  
+    </script>
 
-    <script src="admin.js"></script>
+  <script src="admin.js"></script>
+
+
 </body>
 </html>

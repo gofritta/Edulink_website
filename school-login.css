@@ -1,0 +1,247 @@
+/* Basic list styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    list-style: none;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle, #1a2e7c5c, #c7c1d3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle, #eae0fd, #dec8f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle, #deceff, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+
+nav {
+
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: 0;
+    height: 80px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+    font-family: 'Times New Roman';
+
+}
+
+nav ul li {
+
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+    font-family: 'Times New Roman';
+
+}
+
+nav ul li a {
+
+    color: #624972;
+    font-size: 16px;
+    padding: 7px 13px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: #fff;
+    background-color: #614972;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+nav.active {
+    color: #fff;
+    background-color: #614972;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+.logo img {
+    size: 100px;
+    width: 220px;
+    height: auto;
+    padding-left: 40px;
+    padding-top: 12px;
+
+}
+
+nav li:first-child {
+    margin-right: auto;
+}
+
+.sidebar {
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #765b7532;
+    backdrop-filter: blur(12px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.155);
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li {
+    width: 100%;
+}
+
+.sidebar a {
+    width: 100%;
+}
+
+
+.menu-button {
+    display: none;
+}
+
+@media(max-width: 800px) {
+
+
+    .hideOnMobile {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .logo img {
+        width: 150px;
+        height: auto;
+        padding-left: 20px;
+        padding-top: 30px;
+    }
+}
+
+@media(max-width: 400px) {
+    .sidebar {
+        width: 100%;
+    }
+}
+
+
+.container {
+
+    width: 480px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to right bottom, #6808531d, #e2d9e1 50%, #e2d9e1 50%, #6092c462);
+}
+
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.form-group label {
+    width: 150px;
+    margin-right: 20px;
+    text-align: left;
+    margin-left: 15px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+
+.form-group select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin-right: 10px;
+    border: 2px solid #888;
+}
+
+button {
+    margin: 0 auto;
+    display: block;
+    padding: 10px 20px;
+    background-color: #5b1d69;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    border: 2px solid #3a0c33;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #3a21a0;
+}
+
+p {
+    text-align: center;
+    margin-top: 2.5vw;
+    margin-bottom: 2vw;
+    padding: 10px;
+    color: #3f2e41a3;
+}
+
