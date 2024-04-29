@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var joinUsButton = document.querySelector(".join-us-button");
     var joinUsButtonn=document.querySelector(".join-us-buttonn");
     var popupContainer = document.getElementById("popup-container");
+    var footerButton=document.querySelector(".button-footer");
     
     
     getStartedButton.addEventListener("click", function() {
@@ -21,6 +22,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     joinUsButtonn.addEventListener("click", function() {
+        
+        popupContainer.classList.add("active");
+        
+    });
+
+    footerButton.addEventListener("click", function() {
         
         popupContainer.classList.add("active");
         
@@ -128,3 +135,12 @@ document.querySelectorAll('.related-pictures img').forEach(img => {
     });
 });
 
+document.querySelector('.view-details-button').addEventListener('click', function() {
+    var popup = document.querySelector('.popup3');
+    popup.style.display = 'block'; // Display the popup
+
+    // Hide the popup after 4 seconds (adjust the time as needed)
+    setTimeout(function() {
+        popup.style.display = 'none';
+    }, 3000);
+});

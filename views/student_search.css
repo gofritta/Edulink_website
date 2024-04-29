@@ -4,10 +4,11 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
     /* Set linear gradient background */
@@ -130,10 +131,12 @@ label.logo {
     margin-bottom: 5px;
     margin-left: 2vw;
     margin-top: 1vw;
+    font-size: 2.5rem;
 }
 .subtitle {
     margin-bottom: 10px;
     margin-left: 2vw;
+    font-weight: 500;
 }
 .divider {
     border: none;
@@ -156,6 +159,7 @@ label.logo {
     border: 2px solid #ccc;
     width: 24vw;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    font-size: medium;
 }
 
 #search-button {
@@ -166,6 +170,8 @@ label.logo {
     color: #fff;
     cursor: pointer;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    font-size: medium;
+    font-weight: 500;
 
 }
 .wrapper {
@@ -290,7 +296,8 @@ border: 4px solid #6d6b7e14;
 }
     
 .card button:hover {
-    background: #b3a8ef;
+    box-shadow: 0 0 5px #a34eca, 0 0 15px #9b8db1, 0 0 29px #c6bdd7, 0 0 150px #8258e4;
+    transition: 0.5s ease-in-out;
     }
     
 @media screen and (max-width: 900px){

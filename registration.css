@@ -3,14 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
-    list-style: none;
-
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    
 }
 
 html body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
     background: radial-gradient(circle, #deceff, #ffffff);
     display: flex;
     justify-content: center;
@@ -29,7 +27,7 @@ html body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
     text-decoration: none;
     list-style: none;
 }
@@ -72,7 +70,7 @@ nav ul li a {
     color: #624972;
     font-size: 16px;
     padding: 7px 13px;
-    border-radius: 5px;
+    border-radius: 15px;
     text-transform: uppercase;
 }
 
@@ -190,7 +188,6 @@ nav li:first-child {
 
 .form-group {
     margin: 0px 0;
-       
     margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -211,11 +208,11 @@ nav li:first-child {
 
     flex: 1;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 2.5px solid #d1cbd1;
     border-radius: 15px;
 }
 
-.form-group input[type="text#address"],
+.form-group input[type="text#adresssch"],
 .form-group textarea#description {
     width: calc(50% - 5px);
     padding: 10px;
@@ -223,25 +220,25 @@ nav li:first-child {
     border-radius: 15px;
 }
 
-.form-group label[for="address"],
-.form-group label[for="description"] {
+.form-group label[for="adresssch"],
+.form-group label[for="passwordsch"] {
     width: 180px;
     margin-right: 10px;
     margin-top: 10px;
 
 }
 
-label[for="family-name"],
-label[for="phone"] {
+label[for="lastName"],
+label[for="numbersch"] {
     margin-top: 10px;
 
 }
 
 
-label[for="first-name"],
-label[for="state"],
-label[for="email"],
-label[for="school-name"] {
+label[for="firstName"],
+label[for="statesch"],
+label[for="emailsch"],
+label[for="namesch"] {
     position: absolute;
     left: -215px;
     width: 310px;
@@ -276,20 +273,23 @@ select {
 }
 
 
-input#first-name,
-input#state,
-input#email,
-input#school-name {
+input#firstName,
+input#statesch,
+input#emailsch,
+input#namesch {
     margin-left: 100px;
 
 }
 
-input#first-name,
-input#full-name,
-textarea#address,
-input#password {
+input#firstName,
+input#lastName,
+textarea#adresssch,
+input#passwordsch {
     width: 307px;
     height: 20px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+font-size: medium;
 }
 
 input[type="text"],
@@ -298,7 +298,8 @@ input[type="tel"] {
     width: 307px;
     height: 20px;
     font-weight: bold;
-
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
 }
 
 .form-group {
@@ -311,9 +312,13 @@ input[type="tel"] {
     padding: 10px 20px;
     background-color: #5b1d69;
     color: #fff;
-    border: none;
     border-radius: 15px;
     cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border: 2.5px solid #360541;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+font-size: medium;
 }
 
 .form-group button:hover {

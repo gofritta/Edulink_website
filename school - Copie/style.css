@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     text-decoration: none;
     list-style: none;
 
@@ -452,7 +452,7 @@ p {
 }
 
 hr {
-    margin: 5px 70px;
+    margin: 5px 30px;
     color: #0035f7;
 }
 
@@ -662,6 +662,7 @@ footer div {
     min-height: 120px;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 15px;
 }
 .content-a::before {
     content: "";
@@ -715,6 +716,8 @@ footer div {
     border-color: transparent;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 15px;
+
 }
 
 .content-b::before {
@@ -770,6 +773,8 @@ footer div {
     min-height: 120px;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 15px;
+
 }
 
 .content-c::before {
@@ -825,6 +830,8 @@ footer div {
     min-height: 120px;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 15px;
+
 }
 
 .content-d::before {
@@ -870,7 +877,8 @@ footer div {
 .content-b,
 .content-c,
 .content-d {
-    margin: 20px 20px;
+    margin: 10px 20px;
+    min-width: 220px;
     
 }
 
