@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>teachers | edulink</title>
+  <style>
+    *{
+    margin: 0;
+    padding: 0;
+        box-sizing: border-box;
+        font-family: 'Montserrat', sans-serif;
+        text-decoration: none;
+        list-style: none;
+       
+}
+
+body{
+ 
+margin-right:0;
+background: linear-gradient(to right, #ffff, #d9dafd);
+}
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-top: 0;
+    height: 80px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+nav ul {
+    font-family: 'Times New Roman';
+    float: right;
+    margin-right: 20px;
+
+
+}
+
+nav ul li {
+
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+    font-family: 'Times New Roman';
+
+}
+
+nav ul li a {
+
+    color: #624972;
+    font-size: 16px;
+    padding: 7px 13px;
+    border-radius: 15px;
+    text-transform: uppercase;
+}
+
+nav a:hover,
+a.active {
+    color: #fff;
+    background-color: #624972;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+.logo img {
+    size: 100px;
+    width: 220px;
+    height: auto;
+    padding-left: 3vw;
+    margin-top: 1vw;
+
+}
+
+nav li:first-child {
+    margin-right: auto;
+}
+
+.sidebar {
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #765b7532;
+    backdrop-filter: blur(12px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.155);
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li {
+    width: 100%;
+}
+
+.sidebar a {
+    width: 100%;
+}
+
+
+.menu-button {
+    display: none;
+}
+
+@media(max-width: 800px) {
+
+
+    .hideOnMobile {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+ h1 {
+    margin-top: 15%;
+    font-size: 10px;
+    }
+ .logo img {
+     width: 150px;
+     height: auto;
+     padding-left: 20px;
+     padding-top: 30px;
+ }
+}
+
+@media(max-width: 400px) {
+    .sidebar {
+        width: 100%;
+    }
+   
+}
+
+
+.Tliste{
+   margin-top: 8%;
+   margin-bottom: 0px;
+}
+h1 {
+    padding-left: 2vw;
+    color: #1b1022;
+    font-size: 45px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: -2vw;
+}
+p {
+    padding-left: 2.5vw;
+    color: #6e566e;
+    font-size: 15px;
+}
+hr{
+    margin: 5px 70px;
+    color: #0035f7;
+}
+
+div.teachers {
+    text-align: right;
+    list-style-type: none;
+    padding: 20px;
+
+}
+
+div.teachers ul {
+    margin: 0px 50px ;
+    padding: 0px 20px;
+    height: auto;
+    background-color: #f0f0f0;
+    border:  2px #624972 solid;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-around;
+    cursor:default;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+}
+.rating{
+    cursor: pointer;
+    text-align: center;
+}
+div.teachers ul li{
+    width: 200px;
+    height: auto;
+    background: none;
+    color: #1b1022;
+    font-size: 15px;
+    text-align: center;
+    line-height: 100px;
+    border-radius: none;
+
+}
+div.teachers ul li img{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* Styling for odd numbered items */
+div.teachers ul:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Styling for even numbered items */
+div.teachers ul:nth-child(even) {
+    background-color: #ffffff;
+}
+
+@media(max-width: 700px){
+ h1 {
+     margin-top: 25%;
+     font-size: 35px;
+ }
+ div.teachers ul {
+     margin: 0px 50px;
+     padding: 0px 20px;
+     height: auto;
+     background-color: #f0f0f0;
+     border: 2px #624972 solid;
+     border-radius: 40px;
+     display: flex;
+     flex-wrap: wrap;
+     /*Allowitemstowraponsmallerscreens*/justify-content: space-around;
+     -webkit-border-radius: 40px;
+     -moz-border-radius: 40px;
+     -ms-border-radius: 40px;
+     -o-border-radius: 40px;
+}
+
+ div.teachers ul li {
+     width: 200px;
+     height: auto;
+     background: none;
+     color: #1b1022;
+     font-size: 15px;
+     text-align: center;
+     line-height: 50px;
+     border-radius: none;
+
+ }
+}
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    margin: 100px; 
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease-in-out; 
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #f06868, #f1b38071, #f5f4a9, #bdf5a7, #00ffd5, #9f01be, #8e1f9c, #f080d8, #ee9595);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #34043d
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #4a054d;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+svg{ 
+    color: #ffffff;
+    border: none;
+    margin-top: auto;
+    margin-bottom: -21.678px;
+    margin-bottom: -1.085%;
+
+}
+.footer {
+    border:none;
+    height: 23vw;
+    padding: 20px;
+    background: linear-gradient(to right,#c0c0ce,#adadcc);
+}
+
+.footer {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 30px 0;
+}
+
+ .footer h3 {
+     color: #070F2B;
+     margin-bottom: 25px;
+     margin-top: 20px;
+     font-weight: 600;
+ }
+
+ .icons .fab {
+     color: #070F2B;
+     margin: 0 13px;
+     cursor: pointer;
+     padding: 20px 0;
+     font-size: 20px;
+ }
+ .icons .fa {
+     color: #070F2B;
+     margin: 0 13px;
+     cursor: pointer;
+     padding: 20px 0;
+     font-size: 20px;
+ }
+
+ .divs-c-s img {
+     margin-top: 1px;
+     margin-bottom: 1px;
+     margin-left: 30%;
+    height: 10vw;
+    width: 20vw;
+ }
+
+ .divs-c-s h4 {
+     color: #070F2B;
+     margin-left: 22%;
+
+ }
+
+ footer div {
+     height: 100%;
+     width: 400px;
+     float: left;
+
+ }
+
+ .divs-c-l ul li {
+     list-style: none;
+     margin-bottom: 12px;
+     color: #070F2B;
+
+ }
+
+ .divs-c-l ul li a {
+     text-decoration: none;
+     color: #070F2B;
+ }
+
+ .divs-c-l {
+
+     top: 0;
+     left: 0px;
+     padding-left: 10px;
+ }
+
+
+ .button-footer {
+     background-color: #ffffff;
+     color: #b37fde;
+     font-size: 12px;
+     padding: 15px 45px;
+     border: 3px #b37fde groove;
+     border-radius: 23px;
+     font-weight: 600;
+     letter-spacing: 0.5px;
+     text-transform: uppercase;
+     margin-top: 30px;
+     cursor: pointer;
+     -webkit-border-radius: 23px;
+     -moz-border-radius: 23px;
+     -ms-border-radius: 23px;
+     -o-border-radius: 23px;
+     margin-left: 22%;
+
+
+}
+
+ .button-footer:hover {
+     box-shadow: 0 0 5px #ffffff, 0 0 30px #ffffff, 0 0 90px #8484f0;
+     transition: 0.5s ease-in-out;
+ }
+
+ .divs-c-l h3 {
+     padding-left: 30px;
+ }
+
+ @media(max-width:700px) {
+     footer {
+         font-size: 10px;
+         height: 100%;
+     }
+
+     footer div {
+         font-size: 10px;
+         height: 100px;
+         width: 110px;
+         float: left;
+        height: 100%;
+     }
+
+     .divs-c-s img {
+         margin-top: 1px;
+         margin-bottom: 1px;
+         height: 80px;
+         width: 120px;
+     }
+
+     .divs-c-s h4 {
+         color: #fff;
+         font-size: 10px;
+     }
+         svg {
+             margin-top: auto;
+             margin-bottom: -22.4%;
+         }
+    .button-footer{
+        font-size: 10px;
+            padding: 10px 15px;
+    }
+ }
+ .star-rating {
+     font-size: 0;
+    /* Remove whte space between inline-block elements */
+ }
+
+ .star {
+     font-size: 24px;
+     color: rgb(105, 109, 109);
+     color: #e6e6e6;
+     transition: color 0.2s ease;
+     cursor: pointer;
+ }
+
+ .star:hover,
+ .star.active {
+     color: #624972;
+     
+ }
+
+
+ .modal {
+    font-family: 'Montserrat', sans-serif;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(248, 167, 248, 0.24); 
+}
+
+
+.modal-content {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ad80bd;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 50px; 
+    box-shadow: 0 6px 10px rgba(88, 15, 90, 0.979); 
+    transition: box-shadow 1.9s ease-in-out; 
+}
+
+/* The Close Button */
+.close {
+    color: #030101;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Larger input fields */
+.modal-content select {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #a16ca3;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff; 
+    color: #0c010c; 
+    cursor: pointer; /* Change cursor to pointer when hovering over the dropdown */
+}
+.modal-content input[type="text"],
+.modal-content input[type="date"],
+.modal-content input[type="number"] {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #4f0852;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Style the input labels (names) */
+.modal-content label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: #4e0c4b;
+}
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .icon{
+    color:#624972;
+    font-size: 50px;
+  }
+
+  .addingt{
+    font-size: 50px;
+    box-sizing: border-box;
+    color: #4d1555;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration:none;
+  }
+  .delete-btn{
+    border:none;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    size:30px;
+    margin-top: 3%;
+    color: #4a054d;
+    size:8px;
+
+  }
+  </style>
+</head>
+
+<body>
+
+<section>
+    <nav class="sidebar">
+      <ul>
+        <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a class="" href="#">Log Out</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <label class="logo"><img src="edulink3.png" alt="" /></label>
+      <ul>
+        <li><a class="hideOnMobile" href="#">HOME</a></li>
+        <li><a class="hideOnMobile" href="#">about</a></li>
+        <li><a class="hideOnMobile" href="#">Contact</a></li>
+        <li><a class="hideOnMobile" href="#">Log Out</a></li>
+        <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+      </ul>
+    </nav>
+</section>
+    <section class="Tliste">
+        <h1>Teachers Section</h1>
+        <p>Discover Our Educators</p>
+        <hr>
+    
+        
+        <% teachers.forEach(function(teacher) { %>
+            <div class="teachers">
+                <ul>
+                    <li><i class="fa-solid fa-chalkboard-user icon"></i></li>
+                    <li><%= teacher.speciality %></li>
+                    <li><%= teacher.employment_t %> years of experience</li>
+                    <li>Age: <span class="teacher-age" data-birthdate="<%= teacher.birthdate_t %>"></span></li>
+                    <li><%= teacher.name_t %></li>
+                    <li><%= teacher.gender_t %></li>
+                    <li class="teacher">
+                        <div class="star-rating" data-rating="0">
+                            <span class="star" data-value="1">&#9733;</span>
+                            <span class="star" data-value="2">&#9733;</span>
+                            <span class="star" data-value="3">&#9733;</span>
+                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="star" data-value="5">&#9733;</span>
+                        </div>
+                    </li>
+                    <button class="delete-btn" data-teacher-id="<%= teacher.id_t %>" data-school-id="<%= schoolId %>">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </ul>
+            </div>
+        <% }); %>
+        
+    
+        
+        <button class="glow-on-hover" id="addTeacherButton">Add Teacher</button>
+
+
+<div id="addTeacherModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="addTeacherForm">
+       <p class ="addingt">Adding teacher:</p>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required readonly>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    </select>
+      <label for="birthdate">Birthdate:</label>
+      <input type="date" id="birthdate" name="birthdate" required>
+      <label for="employment">Years of Experience:</label>
+      <input type="number" id="employment" name="employment" required>
+      <label for="speciality">Speciality:</label>
+      <input type="text" id="speciality" name="speciality" required>
+      <button class ="glow-on-hover" type="submit">Add Teacher</button>
+    </form>
+  </div>
+</div>
+    
+    <svg width="100%" height="200" viewBox="0 0 1480 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 199.5C0 199.5 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V200H0V199.5Z" fill="#262653" fill-opacity="0.05"/>
+        <path d="M4.98315 199.568C4.98315 199.568 156.326 149.82 698.702 149.82C1241.08 149.82 1480 39 1480 39V200H4.98315V199.568Z" fill="#262653" fill-opacity="0.15"/>
+        <path d="M0 199.539C0 199.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V200H0V199.539Z" fill="#262653" fill-opacity="0.1"/>
+    </svg>
+</section>
+
+<footer class="footer">
+    <div class="divs-c-l"> 
+        <h3>OUR SERVICES</h3>
+        <ul>           
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Term Of Use</a></li>
+        </ul>
+    </div>
+
+    <div class="divs-c-s"> 
+        <img src="edulinklogo.png" alt="" />
+        <h4>your ultimate guide for educational excellence!</h4>
+        <button class="button-footer">JOIN US ></button>
+    </div>
+
+    <div class="icons">
+        <h3>CONTACT US</h3>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fa fa-envelope"></i>
+    </div>
+</footer>
+
+<script>
+
+    console.log("ya rabi")
+function showSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.style.display = 'flex';
+}
+
+// Hide sidebar function
+function hideSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const addTeacherButton = document.getElementById('addTeacherButton');
+    const addTeacherModal = document.getElementById('addTeacherModal');
+    const closeButton = document.querySelector('#addTeacherModal .close');
+    const addTeacherForm = document.getElementById('addTeacherForm');
+
+    // Function to open the modal
+    function openModal() {
+        addTeacherModal.style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        addTeacherModal.style.display = 'none';
+    }
+
+    // Event listener for modal trigger button
+    if (addTeacherButton) {
+        addTeacherButton.addEventListener('click', openModal);
+    }
+
+    // Event listener for close button
+    if (closeButton) {
+        closeButton.addEventListener('click', closeModal);
+    }
+
+    // Event listener for form submission
+    if (addTeacherForm) {
+        addTeacherForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const formData = new FormData(addTeacherForm);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            // Send form data to server
+            try {
+                const schoolId = window.location.pathname.split('/')[2];
+                const response = await fetch(`/schools/${schoolId}/teachers`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formObject)
+                });
+                if (response.ok) {
+                    window.location.reload();
+                    
+                } else {
+                    throw new Error('Failed to add teacher');
+                }
+            } catch (error) {
+                console.error('Error adding new teacher:', error);
+                // Handle error
+            }
+        });
+    }
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const teacherAgeElements = document.querySelectorAll('.teacher-age');
+    
+    teacherAgeElements.forEach(function(element) {
+        const birthdate = element.dataset.birthdate;
+        const age = calculateAge(birthdate);
+        element.textContent = age;
+    });
+});
+
+// Function to calculate age based on birthdate
+function calculateAge(birthdate) {
+    const today = new Date();
+    const birthDate = new Date(birthdate);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const month = today.getMonth() - birthDate.getMonth();
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            const confirmation = confirm("Are you sure you want to delete this teacher?");
+            
+            if (confirmation) {
+                const teacherId = button.dataset.teacherId;
+                const schoolId = button.dataset.schoolId;
+                
+                try {
+                    const response = await fetch(`/schools/${schoolId}/teachers/delete/${teacherId}`, {
+                        method: 'POST',
+                    });
+                    
+                    if (response.ok) {
+                        // Remove the deleted teacher from the DOM
+                        button.closest('.teachers').remove();
+                    } else {
+                        throw new Error('Failed to delete teacher');
+                    }
+                } catch (error) {
+                    console.error('Error deleting teacher:', error);
+                    // Handle error
+                }
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
