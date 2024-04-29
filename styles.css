@@ -9,7 +9,53 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+}
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Adjust as needed */
+    overflow: hidden;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 75%;
+}
+.location-pin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    animation: bounce 2s infinite alternate, fade 3s infinite alternate;
+}
+
+.pin1 { top: 30%; left: 20%; }
+.pin2 { top: 60%; left: 50%; }
+.pin3 { top: 40%; left: 80%; }
+.pin4 { top: 20%; left: 70%; }
+.pin5 { top: 70%; left: 30%; }
+.pin6 { top: 50%; left: 10%; }
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+@keyframes fade {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 nav {
     margin-top: 0;
@@ -111,55 +157,95 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: transform 0.5s ease;
+
 }
 svg{
     margin-top: auto;
     margin-bottom: -1.6%;
     margin-left: -10vw;
+    animation: CSSreveal ease-in-out both;
+    animation-timeline: view() ;
+    animation-range: entry 70% cover 70%;/* not sure*/
+}
+#svg1{
+    z-index: 100;
+}
+#svg2{
+    margin-top: -10vw;
+    margin-right: -15vw;
 }
 .start-button {
-    background-color: #ecdffb;
+    background-color: #e7d8f8;
     color: #7d3ec6;
     padding: 10px 20px;
-    border: solid #7a36a40b;
+    border: solid #8f59b05c;
     border-radius: 15px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom: -1%;
-    margin-top: 5%;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     display: inline-block;
     text-align: center;
+    z-index: 2;
+margin-top: 5vw;
+margin-bottom: -6vw;
 }
 
 .start-button:hover {
     background-color: #7d3ec6;
     color: #ecdffb;
-   
+   z-index: 2;
 }
-p{
-    margin-top: 5%;
+#p1{
+    margin-top: 9%;
+    margin-bottom: 30px;
+    z-index: 2;
+    font-size: 3em;
+  font-weight: bold;
+  display: block;
+  white-space: nowrap;
+  background: radial-gradient(circle, rgb(51, 10, 71), rgb(156, 167, 232));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: bounce 5s infinite alternate;
 }
+#p1::before {
+    content: "EDUlink, Your Ultimate Guide";
+    display: block;
+  }
+  
+  #p1::after {
+    content: "for Educational Excellence";
+    display: block;
+    margin-left: 2vw;
+  }
 #logo1{ 
-    margin-top: 5%;
-    width: 15cm;
+    margin-top: -8%;
+    width: 10cm;
     height: 5cm;
+    opacity: 0%;
+
 }
 .how-it-works{
     margin-top: 0; 
    height: 100% ;
-   background: linear-gradient(to bottom, #E9D7FF, #ffffff);
+   background: linear-gradient(to bottom, #D6CDF9, #ffffff);
+   transition: transform 0.5s ease;
+   position: relative;
 }
 .how-it-works .section-title {
     text-align: center;
     margin-top: 0;
     color: #000000;
+    z-index: 100;
 }
 .how-it-works .content {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 
 .how-it-works .video {
@@ -170,11 +256,13 @@ p{
 }
 
 .how-it-works .text {
-    width: 50%;
+    width: 80%;
 }
 
 .how-it-works .text p {
-    margin-bottom: 20px;
+    margin-top: 200px;
+    margin-left: 35vw;
+
 }
 
 .how-it-works .learn-more {
@@ -197,14 +285,15 @@ p{
    padding: 0;
     height: auto;
  position: relative;
-  overflow: hidden; 
   background: linear-gradient(to bottom, #C7CBE1, #ffffff);
+  transition: transform 0.5s ease;
 }
 .find-best.section-title{
     text-align: center;
     margin-top: 20px;
     margin-bottom: 2rem; 
     color: #000000;
+    z-index: 100;
 }
 .find-best-image {
     width: 100%; 
@@ -253,11 +342,13 @@ p{
 }
 
 .student-feedback {
+    position: relative;
     padding: 20px;
     margin-top:0px;
     width: 100%;
     border-radius: 0;
     padding-top: 50px;
+    transition: transform 0.5s ease;
 }
 
 .student-feedback .section-title {
@@ -265,32 +356,49 @@ p{
     margin-top: 20px;
     margin-bottom: 2rem;
     color: #000000;
+    z-index: 100;
 }
 
 .student-feedback .feedback-content {
-    display: flex;
-    align-items: center;
+    align-items: right;
     margin-bottom: 20px;
+
+    
 }
 
 .student-feedback .student-picture {
-    flex: 0 0 auto;
-    margin-right: 30%;
-    margin-left: 10%;
+    margin-left: 3vw;
 }
 
 .student-feedback .student-picture img {
-    width: 100px;
-    height: auto;
-    border-radius: 50%;
+ width: auto;
+ height: 380px;
+ background-size: cover;
+ background-position: center center;
+ margin: 20px;
+ box-shadow: 0 5px 5px 5px rgba(13, 110, 253, 0.3);
+ animation: animate 5s ease-in-out infinite;
+ transition: all 1s ease-in-out;
+}
+
+@keyframes animate {
+    0%, 100% {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50%  60% 30% 60%;
+    }
 }
 
 .student-feedback .feedback-text {
-    flex: 1;
+    margin-left: 5vw;
+    width: 1000px;
 }
 
 .student-feedback .feedback-text p {
     margin-bottom: 10px;
+    margin-left: 40vw;
+    margin-top: -22vw;
 }
 
 .student-feedback .view-details-button {
@@ -303,7 +411,7 @@ p{
     transition: background-color 0.3s;
     margin-top: 20px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-
+    margin-left: 40vw;
 }
 
 .student-feedback .view-details-button:hover {
@@ -311,15 +419,30 @@ p{
 }
 
 .student-feedback .related-pictures {
-    display: flex;
     justify-content: space-between;
     margin-left:40%;
+    
 }
 
 .student-feedback .related-pictures img {
     width: 100px;
     height: auto;
-    margin-top: 20px;
+    margin-top: 2px;
+    margin-right: 2vw;
+    background-size: cover;
+    background-position: center center;
+    box-shadow: 0 5px 5px 5px rgba(13, 110, 253, 0.3);
+    animation: animate 5s ease-in-out infinite;
+    transition: all 1s ease-in-out;
+}
+#std1 {
+    box-shadow: 0 5px 5px 5px rgba(119, 137, 219, 0.533);
+}
+#std3 {
+    box-shadow: 0 5px 5px 5px rgba(21, 14, 88, 0.533);
+}
+#std2 {
+    box-shadow: 0 5px 5px 5px rgba(219, 147, 220, 0.533);
 }
 
 .popular-school {
@@ -328,15 +451,17 @@ p{
     width: 100%;
     height: auto;
     border-radius: 0px;
-    background: linear-gradient(to bottom, #EFE9F6, #ffffff);
+    background: linear-gradient(to bottom, #EDE6F4, #ffffff);
     margin-bottom: 0px;
     margin-top: -1vw;
+    transition: transform 0.5s ease;
 }
 .popular-school .section-title {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 2rem; 
     color: #333;
+    z-index: 100;
 }
 
 .school-container {
@@ -363,6 +488,8 @@ p{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: transform 0.5s ease;
+
 }
 
 .school img {
@@ -437,4 +564,192 @@ p{
     opacity: 1;
 }
 
+@keyframes CSSreveal {
+    from {
+        opacity: 0.9;
+        transform: translateY(100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }}
+.reveal{
+    animation: CSSreveal ease-in-out both;
+    animation-timeline: view() ;
+    animation-range: entry 0% cover 50%;
+}
 
+.student-picture-img, .related-pictures img {
+    transition: all 0.5s ease;
+}
+
+.related-pictures img:hover {
+    transform: scale(1.1);
+}
+
+.footer {
+    border:none;
+    height: 23vw;
+    padding: 20px;
+    background: linear-gradient(to bottom,#DADDEB,#8d97c6);
+}
+.footer {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 30px 0;
+}
+
+ .footer h3 {
+     color: #070F2B;
+     margin-bottom: 25px;
+     margin-top: 20px;
+     font-weight: 600;
+ }
+
+ .icons .fab {
+     color: #070F2B;
+     margin: 0 13px;
+     cursor: pointer;
+     padding: 20px 0;
+     font-size: 20px;
+ }
+ .icons .fa {
+     color: #070F2B;
+     margin: 0 13px;
+     cursor: pointer;
+     padding: 20px 0;
+     font-size: 20px;
+ }
+
+ .divs-c-s img {
+     margin-top: 1px;
+     margin-bottom: 1px;
+     margin-left: 30%;
+    height: 10vw;
+    width: 20vw;
+ }
+
+ .divs-c-s h4 {
+     color: #070F2B;
+     margin-left: 22%;
+
+ }
+
+ footer div {
+     height: 100%;
+     width: 400px;
+     float: left;
+
+ }
+
+ .divs-c-l ul li {
+     list-style: none;
+     margin-bottom: 12px;
+     color: #070F2B;
+
+ }
+
+ .divs-c-l ul li a {
+     text-decoration: none;
+     color: #070F2B;
+ }
+
+ .divs-c-l {
+
+     top: 0;
+     left: 0px;
+     padding-left: 10px;
+ }
+
+
+ .button-footer {
+     background-color: #ffffff;
+     color: #b37fde;
+     font-size: 12px;
+     padding: 15px 45px;
+     border: 3px #b37fde groove;
+     border-radius: 23px;
+     font-weight: 600;
+     letter-spacing: 0.5px;
+     text-transform: uppercase;
+     margin-top: 30px;
+     cursor: pointer;
+     -webkit-border-radius: 23px;
+     -moz-border-radius: 23px;
+     -ms-border-radius: 23px;
+     -o-border-radius: 23px;
+     margin-left: 22%;
+
+
+}
+
+ .button-footer:hover {
+     box-shadow: 0 0 5px #ffffff, 0 0 30px #ffffff, 0 0 90px #8484f0;
+     transition: 0.5s ease-in-out;
+ }
+
+ .divs-c-l h3 {
+     padding-left: 30px;
+ }
+
+ @media(max-width:700px) {
+     footer {
+         font-size: 10px;
+         height: 100%;
+     }
+
+     footer div {
+         font-size: 10px;
+         height: 100px;
+         width: 110px;
+         float: left;
+        height: 100%;
+     }
+
+     .divs-c-s img {
+         margin-top: 1px;
+         margin-bottom: 1px;
+         height: 80px;
+         width: 120px;
+     }
+
+     .divs-c-s h4 {
+         color: #fff;
+         font-size: 10px;
+     }
+         svg {
+             margin-top: auto;
+             margin-bottom: -22.4%;
+         }
+    .button-footer{
+        font-size: 10px;
+            padding: 10px 15px;
+    }
+ }
+
+ .video2{
+    width: 50%;
+    height: 50vh;
+    position: absolute; /* Required for left property to work */
+    left: -10%; /* Adjust the value as needed to move it to the left */
+    top: 100%; /* Keep it centered vertically */
+    transform: translateY(-50%); /* Center it vertically */
+    margin-top: 0vw;
+    margin-bottom: -20vw;
+    margin-left: 5vw;
+}
+.video2 video{
+    box-shadow: 0 5px 5px 5px rgba(163, 107, 195, 0.578);
+    animation: animate2 5s ease-in-out infinite;
+ transition: all 1s ease-in-out;
+ background-size: cover;
+}
+@keyframes animate2 {
+    0%, 100% {
+        border-radius: 20% 40% 30% 50%/60% 30% 50% 40%;
+    }
+    50% {
+        border-radius: 30% 20% 50% 40% / 50%  60% 30% 30%;
+    }
+}
