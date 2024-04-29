@@ -877,3 +877,210 @@ display: flex;
     background: #614972;
 }
 
+
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    width: 1200px; /* Match the width of the slider */
+    justify-content: center;
+    margin-top: 585px; /* Adjust the top margin to align with the bottom of the slider */
+}
+.navigation-auto div{
+    border: 2px solid #614972;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+.navigation-auto div:not(:last-child){
+    margin-right: 40px;
+
+}
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background: #614972;
+}
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background: #614972;
+}
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background: #614972;
+}
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background: #614972;
+}
+=======
+>>>>>>> 29cc42d94cc5f363ba0d3dcf5191b8280e21831d
+
+.student-picture-img, .related-pictures img {
+    transition: all 0.5s ease;
+}
+
+.related-pictures img:hover {
+    transform: scale(1.1);
+}
+
+.footer {
+    border:none;
+    height: 23vw;
+    padding: 20px;
+    background: linear-gradient(to bottom,#DADDEB,#8d97c6);
+}
+.footer {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 30px 0;
+}
+
+ .footer h3 {
+     color: #070F2B;
+     margin-bottom: 25px;
+     margin-top: 20px;
+     font-weight: 600;
+ }
+
+ .icons .fab {
+     color: #070F2B;
+     margin: 0 13px;
+     cursor: pointer;
+     padding: 20px 0;
+     font-size: 20px;
+ }
+ .icons .fa {
+     color: #070F2B;
+     margin: 0 13px;
+     cursor: pointer;
+     padding: 20px 0;
+     font-size: 20px;
+ }
+
+ .divs-c-s img {
+     margin-top: 1px;
+     margin-bottom: 1px;
+     margin-left: 30%;
+    height: 10vw;
+    width: 20vw;
+ }
+
+ .divs-c-s h4 {
+     color: #070F2B;
+     margin-left: 22%;
+
+ }
+
+ footer div {
+     height: 100%;
+     width: 400px;
+     float: left;
+
+ }
+
+ .divs-c-l ul li {
+     list-style: none;
+     margin-bottom: 12px;
+     color: #070F2B;
+
+ }
+
+ .divs-c-l ul li a {
+     text-decoration: none;
+     color: #070F2B;
+ }
+
+ .divs-c-l {
+
+     top: 0;
+     left: 0px;
+     padding-left: 10px;
+ }
+
+
+ .button-footer {
+     background-color: #ffffff;
+     color: #b37fde;
+     font-size: 12px;
+     padding: 15px 45px;
+     border: 3px #b37fde groove;
+     border-radius: 23px;
+     font-weight: 600;
+     letter-spacing: 0.5px;
+     text-transform: uppercase;
+     margin-top: 30px;
+     cursor: pointer;
+     -webkit-border-radius: 23px;
+     -moz-border-radius: 23px;
+     -ms-border-radius: 23px;
+     -o-border-radius: 23px;
+     margin-left: 22%;
+
+
+}
+
+ .button-footer:hover {
+     box-shadow: 0 0 5px #ffffff, 0 0 30px #ffffff, 0 0 90px #8484f0;
+     transition: 0.5s ease-in-out;
+ }
+
+ .divs-c-l h3 {
+     padding-left: 30px;
+ }
+
+ @media(max-width:700px) {
+     footer {
+         font-size: 10px;
+         height: 100%;
+     }
+
+     footer div {
+         font-size: 10px;
+         height: 100px;
+         width: 110px;
+         float: left;
+        height: 100%;
+     }
+
+     .divs-c-s img {
+         margin-top: 1px;
+         margin-bottom: 1px;
+         height: 80px;
+         width: 120px;
+     }
+
+     .divs-c-s h4 {
+         color: #fff;
+         font-size: 10px;
+     }
+         svg {
+             margin-top: auto;
+             margin-bottom: -22.4%;
+         }
+    .button-footer{
+        font-size: 10px;
+            padding: 10px 15px;
+    }
+ }
+
+ .video2{
+    width: 50%;
+    height: 50vh;
+    position: absolute; /* Required for left property to work */
+    left: -10%; /* Adjust the value as needed to move it to the left */
+    top: 100%; /* Keep it centered vertically */
+    transform: translateY(-50%); /* Center it vertically */
+    margin-top: 0vw;
+    margin-bottom: -20vw;
+    margin-left: 5vw;
+}
+.video2 video{
+    box-shadow: 0 5px 5px 5px rgba(163, 107, 195, 0.578);
+    animation: animate2 5s ease-in-out infinite;
+ transition: all 1s ease-in-out;
+ background-size: cover;
+}
+@keyframes animate2 {
+    0%, 100% {
+        border-radius: 20% 40% 30% 50%/60% 30% 50% 40%;
+    }
+    50% {
+        border-radius: 30% 20% 50% 40% / 50%  60% 30% 30%;
+    }
+}

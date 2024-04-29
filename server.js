@@ -1,23 +1,37 @@
 import express from "express";
 import bcrypt from 'bcrypt';
-import {getStudent, insertNewStudent,getStudentByEmail  , getSchoolByState} from './database.js';
+import {getStudent, insertNewStudent,getStudentByEmail  , getSchoolByState, insertSubject} from './database.js';
 import pool from './connection.js'; 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from 'path';
 import session from 'express-session';
-import passport from 'passport';
-
+import passport from './auth.js';
 import.meta.url;
+import bodyParser from "body-parser";
+import ejs, { name } from 'ejs';
+
 const app = express();
 const PORT = 3000 || process.env.PORT;
 //middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+//app.use(express.urlencoded({ extended: true }));
 // Serve static files from the same directory as server.js
 const publicPath = path.resolve(__dirname);
 app.use(express.static(publicPath));
+app.use(express.static(__dirname + '/public'));
+app.set('views', [
+  path.join(__dirname, 'views'),
+  path.join(__dirname, 'signin'),
+  path.join(__dirname, 'projet-p')
+]);
+
+app.set('view engine', 'ejs');
+
 // adding session 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -25,13 +39,12 @@ app.use(session({
   saveUninitialized : false,
   //cookie??
 }));
-
+app.use(passport.initialize());
+app.use(passport.session());
+ const router = express.Router();
 // using express-falsh for flash messages 
 
 // Route for serving the student registration HTML file
-/*app.get("/student_regist.html", (req, res) => {
-  res.sendFile(path.join(publicPath, "student_regist.html"));
-});*/
 // ___________________<3________________________
 // get /student route ?!
 app.get("/student", async(req, res) => {
@@ -56,6 +69,7 @@ app.get("/school" , async(req, res) => {
      res.status(500).send("Error retreiving School.");
   }
 })
+
 // User registration 
 app.post("/student/register",checkNotAuthenticated, async (req, res) => {
     try {
@@ -65,63 +79,145 @@ app.post("/student/register",checkNotAuthenticated, async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, salt);
   
       const insertedId = await insertNewStudent(pool, name, email, gender, birthdate, hashedPassword); // Pass additional data
-       
+      req.session.user = {
+        email: email,
+        name : name
+    };
      //res.status(201).send("User created successfully!");
-      console.log(name);
-      res.redirect("/student/login");
-      console.log(insertedId);
+     //console.log(`User ${name} registered successfully `);
+      res.redirect("/student/homepage");
+      
     } catch (error) {
       console.error(error);
      // res.status(400).send("An error occurred during user registration."); 
       res.redirect("/student/register")
     }
+    
   });
   
   // User login 
   app.post("/student/login",checkNotAuthenticated, async (req, res) => {
     try {
       const { email, password } = req.body;
+    
       if (!email || !password) {
         return res.status(400).send("Missing Password or email, both are required!");
       }
   
       const student = await getStudentByEmail(pool, email);
-      if (!student) {
+    
+      if (!student || student.length === 0) {
         return res.status(401).send("Invalid credentials."); // Avoid revealing non-existence
       }
       const isPasswordValid = await bcrypt.compare(password, student[0].password_s);
   
       if (!isPasswordValid) {
         return res.status(401).send("Invalid credentials , password invalid."); // Avoid revealing specific details
-      }
-      req.session.user = {
-        email: student[0].email, // or any other user data you want to store
-        // You can add more user data here if needed
+      }req.session.user = {
+        email: student[0].email_s,
+        name : student[0].name_s
     };
-
     // Redirect to homepage after successful login
-    //res.redirect("/");
-    console.log(req.session.user)
-      // Login successful (optional: generate session token , will be reconsiderated later!!)
-     res.status(200).send( {message: "Login successful!"});
+    res.redirect("/student/homepage");
     }catch (error) {
       console.error(error);
-     // res.status(500).send("Internal server error.");
       res.redirect("/student/login");
     }
   });  
- //routes
+  //google authentication
+ // Route for Google authentication
+app.get('/auth/google',
+passport.authenticate('google', { scope: ['profile', 'email'] })
+);
 
- app.get('/', checkAuthenticated, (req, res) => {
-  res.render("index.html", {name: req.user.name}, { root: __dirname })
-  
-})
- app.get('/student/login', checkNotAuthenticated, (req, res) => {
-  res.sendFile('index.html', { root: __dirname });
+// Callback route after Google authentication
+app.get('/auth/google/callback',
+passport.authenticate('google', { failureRedirect: '/student/login' }),
+(req, res) => {
+  req.session.user = {
+    id: req.user.id,
+    name: req.user.name
+  };
+  res.redirect('/student/homepage');
+});
+//facebook authentication
+app.get('/auth/facebook',
+passport.authenticate('facebook', { scope: ['profile', 'email'] })
+);
+
+// Callback route after Facebook authentication
+app.get('/auth/facebook/callback',
+passport.authenticate('facebook', { failureRedirect: '/student/login' }),
+(req, res) => {
+  // Successful authentication
+  req.session.user = {
+    id: req.user.id,
+    name: req.user.name
+  };
+  res.redirect('/student/homepage');
 });
 
+//LinkedIn authentication
+app.get('/auth/linkedin',
+passport.authenticate('linkedin', { scope: ['profile', 'email'] })
+);
+
+// Callback route after LinkedIn authentication
+app.get('/auth/linkedin/callback',
+passport.authenticate('linkedin', { failureRedirect: '/student/login' }),
+(req, res) => {
+  // Successful authentication
+  req.session.user = {
+    id: req.user.id,
+    name: req.user.name
+  };
+  res.redirect('/student/homepage');
+});
+//student registration to school
+app.post('/school/enroll', checkAuthenticated, async (req, res) => {
+  const subject = req.body.subject;
+  const student = req.session.user.name;
+  const school = req.body.name;
+  try {
+    if(subject){
+      const result = await insertSubject(pool, subject, student, school);
+    }else(res.send("Your enrollement attempt was unsuccessful "))
+    if(result === 1){
+      req.session.user = {
+        email: student[0].email_s,
+        name : student[0].name_s
+    };
+      res.redirect('/student/homepage');
+    }else{
+      res.send("unfortunately , your enrollement wasn't successful.")
+    }
+  } catch (error) {
+    console.error(error)
+    res.status(500).send("Internal Server Error");
+  }
+ 
+})
+//logout
+app.get('/logout', (req, res) => {
+  req.session.destroy(); // Destroy the session obv
+  res.redirect('/');
+});
+
+  //routes
+ app.get('/', checkAuthenticated, (req, res) => {
+  res.sendFile('index.html', { root: __dirname});
+});
+app.get('/student/homepage', checkAuthenticated, (req, res) => {
+  res.render('student_search', { studentName: req.session.user.name });
+});
+app.get('/student/login', checkNotAuthenticated, (req, res) => {
+  res.render('index');
+});
 app.get('/student/register', checkNotAuthenticated, (req, res) => {
-  res.sendFile('index.html', { root: __dirname }); 
+  res.render('index'); 
+});
+app.get('/school/enroll', checkAuthenticated, (req, res) => {
+  res.render('ecole-profile')
 });
 
 // function to check authentication

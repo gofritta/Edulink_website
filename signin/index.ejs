@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>login page / animated</title>
-    <link rel="stylesheet" href="sign.css" />
+    <link rel="stylesheet" href="/signin/sign.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -19,14 +19,16 @@
         <li><a class="sidebarr" href="#">HOME</a></li>
         <li><a class="sidebarr" href="#">about</a></li>
         <li><a class="sidebarr" href="/teachers section/index.html">Contact</a></li>
+        <li><a class="sidebarr" href="/sing in page/index.html">Join Us</a></li>
       </ul>
     </nav>
     <nav>
-      <label class="logo"><img src="edulink3.png" alt="" /></label>
+      <label class="logo"><img src="/signin/edulink3.png" alt="" /></label>
       <ul>
         <li><a class="hideOnMobile"  href="#">HOME</a></li>
         <li><a class="hideOnMobile" href="#">about</a></li>
         <li><a  class="hideOnMobile" href="">Contact</a></li>
+        <li><a class="hideOnMobile " href="">Join Us</a></li>
         <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
       </ul>
     </nav>
@@ -35,18 +37,18 @@
  
     <div class="container" id="container">
       <div class="form-container sign-up">
-        <form id="signup-form">
+        <form id="signup-form" action="/student/register" method="POST">
           <h1>Creat Account</h1>
           <div class="social-icons">
-            <a href="" class="icon"><i class="fa-brands fa-google"></i></a>
-            <a href="" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="/auth/google"  id="google-auth-btn" class="icon"><i class="fa-brands fa-google"></i></a>
+            <a href="/auth/facebook" id="facebook-auth-btn"-auth-btn" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="/auth/linkedin" id="linked-auth-btn" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
           <span> use your email for registation</span>
 
           <input type="text" placeholder="Name" id="name" name="name" pattern="[A-Za-z ]+" title="Please enter only alphabetic characters" maxlength="50" required />
           <input type="email" placeholder="Email"  id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address" required/>
-          <input type="password" placeholder="Password" required/>
+          <input type="password" placeholder="Password"  id="password_signup" name="password" required/>
           <input type="date"  id="birthdate" name="birthdate" pattern="" required/>
           <label for="gender">Gender:</label>
           <select id="gender" name="gender" required>
@@ -61,17 +63,18 @@
       </div>
 
       <div class="form-container sign-in">
-        <form id="login-form">
+        <form id="login-form" action="/student/login" method="POST">
+          
           <h1>Log In</h1>
           <div class="social-icons">
-            <a href=" " class="icon"><i class="fa-brands fa-google"></i></a>
-            <a href=" " class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href=" " class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="/auth/google" id="google-auth-btn" class="icon"><i class="fa-brands fa-google"></i></a>
+            <a href="/auth/facebook" id="facebook-auth-btn" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="/auth/linkedin" id="linked-auth-btn" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
           <span> use your e-mail </span>
 
-          <input type="email" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address" required/>
-          <input type="password" placeholder="Password" />
+          <input type="email"  name="email" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address" required/>
+          <input type="password" placeholder="Password"  id="password_login" name="password" required/>
           <a href=" ">Forget your Password?</a>
           <button type="submit" class="hiddenn">Log In ></button>
         </form>
@@ -96,7 +99,7 @@
       </div>
     </div>
   
-    <script src="script.js">
+    <script src="/signin/script.js">
 
   const signupForm = document.getElementById('signup-form');
   const loginForm = document.getElementById('login-form');
@@ -106,10 +109,10 @@
   signupForm.addEventListener('submit', function(event) {
     event.preventDefault();
     const formData = new FormData(this);// Automatically collects data from all form fields
-
+    formData.append('password', this.querySelector('#password_signup').value)
     // Perform the fetch request with the FormData object containing all input values:
 
-    fetch('/student/register', {
+    fetch('https://localhost:3000/student/register', {
       method: 'POST',
       body: formData
     })
@@ -127,7 +130,8 @@
   loginForm.addEventListener('submit', function(event) {
     event.preventDefault();
     const formData = new FormData(this);  // Collect data from all inputs in the form
-    fetch('/student/login', {
+    formData.append('password', this.querySelector('#password_login').value)
+    fetch('https://localhost:3000/student/login', {
       method: 'POST',
       body: formData
     })
@@ -138,12 +142,30 @@
     })
     .catch(error => console.error('Error:', error));
   });
+  // Get the Google authentication button element
+  const googleAuthBtn = document.getElementById('google-auth-btn');
 
-     
+  // Add click event listener to the Google authentication button
+  googleAuthBtn.addEventListener('click', function() {
+    // Redirect the user to /auth/google
+    window.location.href = '/auth/google';
+  });
+  //Get the Facebook authentication button element
+  const facebookAuthBtn = document.getElementById('facebook-auth-btn');
 
+  // Add click event listener to the Facebook authentication button
+  facebookAuthBtn.addEventListener('click', function() {
+    // Redirect the user to /auth/facebook
+    window.location.href = '/auth/facebook';
+  });
+  //Get the linkedin authentication button element
+  const linkedinAuthBtn = document.getElementById('linkedin-auth-btn');
 
-
-
+  // Add click event listener to the Facebook authentication button
+  linkedinAuthBtn.addEventListener('click', function() {
+    // Redirect the user to /auth/facebook
+    window.location.href = '/auth/linkedin';
+  });
     </script>
   </body>
 </html>

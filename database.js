@@ -34,12 +34,27 @@ async function insertNewStudent(pool, name, email, gender, birthdate, hashedPass
         `INSERT INTO student(name_s, email_s, gender_s, birthdate_s, password_s) VALUES(?, ?, ?, ?, ?)`,
         [name, email, gender, birthdate, hashedPassword]
       );
-      return result.insertId;
+      return result[0].insertId;
     } catch (error) {
       console.error('Error inserting student:', error);
       throw error; // Re-throw for handling in server.js
     }
   }
+async function insertSubject(pool, subject, student, school){
+  try {
+    const result = await pool.query(
+    `INSERT INTO inscription (student_id, school_id, subject)
+    VALUES (
+    (SELECT id_s FROM student WHERE name_s = ?), 
+    (SELECT id_sch FROM school WHERE name_sch= ?), 
+    ?) `,[student, school, subject]
+);
+    return result[0].affectedRows
+  } catch (error) {
+    console.error(`Could not enroll ${student} in ${subject} subject.`);
+    throw error
+  }
+}
   
 // gets specific students using their id
 
@@ -75,20 +90,4 @@ async function insertNewStudent(pool, name, email, gender, birthdate, hashedPass
         throw error; ;
     }
 }
-// some testing displaying 
-/* const resultOfInsertion = await insertNewStudent('Djalil Palermo' , 'male', '2000-08-31', 'djalilLaClasse@gmail.com', 'may7ebonach');
-console.log(resultOfInsertion);
-Promise.all(getStudent())
-.then((result1 )=> {
-    console.log(result1); // Log the result returned by the query
-  console.log(result2);
-    console.log(value);
-   // con.end();
-//}).catch(error => {
-   /* console.error('Error:', error);
-    con.end();
-})
-const result = await getStudentByEmail(pool , "tfmtourifiga@gmail.com");
-console.log(result);*/
-export {getStudent, getSchool, getSchoolByState, getStudentID, insertNewStudent, getStudentByEmail};
-
+export {getStudent, getSchool, getSchoolByState, getStudentID, insertNewStudent, getStudentByEmail, insertSubject};

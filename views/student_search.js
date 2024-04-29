@@ -74,6 +74,12 @@ const InfiniteScroll = () => {
     clearTimeout(timeoutId);
     if (!wrapper.matches(":hover")) autoPlay();
 }
+function autoPlay() {
+    timeoutId = setTimeout(() => {
+        carousel.scrollLeft += firstCardWidth;
+        autoPlay();
+    }, 3000); // Adjust the delay as needed
+}
 
 carousel.addEventListener("mousedown", dragStart);
 carousel.addEventListener("mousemove", dragging);
