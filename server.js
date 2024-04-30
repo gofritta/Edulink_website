@@ -446,6 +446,39 @@ app.post('/comments/comment/delete/:schoolId', async (req, res) => {
 });
 
 
+/********************commets ta3 school***************************************** */
+app.get('/comments/school/:schoolId', async (req, res) => {
+  try {
+      const { schoolId } = req.params;
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query(`
+      SELECT 
+      r.*,
+      s.name_s AS user_name,
+      COUNT(l.like_id) AS likes_count,
+      CASE WHEN MAX(l.like_id) IS NOT NULL THEN true ELSE false END AS is_liked_by_current_user
+  FROM 
+      review r 
+  INNER JOIN 
+      student s ON r.id_s = s.id_s
+  LEFT JOIN 
+      likes l ON r.comment_id = l.comment_id
+  WHERE 
+      r.school_id = ?
+  GROUP BY 
+      r.comment_id, 
+      s.name_s, 
+      r.comment_text, 
+      r.comment_date
+      `, [schoolId]);
+      connection.release();
+      res.render('comment_school', { reviews: rows, schoolId: schoolId });
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
 
 /***************************************************************************************************88 */
 app.listen(PORT, (error) =>{ 

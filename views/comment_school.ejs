@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Comment Section</title>
+    <style>
+        body {
+            background-color: #f0e6f2; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #4b0082; 
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4b0082;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            
+        }
+
+        button:hover {
+            background-color: #6a5acd; 
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff; 
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+
+        .user-info {
+            color: #4b0082; 
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .comment-text {
+
+            margin-bottom: 10px;
+        }
+
+        .likes{
+
+          font-size: x-small;
+        }
+        .date {
+            font-size:x-small;
+            color: #808080; 
+        }
+
+        .like-btn {
+    cursor: pointer;
+    color: #aaa; 
+      }
+
+      .like-btn.active {
+    color: rgba(213, 12, 12, 0.811) 
+      }
+
+
+
+    </style>
+</head>
+<body>
+   
+  <body>
+    <h2>Comments</h2>
+    <ul>
+        <% reviews.forEach(review => { %>
+            <li id="comment_<%= review.comment_id %>">
+                <div class="user-info">
+                    <%= review.user_name %>
+                    <span class="date">(<%= review.comment_date %>)</span>
+                </div>
+                <div class="comment-text"><%= review.comment_text %></div>
+                <div class="likes">Likes: <span id="likes_<%= review.comment_id %>"><%= review.likes_count %></span></div>
+            </li>
+        <% }) %>
+    </ul>
+    <script>
+     document.addEventListener('DOMContentLoaded', () => {
+    // Event listener for like buttons
+    document.querySelectorAll('.like-btn').forEach(button => {
+        const commentId = button.dataset.commentId;
+
+        // Restore the state of liked buttons from local storage
+        const isLiked = localStorage.getItem(`liked_${commentId}`);
+        if (isLiked === 'true') {
+            button.classList.add('active');
+        }
+
+        // Event listener for click on like button
+        button.addEventListener('click', async () => {
+            const schoolId = '<%= schoolId %>'; // Pass the schoolId from the server-side template
+            if (!button.classList.contains('active')) {
+                try {
+                    const response = await fetch(`/comments/like/${schoolId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ comment_id: commentId })
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        const likesCount = document.getElementById(`likes_${commentId}`);
+                        likesCount.textContent = parseInt(likesCount.textContent) + 1;
+                        button.classList.add('active');
+                        localStorage.setItem(`liked_${commentId}`, 'true');
+                    } else {
+                        console.error(data.error);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
