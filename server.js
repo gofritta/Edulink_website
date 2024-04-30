@@ -99,7 +99,9 @@ app.post("/student/register",checkNotAuthenticated, async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, salt);
   
       const insertedId = await insertNewStudent(pool, name, email, gender, birthdate, hashedPassword); // Pass additional data
+      const insertedStudent = await getStudentByEmail(pool, email);
       req.session.user = {
+        id: insertedStudent[0].id_s,
         email: email,
         name : name
     };
@@ -134,9 +136,11 @@ app.post("/student/register",checkNotAuthenticated, async (req, res) => {
       if (!isPasswordValid) {
         return res.status(401).send("Invalid credentials , password invalid."); // Avoid revealing specific details
       }req.session.user = {
+        id: student[0].id_s, // bach nasta3malha f l code lta7t 
         email: student[0].email_s,
         name : student[0].name_s
     };
+    console.log(req.session.user.id); // Check id_s wila t3amrat fih 
     // Redirect to homepage after successful login
     res.redirect("/student/homepage");
     }catch (error) {
@@ -343,8 +347,103 @@ app.get('/student/:schoolId/teachers', async (req, res) => {
   }
 });
 
+/**************************************comments*********************************************** */
 
 
+
+app.get('/comments/:schoolId', async (req, res) => {
+  try {
+      const { schoolId } = req.params;
+      const connection = await pool.getConnection();
+      const userId = req.session.user.id ; 
+      const [rows] = await connection.query(`
+          SELECT r.*, s.name_s AS user_name,
+          CASE WHEN l.like_id IS NOT NULL THEN true ELSE false END AS is_liked_by_current_user
+          FROM review r 
+          INNER JOIN student s ON r.id_s = s.id_s
+          LEFT JOIN likes l ON r.comment_id = l.comment_id AND l.id_s = ?
+          WHERE r.school_id = ?
+      `, [userId, schoolId]); 
+      connection.release();
+      res.render('comment', { reviews: rows, schoolId: schoolId });
+    
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+app.post('/comments/:schoolId/comment', async (req, res) => {
+  const { comment } = req.body;
+  const { schoolId } = req.params;
+  try {
+     
+      const connection = await pool.getConnection();
+      await connection.query('INSERT INTO review (id_s, comment_text, comment_date, school_id) VALUES (?, ?, NOW(), ?)', [10, comment, schoolId]); // Assuming id_s is 1 for now
+      connection.release();
+      res.redirect(`/comments/${schoolId}`);
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+app.post('/comments/like/:schoolId', async (req, res) => {
+  const { comment_id } = req.body;
+  const { schoolId } = req.params;
+  const userId = req.session.user.id ; 
+
+  try {
+     
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query('SELECT * FROM likes WHERE comment_id = ? AND id_s = ?', [comment_id, userId]);
+      if (rows.length > 0) {
+          res.status(400).json({ success: false, error: 'You have already liked this comment' });
+          return;
+      }
+
+      
+      await connection.query('INSERT INTO likes (comment_id, id_s) VALUES (?, ?)', [comment_id, userId]);
+      await connection.query('UPDATE review SET likes_count = likes_count + 1 WHERE comment_id = ? AND school_id = ?', [comment_id, schoolId]);
+      connection.release();
+      res.json({ success: true });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, error: 'Failed to like the comment' });
+  }
+});
+
+app.post('/comments/comment/delete/:schoolId', async (req, res) => {
+  const { commentId } = req.body;
+  const userId =req.session.user.id; 
+  const { schoolId } = req.params;
+  try {
+      
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query('SELECT id_s, school_id FROM review WHERE comment_id = ?', [commentId]);
+      if (rows.length === 0) {
+          connection.release();
+          res.status(404).json({ success: false, error: 'Comment not found' });
+          return;
+      }
+      const commentAuthorId = rows[0].id_s;
+      const commentSchoolId = rows[0].school_id;
+      if (userId !== commentAuthorId ) {
+          connection.release();
+          res.status(403).json({ success: false, error: "huh is this your comment ? sorry but you can't delete this comment !" });
+          return;
+      }
+      
+      await connection.query('DELETE FROM likes WHERE comment_id = ?', [commentId]);
+      
+      await connection.query('DELETE FROM review WHERE comment_id = ?', [commentId]);
+      connection.release();
+      res.json({ success: true, message: 'Comment deleted successfully' });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, error: 'Failed to delete comment' });
+  }
+});
 
 
 
