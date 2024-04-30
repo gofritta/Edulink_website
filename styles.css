@@ -126,6 +126,16 @@ nav li:first-child {
     width: 100%;
 }
 
+.sticky {
+    position: relative;
+    transition: top 0.3s;
+}
+
+.sticky.sticky-active {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
 
 .menu-button {
     display: none;
@@ -149,7 +159,6 @@ html, body {
   }
 section {
     padding: 20px;
-    margin: -60px auto 0;
     width: 100%;
     background-color: #fff;
     border-radius: 0px;
@@ -167,6 +176,7 @@ svg{
     animation: CSSreveal ease-in-out both;
     animation-timeline: view() ;
     animation-range: entry 70% cover 70%;/* not sure*/
+    width: 200%;
 }
 #svg1{
     z-index: 200;
@@ -248,11 +258,12 @@ margin-bottom: -6vw;
     justify-content: space-around;
     align-items: center;
     position: relative;
+    width: 100%;
 }
 
-.how-it-works .video {
-    margin-left: -10%;
-    margin-top: 5%;
+.how-it-works .video2 {
+    margin-left: 12vw;
+    margin-top: -4%;
     margin-bottom: -4%;
    
 }
@@ -263,8 +274,14 @@ margin-bottom: -6vw;
 
 .how-it-works .text p {
     margin-top: 200px;
-    margin-left: 35vw;
+    margin-left: 45vw;
+    margin-right: -6vw;
+    font-weight: 500;
+    font-size: larger;
 
+}
+#how-svg{
+    margin-top: -2vw;
 }
 
 .how-it-works .learn-more {
@@ -284,11 +301,11 @@ margin-bottom: -6vw;
 }
 .find-best{
     margin-top: 0px; 
-   padding: 0;
     height: auto;
  position: relative;
   background: linear-gradient(to bottom, #C7CBE1, #ffffff);
   transition: transform 0.5s ease;
+  width: 100.7%;
 }
 .find-best .section-title{
     text-align: center;
@@ -346,7 +363,6 @@ margin-bottom: -6vw;
 
 .student-feedback {
     position: relative;
-    padding: 20px;
     margin-top:0px;
     width: 100%;
     border-radius: 0;
@@ -470,7 +486,7 @@ margin-bottom: -6vw;
 
 .popular-school {
     padding: 20px;
-    margin: 20px auto;
+    margin: 0px;
     width: 100%;
     height: auto;
     border-radius: 0px;
@@ -625,10 +641,10 @@ margin-bottom: -6vw;
     height: 23vw;
     padding: 20px;
     background: linear-gradient(to bottom,#DADDEB,#8d97c6);
+    width: 100%;
 }
 .footer {
     width: 100%;
-    margin: auto;
     text-align: center;
     padding: 30px 0;
 }
@@ -907,8 +923,6 @@ display: flex;
 #radio4:checked ~ .navigation-auto .auto-btn4{
     background: #614972;
 }
-=======
->>>>>>> 29cc42d94cc5f363ba0d3dcf5191b8280e21831d
 
 .student-picture-img, .related-pictures img {
     transition: all 0.5s ease;
@@ -923,6 +937,7 @@ display: flex;
     height: 23vw;
     padding: 20px;
     background: linear-gradient(to bottom,#DADDEB,#8d97c6);
+    width: 100%;
 }
 .footer {
     width: 100%;
@@ -1084,3 +1099,18 @@ display: flex;
         border-radius: 30% 20% 50% 40% / 50%  60% 30% 30%;
     }
 }
+
+.shine {
+    animation: shine-animation 1s infinite alternate;
+}
+
+@keyframes shine-animation {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+        text-shadow: 0 0 5px #e0aaff, 0 0 10px #d88bff, 0 0 15px #cc7cf7, 0 0 20px #bf64e6, 0 0 25px #b34bd6, 0 0 30px #a632c6, 0 0 35px #961db6;
+    }
+}
+
