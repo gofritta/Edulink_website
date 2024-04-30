@@ -259,9 +259,96 @@ function checkNotAuthenticated(req, res, next){
   next();
 }
 
-  // more to go!!
+// more to go!!
+/********************************teachers li tokhraj l school *************************************** */
+app.get('/schools/:schoolId/teachers', async (req, res) => {
+  const schoolId = req.params.schoolId;
+  try {
+      // Fetch teachers associated with the specified school from the database
+      const [teachers] = await pool.query(`
+          SELECT t.*
+          FROM teacher t
+          INNER JOIN work_for wf ON t.id_t = wf.id_t
+          WHERE wf.id_sch = ?
+      `, [schoolId]);
+      
+      // Pass the fetched teachers data to the EJS template for rendering
+      res.render('teachers', { teachers, schoolId });
+  } catch (error) {
+      console.error('Error fetching teachers data:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+
+app.post('/schools/:schoolId/teachers', async (req, res) => {
+  const schoolId = req.params.schoolId;
+  const { name, gender, birthdate, employment, speciality } = req.body;
+  try {
+      // Insert the new teacher into the database
+      await pool.query(`
+          INSERT INTO teacher (name_t, gender_t, birthdate_t, employment_t, speciality)
+          VALUES (?, ?, ?, ?, ?)
+      `, [name, gender, birthdate, employment, speciality]);
+
+      // Associate the new teacher with the specified school in the work_for table
+      await pool.query(`
+          INSERT INTO work_for (id_sch, id_t)
+          VALUES (?, LAST_INSERT_ID())
+      `, [schoolId]);
+
+      // Redirect back to the teachers page after adding the teacher
+      res.redirect(`/schools/${schoolId}/teachers`);
+  } catch (error) {
+      console.error('Error adding new teacher:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+app.post('/schools/:schoolId/teachers/delete/:teacherId', async (req, res) => {
+  const schoolId = req.params.schoolId;
+  const teacherId = req.params.teacherId;
+  try {
+      // Delete the teacher from the work_for table to disassociate them from the school
+      await pool.query(`
+          DELETE FROM work_for
+          WHERE id_t = ? AND id_sch = ?
+      `, [teacherId, schoolId]);
+
+      // Redirect back to the teachers page after deleting the teacher
+      res.redirect(`/schools/${schoolId}/teachers`);
+  } catch (error) {
+      console.error('Error deleting teacher:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+/********************************teachrs li tokhraj l student ******************************** */
   
-  
+app.get('/student/:schoolId/teachers', async (req, res) => {
+  const schoolId = req.params.schoolId;
+  try {
+      // Fetch teachers associated with the specified school from the database
+      const [teachers] = await pool.query(`
+          SELECT t.*
+          FROM teacher t
+          INNER JOIN work_for wf ON t.id_t = wf.id_t
+          WHERE wf.id_sch = ?
+      `, [schoolId]);
+      
+      // Pass the fetched teachers data to the EJS template for rendering
+      res.render('teacher_student', { teachers, schoolId });
+  } catch (error) {
+      console.error('Error fetching teachers data:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+
+
+
+
+
+/***************************************************************************************************88 */
 app.listen(PORT, (error) =>{ 
 	if(!error) 
 		console.log("Server is Successfully Running, and App is listening on port "+ PORT) ;
@@ -269,3 +356,4 @@ app.listen(PORT, (error) =>{
 		console.log("Error occurred, server can't start", error); 
 	} 
 ); 
+
