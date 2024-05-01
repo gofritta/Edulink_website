@@ -1,5 +1,12 @@
-/* Basic list styling */
-* {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>teachers | edulink</title>
+  <style>
+    *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,9 +16,10 @@
 
 }
 
-body {
-    margin-right: 0;
-    background: linear-gradient(to right, #ffff, #d9dafd);
+body{
+ 
+margin-right:0;
+background: linear-gradient(to right, #ffff, #d9dafd);
 }
 
 nav {
@@ -246,7 +254,7 @@ svg {
     color: #ffffff;
     border: none;
     margin-top: auto;
-    margin-bottom: -1.1vw;
+    margin-bottom: -21.678px;
 
 
 }
@@ -291,8 +299,8 @@ svg {
 .divs-c-s img {
     margin-top: 1px;
     margin-bottom: 1px;
-    height: 8.5vw;
-    min-width: 16vw;
+    height: 100px;
+    width: 150px;
 }
 
 .divs-c-s h4 {
@@ -371,7 +379,7 @@ footer div {
         margin-top: 1px;
         margin-bottom: 1px;
         height: 80px;
-        width: 150px;
+        width: 120px;
     }
 
     .divs-c-s h4 {
@@ -404,268 +412,166 @@ footer div {
     cursor: pointer;
 }
 
-.star:hover,
-.star.active {
-    color: #624972;
+ .star:hover,
+ .star.active {
+     color: #624972;
+     
+ }
 
-}
 
-.wrapper {
-    width: auto;
-    position: relative;
-    height: auto;
-}
-
-.wrapper i {
-    height: 50px;
-    width: 50px;
-    background: #fff;
-    text-align: center;
-    line-height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    position: absolute;
-    top: 60%;
-    font-size: 1.25rem;
-    transform: translateY(-50%);
-    box-shadow: 0 3px 6px rgb(0, 0, 0, 0.23);
-}
-
-.wrapper #left {
-    position: absolute;
-    top: 60%;
-    transform: translateY(-50%);
-    font-size: 1.25rem;
-    background: #fff;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 50%;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
-    left: -5vw;
-    /* Adjust this value to move the left arrow further to the left */
-}
-
-.wrapper i:last-child {
-    right: -5vw;
-}
-
-.wrapper .carousel {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: calc((100% / 3)-12px);
-    gap: 16px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: 0;
-}
-
-.carousel::-webkit-scrollbar {
+ .modal {
     display: none;
-}
-
-.carousel :where(.card, .img) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carousel.no-transition {
-    scroll-behavior: auto;
-}
-
-.carousel.dragging {
-    scroll-snap-type: none;
-    scroll-behavior: auto;
-}
-
-.carousel.dragging .card {
-    cursor: grab;
-    user-select: none;
-}
-
-.carousel .card {
-    scroll-snap-align: start;
-    height: 27vw;
-    list-style: none;
-    background: #fff;
-    border-radius: 19px;
-    cursor: pointer;
-    display: flex;
-    padding-bottom: 15px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 3vw;
-    border: 4px solid #6d6b7e14;
-}
-
-.card .img {
-    background: #8B53FF;
-    width: 148px;
-    height: 148px;
-    border-radius: 50%;
-}
-
-.card .img img {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #fff;
-}
-
-.card h2 {
-    font-weight: 500;
-    font-size: 1.56rem;
-    margin: 30px 0 5px;
-}
-
-.card span {
-    color: #6a6d78;
-    font-size: 1.31rem;
-}
-
-.card button {
-    border: none;
-    font-size: 16px;
-    color: #FFF;
-    padding: 8px 16px;
-    background-color: #523db1;
-    border-radius: 15px;
-    margin: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.2);
-    border: 2px solid #33333361;
-
-}
-
-.card button:hover {
-    background: #b3a8ef;
-}
-
-@media screen and (max-width: 900px) {
-    .wrapper .carousel {
-        grid-template-columns: calc((100%/2)-9PX);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .wrapper .carousel {
-        grid-template-columns: 100%;
-    }
-}
-
-.wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.carousel-container {
-    overflow: hidden;
-    position: relative;
-}
-
-.carousel {
-    display: flex;
-    padding: 0;
-    transition: transform 0.5s ease;
-}
-
-.card {
-    flex: 0 0 auto;
-    margin-right: 20px;
-    width: 300px;
-    /* Largeur de chaque carte d'école */
-}
-
-#placeholder {
-    color: #75357cb3;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#placeholder-icon {
-    width: 50px;
-    height: 50px;
-    margin-left: 50%;
-
-}
-
-#profile-picture {
-    width: 32px;
-    height: 30px;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    position: fixed;
     z-index: 1;
-    right: 0;
-}
-
-.dropdown-content a {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
     color: black;
-    padding: 12px 10px;
     text-decoration: none;
-    display: block;
-    border-radius: 0;
-    transition: background-color 0.2s ease;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-
-}
-
-/* Dropdown button styles */
-.dropdown-btn {
-
-    text-decoration: none;
-    display: block;
-    border: none;
-    /* Remove border */
-    background: none;
-    /* Remove background */
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    color: black;
-    /* Make text transparent */
-    font-size: 18px;
-    /* Set font size to 0 to hide text */
+  }
+
+  .icon{
+    color:#624972;
+    font-size: 50px;
+  }
+  </style>
+</head>
+<body>
+
+<section>
+    <nav class="sidebar">
+      <ul>
+        <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a class="" href="#">Log Out</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <label class="logo"><img src="edulink3.png" alt="" /></label>
+      <ul>
+        <li><a class="hideOnMobile" href="#">HOME</a></li>
+        <li><a class="hideOnMobile" href="#">about</a></li>
+        <li><a class="hideOnMobile" href="#">Contact</a></li>
+        <li><a class="hideOnMobile" href="#">Log Out</a></li>
+        <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+      </ul>
+    </nav>
+</section>
+    <section class="Tliste">
+        <h1>Teachers Section</h1>
+        <p>Discover Our Educators</p>
+        <hr>
+        <% teachers.forEach(function(teacher) { %>
+        <div class="teachers">
+            <ul>
+                <li><i class="fa-solid fa-chalkboard-user icon"></i></li>
+                <li><%= teacher.speciality %></li>
+                <li><%= teacher.employment_t %> years of experience</li>
+                <li>
+                   Age :  <span class="teacher-age" data-birthdate="<%= teacher.birthdate_t %>"></span>
+                </li>
+                <li><%= teacher.name_t %></li>
+                <li class="teacher"><div class="star-rating" data-rating="0">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+                </div></li>
+            </ul>
+        </div>
+        <% }); %>
+
+        <svg width="100%" height="200" viewBox="0 0 1480 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 199.5C0 199.5 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V200H0V199.5Z" fill="#262653" fill-opacity="0.05"/>
+          <path d="M4.98315 199.568C4.98315 199.568 156.326 149.82 698.702 149.82C1241.08 149.82 1480 39 1480 39V200H4.98315V199.568Z" fill="#262653" fill-opacity="0.15"/>
+          <path d="M0 199.539C0 199.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V200H0V199.539Z" fill="#262653" fill-opacity="0.1"/>
+      </svg>
+  </section>
+  
+  <footer class="footer">
+      <div class="divs-c-l"> 
+          <h3>OUR SERVICES</h3>
+          <ul>           
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Term Of Use</a></li>
+          </ul>
+      </div>
+  
+      <div class="divs-c-s"> 
+          <img src="edulinklogo.png" alt="" />
+          <h4>your ultimate guide for educational excellence!</h4>
+          <button class="button-footer">JOIN US ></button>
+      </div>
+  
+      <div class="icons">
+          <h3>CONTACT US</h3>
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fa fa-envelope"></i>
+      </div>
+  </footer>
+  
+  <script>
+    function showSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.style.display = 'flex';
 }
 
-/* Apply hover effect to dropdown button */
-.dropdown-btn:hover {
-    color: #ddd;
-    /* Change to match the hover effect color */
-}
-.shine {
-    animation: shine-animation 1s infinite alternate;
-}
 
-@keyframes shine-animation {
-    from {
-        opacity: 0.5;
-    }
-    to {
-        opacity: 1;
-        text-shadow: 0 0 5px #e0aaff, 0 0 10px #d88bff, 0 0 15px #cc7cf7, 0 0 20px #bf64e6, 0 0 25px #b34bd6, 0 0 30px #a632c6, 0 0 35px #961db6;
-    }
+function hideSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.style.display = 'none';
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const teacherAgeElements = document.querySelectorAll('.teacher-age');
+    
+    teacherAgeElements.forEach(function(element) {
+        const birthdate = element.dataset.birthdate;
+        const age = calculateAge(birthdate);
+        element.textContent = age;
+    });
+});
+
+function calculateAge(birthdate) {
+    const today = new Date();
+    const birthDate = new Date(birthdate);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const month = today.getMonth() - birthDate.getMonth();
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+    </script>
+
+</body>
+</html>

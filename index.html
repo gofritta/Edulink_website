@@ -24,12 +24,12 @@
     <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
   </ul>
 </nav>
-<nav>
+<nav class="sticky">
   <label class="logo"><img src="edulink0.png" alt="" /></label>
   <ul>
-    <li><a class="hideOnMobile active" href="#">HOME</a></li>
-    <li><a class="hideOnMobile" href="#">About</a></li>
-    <li><a class="hideOnMobile" href="#">Contact</a></li>
+    <li><a class="hideOnMobile active" href="index.html">HOME</a></li>
+    <li><a class="about-link hideOnMobile" href="#">About</a></li>
+    <li><a class="contact-link hideOnMobile" href="#">Contact</a></li>
     <li><a class="hideOnMobile join-us-button" href="#">Join Us</a></li>
     <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
   </ul>
@@ -96,13 +96,13 @@
               </video>
         </div>
         <div class="text">
-            <p>Bla bla bla bla ..........................bla bla bla...........................bla bla bla..........................bla vla bla.
+            <p>Edulink streamlines connections between students and school managers, simplifying access to education. Students find courses and schools aligned with their needs, while school managers gain visibility and accessibility. Our platform facilitates seamless collaboration, empowering all users to excel in education.
             </p>
             
             
         </div>
     </div>
-    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg" id="how-svg">
         <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
         <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#0A1A7D" fill-opacity="0.1"/>
         <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.1"/>
@@ -254,33 +254,43 @@ setInterval(function(){
 <script src="index1.js"></script>
 
 
-
+<script>
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.querySelector("nav.sticky").classList.add("sticky-active");
+        } else {
+            document.querySelector("nav.sticky").classList.remove("sticky-active");
+        }
+    }
+</script>
 
   
 
-<footer class="footer">
+<footer class="footer" id="footer-section">
      
     <div class="divs-c-l"> 
         <h3>OUR SERVICES
         </h3><ul>           
-        <li><a href="#">About us</a></li>
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Term Of Use</a></li>
+        <li><a href="#" id="aboutus-link">About us</a></li>
+        <li><a href="#" id="help-link">Help</a></li>
+        <li><a href="#" id="policy-link">Privacy Policy</a></li>
+        <li><a href="#" id="term-link">Term Of Use</a></li>
         </div>
 
      <div class="divs-c-s"> 
         
         <img src="edulinklogo.png" alt="" />
         <h4>your ultimate guide for educational excellence!</h4>
-        <button class="button-footer">JOIN US  ></button>
+        <button class="button-footer" id="join-us-footer">JOIN US  ></button>
       </ul></div>
       <div> <div class="icons">
         <h3>CONTACT US</h3>
-        <i class="fab fa-facebook" ></i>
-        <i class="fab fa-twitter" ></i>
-        <i class="fab fa-instagram" ></i>
-        <i class="fa fa-envelope" ></i>
+        <i class="fab fa-facebook" id="facebook-icon"></i>
+        <i class="fab fa-linkedin" id="linkedin-icon"></i>
+        <i class="fab fa-instagram" id="instagram-icon"></i>
+        <i class="fa fa-envelope" id="email-icon"></i>
        </div></div>
 </footer>
 
