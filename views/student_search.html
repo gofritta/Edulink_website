@@ -126,73 +126,73 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        const searchInput = document.getElementById('search-input');
-        const searchButton = document.getElementById('search-button');
-        const suggestionsContainer = document.createElement('div');
-        suggestionsContainer.id = 'suggestions';
-        searchInput.parentNode.appendChild(suggestionsContainer);
-    
-        // List of acceptable Algerian states
-        const acceptableStates = [
-            "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa",
-            "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa",
-            "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif",
-            "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine",
-            "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh",
-            "Illizi", "Bordj Bou Arréridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt",
-            "El Oued", "Khenchela", "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma",
-            "Aïn Témouchent", "Ghardaïa", "Relizane"
-        ];
-    
-        // Function to filter and display suggestions based on user input
-        function displaySuggestions(input) {
-            const userInput = input.value.trim().toLowerCase();
-            const matchingStates = acceptableStates.filter(state =>
-                state.toLowerCase().startsWith(userInput)
-            );
-    
-            // Clear previous suggestions
-            suggestionsContainer.innerHTML = '';
-    
-            if (userInput.length > 0) {
-                matchingStates.forEach(state => {
-                    const suggestion = document.createElement('div');
-                    suggestion.textContent = state;
-                    suggestion.classList.add('suggestion');
-                    suggestion.addEventListener('click', () => {
-                        searchInput.value = state;
-                        suggestionsContainer.style.display = 'none';
-                    });
-                    suggestionsContainer.appendChild(suggestion);
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    const suggestionsContainer = document.createElement('div');
+    suggestionsContainer.id = 'suggestions';
+    searchInput.parentNode.appendChild(suggestionsContainer);
+
+    // List of acceptable Algerian states
+    const acceptableStates = [
+        "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa",
+        "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa",
+        "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif",
+        "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine",
+        "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh",
+        "Illizi", "Bordj Bou Arréridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt",
+        "El Oued", "Khenchela", "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma",
+        "Aïn Témouchent", "Ghardaïa", "Relizane"
+    ];
+
+    // Function to filter and display suggestions based on user input
+    function displaySuggestions(input) {
+        const userInput = input.value.trim().toLowerCase();
+        const matchingStates = acceptableStates.filter(state =>
+            state.toLowerCase().startsWith(userInput)
+        );
+
+        // Clear previous suggestions
+        suggestionsContainer.innerHTML = '';
+
+        if (userInput.length > 0) {
+            matchingStates.forEach(state => {
+                const suggestion = document.createElement('div');
+                suggestion.textContent = state;
+                suggestion.classList.add('suggestion');
+                suggestion.addEventListener('click', () => {
+                    searchInput.value = state;
+                    suggestionsContainer.style.display = 'none';
                 });
-                suggestionsContainer.style.display = 'block';
-            } else {
-                suggestionsContainer.style.display = 'none';
-            }
+                suggestionsContainer.appendChild(suggestion);
+            });
+            suggestionsContainer.style.display = 'block';
+        } else {
+            suggestionsContainer.style.display = 'none';
         }
-    
-        // Event listeners for input changes and button click
-        searchInput.addEventListener('input', () => {
-            displaySuggestions(searchInput);
-        });
-    
-        searchButton.addEventListener('click', () => {
-            const selectedState = searchInput.value.trim();
-            if (acceptableStates.includes(selectedState)) {
-                alert(`Searching for: ${selectedState}`);
-                // Implement your search logic here
-            } else {
-                alert('Please enter a valid Algerian state');
-            }
-        });
-    
-        // Hide suggestions when clicking outside the input and suggestions container
-        document.addEventListener('click', (event) => {
-            if (!event.target.closest('.search-box')) {
-                suggestionsContainer.style.display = 'none';
-            }
-        });
+    }
+
+    // Event listeners for input changes and button click
+    searchInput.addEventListener('input', () => {
+        displaySuggestions(searchInput);
     });
+
+    searchButton.addEventListener('click', () => {
+        const selectedState = searchInput.value.trim();
+        if (acceptableStates.includes(selectedState)) {
+            alert(`Searching for: ${selectedState}`);
+            // Implement your search logic here
+        } else {
+            alert('Please enter a valid Algerian state');
+        }
+    });
+
+    // Hide suggestions when clicking outside the input and suggestions container
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.search-box')) {
+            suggestionsContainer.style.display = 'none';
+        }
+    });
+});
 
     function search() {
         const stateInput = document.getElementById('search-input');
@@ -202,6 +202,11 @@
         .then(response => response.json())
         .then(response => {
             console.log(response);
+
+             // Hide the GIF and text placeholder
+        const placeholder = document.getElementById('placeholder');
+        placeholder.style.display = 'none';
+        //......................................................................
             document.getElementById("titre1").innerHTML = `Ecole ${response[0].name_sch}`;
             document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${response[0].name_sch} `;
             document.getElementById("titre2").innerHTML = `Ecole ${response[1].name_sch}`;
