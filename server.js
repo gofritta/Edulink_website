@@ -1,6 +1,6 @@
 import express from "express";
 import bcrypt from 'bcrypt';
-import {getStudent, insertNewStudent,getStudentByEmail  , getSchoolByState, insertSubject} from './database.js';
+import {getStudent, insertNewStudent,getStudentByEmail  , getSchoolByState, insertSubject, getSchoolById} from './database.js';
 import pool from './connection.js'; 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -193,30 +193,64 @@ passport.authenticate('linkedin', { failureRedirect: '/student/login' }),
   };
   res.redirect('/student/homepage');
 });
+app.get('/projet-p/school/profile', checkAuthenticated, async (req, res) => {
+  try {
+      const schoolId = req.query.id;
+      const school = await getSchoolById(pool, schoolId);
+      console.log( school)
+      if (school) {
+        const absolutePath = path.resolve(__dirname, 'projet-p', 'ecole-profile.html');
+         res.sendFile(absolutePath);
+         //res.sendFile('ecole-profile')
+         //res.setHeader('Access-Control-Allow-Origin', '*');
+      } else {
+          res.status(404).send('School not found');
+      }
+  } catch (error) {
+      console.error('Error fetching school details:', error);
+      res.status(500).send('Error fetching school details');
+  }
+});
+app.get('/school/get', checkAuthenticated,  async (req, res) =>{
+  try {
+    const schoolId = req.query.id;
+    const school = await getSchoolById(pool, schoolId);
+    console.log( school)
+    if (school) {
+      res.json(school)
+      
+    } else {
+        res.status(404).send('School not found');
+    }
+} catch (error) {
+    console.error('Error fetching school details:', error);
+    res.status(500).send('Error fetching school details');
+}
+})
 //student registration to school
 app.post('/school/enroll', checkAuthenticated, async (req, res) => {
-  const subject = req.body.subject;
   const student = req.session.user.name;
-  const school = req.body.name;
+  const subject = req.body.subject;
+  const school = req.body.school; 
   try {
-    if(subject){
-      const result = await insertSubject(pool, subject, student, school);
-    }else(res.send("Your enrollement attempt was unsuccessful "))
-    if(result === 1){
-      req.session.user = {
-        email: student[0].email_s,
-        name : student[0].name_s
-    };
-      res.redirect('/student/homepage');
-    }else{
-      res.send("unfortunately , your enrollement wasn't successful.")
+    let result;
+    if (subject) {
+      result = await insertSubject(pool, subject, student, school);
+    } else {
+      throw new Error("Your enrollment attempt was unsuccessful.");
+    }
+    
+    if (result === 1) {
+      res.send('your enrollement was succesfull ')
+    //  res.redirect('/student/homepage');
+    } else {
+      throw new Error("Unfortunately, your enrollment wasn't successful.");
     }
   } catch (error) {
-    console.error(error)
-    res.status(500).send("Internal Server Error");
+    console.error(error);
+    res.status(500).send(error.message);
   }
- 
-})
+});
 //logout
 app.get('/logout', (req, res) => {
   req.session.destroy(); // Destroy the session obv
@@ -236,6 +270,7 @@ app.get('/student/login', checkNotAuthenticated, (req, res) => {
 app.get('/student/register', checkNotAuthenticated, (req, res) => {
   res.render('index'); 
 });
+
 /*app.get('/student/homepage/school', checkAuthenticated, (req, res) =>{
   res.render('student_search')
 })*/

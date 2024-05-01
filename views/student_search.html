@@ -33,7 +33,7 @@
 </nav>
 
 <nav>
-    <label class="logo"><img src="/views/edulink0.png" alt="Logo" /></label>
+    <label class="logo"><img src="edulink0.png" alt="Logo" /></label>
     <ul>
         <li><a class="hideOnMobile active" href="#">HOME</a></li>
         <li><a class="hideOnMobile" href="#">About</a></li>
@@ -47,18 +47,6 @@
         <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
     </ul>
 </nav>
-
-<script>
-    function showSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'block';
-    }
-
-    function hideSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'none';
-    }
-</script>
 
 <div class="title-section">
     <h1>Hello, Student's Name!</h1>
@@ -85,7 +73,7 @@
 
             <span id="bienvenue1">  </span>
 
-            <a href="./projet-p/ecole-profile.html?id=1"><button id="view-more-btn" class="button">View More</button></a>
+            <a href="#"><button class="view-more-btn button" onclick="handleViewMore(event, 1)">View More</button></a>
 
 
         </li>
@@ -95,7 +83,7 @@
             <h2 id="titre2"></h2>
             <span id="bienvenue2"></span>
 
-            <a href="./projet-p/ecole-profile.html?id=2"><button id="view-more-btn" class="button">View More</button></a>
+            <a href="#"><button class="view-more-btn button" onclick="handleViewMore(event, 2)">View More</button></a>
 
             
 
@@ -105,7 +93,7 @@
             <h2 id="titre3"></h2>
             <span id="bienvenue3" style="font-size: 2Opx;"></span>
 
-            <a href="./projet-p/ecole-profile.html?id=3"><button id="view-more-btn" class="button">View More</button></a>
+            <a href="#"><button class="view-more-btn button" onclick="handleViewMore(event, 3)">View More</button></a>
 
             
         </li>
@@ -120,6 +108,22 @@
 </div>
 
 <script>
+  // Retrieve the student's name from the variable passed by Express.js
+  const studentName = '<%= studentName %>';
+    
+    // Update the content of the span element with the student's name
+    const studentNameElement = document.querySelector('.title-section h1 span');
+    studentNameElement.textContent = studentName;
+
+    function showSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'block';
+    }
+
+    function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'none';
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById('search-input');
@@ -189,53 +193,88 @@
             }
         });
     });
-    
-    function search(){
-   
-   const stateInput = document.getElementById('search-input');
-   const state = stateInput.value;
-   console.log(state);
-   fetch(` http://localhost:3000/student/homepage/school?state=${state}`)
-   .then(response => response.json())
-   .then(response => {
-   console.log(response)
-   document.getElementById("titre1").innerHTML = `Ecole ${response[0].name_sch}`
-   document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${response[0].name_sch} `
-   document.getElementById("titre2").innerHTML = `Ecole ${response[1].name_sch}`
-   document.getElementById("bienvenue2").innerHTML = ` Bienvenue à l'école de ${response[1].name_sch} `
-   const school1ID = response[0].id_sch;
-   const school2ID = response[1].id_sch;
-   
-   localStorage.setItem('school1', school1ID);
-   localStorage.setItem('school2', school2ID);
 
-   if(response[2]){
-       document.getElementById("titre3").innerHTML = `Ecole ${response[2].name_sch}`
-       document.getElementById("bienvenue3").innerHTML = ` Bienvenue à l'école de ${response[2].name_sch} `
-   
-       const school3ID = response[2].id_sch;
-       localStorage.setItem('school3', school3ID);
-       }
+    function search() {
+        const stateInput = document.getElementById('search-input');
+        const state = stateInput.value;
+        console.log(state);
+        fetch(`http://localhost:3000/student/homepage/school?state=${state}`)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            document.getElementById("titre1").innerHTML = `Ecole ${response[0].name_sch}`;
+            document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${response[0].name_sch} `;
+            document.getElementById("titre2").innerHTML = `Ecole ${response[1].name_sch}`;
+            document.getElementById("bienvenue2").innerHTML = ` Bienvenue à l'école de ${response[1].name_sch} `;
+            
+            const school1ID = response[0].id_sch;
+            const school2ID = response[1].id_sch;
+            
+            localStorage.setItem('school1', school1ID);
+            localStorage.setItem('school2', school2ID);
 
-   
-    
-   })
-   .catch((error) =>
-       console.error(error)
-   );
+            if (response[2]) {
+                document.getElementById("titre3").innerHTML = `Ecole ${response[2].name_sch}`;
+                document.getElementById("bienvenue3").innerHTML = ` Bienvenue à l'école de ${response[2].name_sch} `;
+                
+                const school3ID = response[2].id_sch;
+                localStorage.setItem('school3', school3ID);
+            }
+        })
+        .catch(error => console.error(error));
+    }
 
+   /* const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+
+    viewMoreButtons.forEach(button => {
+        button.addEventListener('click', event => {
+            event.preventDefault();
+            const schoolId = event.target.parentNode.querySelector('a').href.split('?id=')[1];
+            window.location.href = `./project-p/ecole-profile.html?id=${index}`;
+        });
+    });*/
+ // Function to handle clicking on the "View More" button
+ function handleViewMore(index) {
+    const schoolId = localStorage.getItem(`school${index}`);
+    console.log(schoolId)
+    if (schoolId) {
+        window.location.href = `/projet-p/school/profile?id=${schoolId}`;
+    } else {
+        console.error(`School ID not found for index ${index}`);
+    }
 }
 
-const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+    // Add event listeners to all "View More" buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+        viewMoreButtons.forEach(button => {
+            button.addEventListener('click', handleViewMore);
+        });
+    });
+    // Function to handle logout
+    function handleLogout() {
+        fetch('/logout', { method: 'GET' }) // Send a GET request to the logout route
+        .then(response => {
+            if (response.redirected) {
+                // If the server responds with a redirection, redirect the user to the specified location
+                window.location.href = response.url;
+            }
+        })
+        .catch(error => {
+            console.error('Error logging out:', error);
+        });
+    }
 
-viewMoreButtons.forEach(button => {
-  button.addEventListener('click', (event) => {
-    event.preventDefault();
-    const schoolId = event.target.parentNode.querySelector('a').href.split('?id=')[1];
-    window.location.href = `./project-p/ecole-profile.html?id=${index}`;
-  });
-  
-});
+    // Add event listener to the logout link
+    document.addEventListener('DOMContentLoaded', function() {
+        const logoutLink = document.querySelector('a[href="/logout"]');
+        if (logoutLink) {
+            logoutLink.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+                handleLogout(); // Call the function to handle logout
+            });
+        }
+    });
 
 </script>
 

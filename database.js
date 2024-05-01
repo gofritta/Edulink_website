@@ -27,6 +27,21 @@ async function getStudentByEmail(pool, email){
         throw error;
     }
 }
+//get school by ID
+async function getSchoolById(pool, id){
+  try{
+      const result = await pool.query( `SELECT * FROM school WHERE id_sch = ? `, [id]);
+     
+      if (result.length > 0){
+      return result[0];
+      } else{
+        return null;
+      }
+  }catch(error){
+      console.error(`Error fetching school: ${error}`);
+      throw error;
+  }
+}
 // insert new students (used for registrations)
 async function insertNewStudent(pool, name, email, gender, birthdate, hashedPassword) {
     try {
@@ -89,5 +104,5 @@ async function insertSubject(pool, subject, student, school){
         console.error("Error:" , error);
         throw error; ;
     }
-}
-export {getStudent, getSchool, getSchoolByState, getStudentID, insertNewStudent, getStudentByEmail, insertSubject};
+};
+export {getStudent, getSchool, getSchoolByState,getSchoolById, getStudentID, insertNewStudent, getStudentByEmail, insertSubject};
