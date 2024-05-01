@@ -1,6 +1,6 @@
 import express from "express";
 import bcrypt from 'bcrypt';
-import {getStudent, insertNewStudent,getStudentByEmail  , getSchoolByState, insertSubject, getSchoolById} from './database.js';
+import {getStudent, insertNewStudent,getStudentByEmail  , getSchoolByState, insertSubject, getSchoolById, getStudentByName,updateUserInformation, updateUserName, updateUserPassword} from './database.js';
 import pool from './connection.js'; 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -103,7 +103,8 @@ app.post("/student/register",checkNotAuthenticated, async (req, res) => {
       req.session.user = {
         id: insertedStudent[0].id_s,
         email: email,
-        name : name
+        name : name,
+        birthdate: birthdate
     };
      //res.status(201).send("User created successfully!");
      //console.log(`User ${name} registered successfully `);
@@ -138,7 +139,8 @@ app.post("/student/register",checkNotAuthenticated, async (req, res) => {
       }req.session.user = {
         id: student[0].id_s, // bach nasta3malha f l code lta7t 
         email: student[0].email_s,
-        name : student[0].name_s
+        name : student[0].name_s,
+        birthdate : student[0].birthdate_s
     };
     console.log(req.session.user.id); // Check id_s wila t3amrat fih 
     // Redirect to homepage after successful login
@@ -245,7 +247,7 @@ app.post('/school/enroll', checkAuthenticated, async (req, res) => {
     }
     
     if (result === 1) {
-      res.send('your enrollement was succesfull ')
+      res.status(201).send('Your enrollment was successful. Please contact the school for further details.')
     //  res.redirect('/student/homepage');
     } else {
       throw new Error("Unfortunately, your enrollment wasn't successful.");
@@ -255,6 +257,62 @@ app.post('/school/enroll', checkAuthenticated, async (req, res) => {
     res.status(500).send(error.message);
   }
 });
+app.get('/student/account', checkAuthenticated, async(req, res) => {
+  const name = req.session.user.name;
+  try {
+    const student = await getStudentByName(pool, name);
+    res.json(student);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error.message)
+  }
+
+})
+app.put('/student/account/edit', checkAuthenticated, async (req, res) => {
+  const { newName, oldPassword, newPassword } = req.body;
+  const name = req.session.user.name;
+  const salt = await bcrypt.genSalt(10);
+  try {
+      const student = await getStudentByName(pool, name);
+      let updateName = false;
+      let updatePassword = false;
+      if (newName && newName !== student[0].name_s) {
+          updateName = true;
+      }if (newPassword) {
+          updatePassword = true;
+          const passwordMatch = await bcrypt.compare(oldPassword, student[0].password_s);
+          
+          if (!passwordMatch) {
+              return res.status(400).send('Old password is incorrect');
+          }
+      }
+      // Update the user's information based on the user's choices
+      if (updateName && updatePassword) {
+          // Update both name and password
+          const hashedNewPassword = await bcrypt.hash(newPassword, salt);
+          await updateUserInformation(pool, name, newName, hashedNewPassword);
+      } else if (updateName) {
+          // Update only the name
+          await updateUserName(pool, name, newName);
+      } else if (updatePassword) {
+          // Update only the password
+          const hashedNewPassword = await bcrypt.hash(newPassword, salt);
+          await updateUserPassword(pool, name, oldPassword, hashedNewPassword);
+      }
+      // Update the name in the session if it's changed
+    if (updateName) {
+      req.session.user.name = newName;
+    }
+      // Redirect to student account page after successful edit/update
+      res.redirect('/student/account');
+  } catch (error) {
+      console.error(error);
+      res.status(500).send(error.message);
+  }
+});
+
+
+
 //logout
 app.get('/logout', (req, res) => {
   req.session.destroy(); // Destroy the session obv
@@ -281,6 +339,12 @@ app.get('/student/register', checkNotAuthenticated, (req, res) => {
 app.get('/school/enroll', checkAuthenticated, (req, res) => {
   res.render('ecole-profile')
 });
+app.get('/student/account', checkAuthenticated, (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'school - copie', 'profil.html'))
+})
+/*app.get('/student/account/edit', checkAuthenticated, (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'school - copie', 'profil.html'))
+})*/
 
 // function to check authentication
 // if authenticated , go to login page

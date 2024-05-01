@@ -1,146 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Profile</title>
-    <link rel="stylesheet" href="/projet-p/ecole-prof.css"> <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>student | school infos</title>
+    <link rel="stylesheet" href="/projet-p/ecole-prof.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
-
-<nav class="sidebar">
-    <ul>
-        <li><a class="active" href="#">HOME</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="/views/user.png" alt="Pfp" /></a>
-            <div class="dropdown-content">
-                <a href="#">My Account</a>
-                <a href="/logout">Log Out</a>
-            </div>
-        </li>
-        <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
-    </ul>
-</nav>
-
-<nav>
-    <label class="logo"><img src="/views/edulink0.png" alt="Logo" /></label>
-    <ul>
-        <li><a class="hideOnMobile active" href="#">HOME</a></li>
-        <li><a class="hideOnMobile" href="#">About</a></li>
-        <li><a class="hideOnMobile" href="#">Contact</a></li>
-        <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="/views/user.png" alt="Pfp" /></a>
-            <div class="dropdown-content">
-                <a href="#">My Account</a>
-                <a href="/logout">Log Out</a>
-            </div>
-        </li>
-        <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
-    </ul>
-</nav>
-
-<div class="profil">
-    <div class="info-p">
-        <div class="pfp">
+    <nav class="sidebar">
+      <ul>
+          <li><a class="active" href="#">HOME</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="/projet-p/user.png" alt="Pfp" /></a>
+              <div class="dropdown-content">
+  
+                  <a href="/school - Copie/profil.html"><button type="button" class="dropdown-btn">My Account</button></a>
+                  <a href="/logout">Log Out</a>
+              </div>
+          </li>
+          <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+      </ul>
+  </nav>
+  
+  <nav>
+      <label class="logo"><img src="/projet-p/edulink0.png" alt="Logo" /></label>
+      <ul>
+          <li><a class="hideOnMobile active" href="#">HOME</a></li>
+          <li><a class="about-link hideOnMobile" href="#">About</a></li>
+          <li><a class="contact-link hideOnMobile" href="#">Contact</a></li>
+          <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="/projet-p/user.png" alt="Pfp" /></a>
+              <div class="dropdown-content">
+                  <a href="/school - Copie/profil.html"><button type="button" class="dropdown-btn">My Account</button></a>
+                  <a href="/logout">Log Out</a>
+              </div>
+          </li>
+          <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+      </ul>
+  </nav>
+ <section>
+    <div class="profil">
+        <div class="info-p">
+          <div class="pfp">
             <img src="/projet-p/profil.jpg" alt="" />
-        </div>
-        <div class="info-eco">
+          </div>
+
+          <!--Information ******************************************************-->
+
+          <div class="info-eco">
             <h1>Informations</h1>
-            <h4 id="sch_name"> School Name:</h4>
-            <h4 id="contact">Contact:</h4>
-            <h4 id="adresse">Location:</h4>
+            <h4 id="sch_name"></h4>
+            <h4 id="contact"></h4>
+            <h4 id="adresse"></h4>
             <button id="open-popup-btn" class="Inscription">Inscription</button>
+            <!--Popup registration--->
+            <div class="popup" id="popup">
+              <div class="popup-content">
+                  <h1>Student Registration</h1>
+                  <i id="close-btn" class="far fa-times-circle"></i>
+
+                  <form id="registration-form">
+                      <p>To register in this school, we kindly request that you select the subject of your interest. This information will be sent along with your other details to the school's administration.</p>
+                      <div class="form-group">
+                          <label for="subject">Subject of Interest:</label>
+                          <select id="subject" name="subject" required>
+                            <option value="Math">Math</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Science">Science</option>
+                            <option value="Arabic">Arabic</option>
+                            <option value="English">English</option>
+                            <option value="French">French</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="German">German</option>
+                            <option value="Islamic Sciences">Islamic Sciences</option>
+                            <option value="philosophy">philosophy</option>
+                            <option value="His/Geo">His/Geo</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                          </select>
+                      </div>
+                      <button type="submit" class="but" id="close-popup-btn">Register</button>
+                  </form>
+              </div>
+          </div>
+
+          </div>
+
+          <!---*****************************************************************-->
+
         </div>
+        <div class="info-c">
+      <div class="button-content">
+        <a href="/report.html"><button class="content-a"><span>REPORT ></span></button></a>
+        <a href="/schedule-s.html"><button class="content-b"><span>SCHEDULE ></span></button></a>
     </div>
-</div>
+    <div class="button-content">
+        <a href="/student/teachers?id=<%= schoolId %>"><button class="content-c"><span>TEACHERS ></span></button></a>
+        <a href="/comments?schoolId=<%= schoolId %>"><button class="content-d"><span>COMMENTS ></span></button></a>
+    </div>
+    </div>    
+    </div>
+    <svg width="100%" height="200" viewBox="0 0 1480 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+          <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ddddf6" />
+              <stop offset="100%" stop-color="#5e5eb5" />
+          </linearGradient>
+        </defs>
+        <path d="M0 199.5C0 199.5 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V200H0V199.5Z" fill="url(#waveGradient)" fill-opacity="0.05"/>
+        <path d="M4.98315 199.568C4.98315 199.568 156.326 149.82 698.702 149.82C1241.08 149.82 1480 39 1480 39V200H4.98315V199.568Z" fill="url(#waveGradient)" fill-opacity="0.15"/>
+        <path d="M0 199.539C0 199.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V200H0V199.539Z" fill="url(#waveGradient)" fill-opacity="0.1"/>
+    </svg>
+  
+  
 
-<svg width="100%" height="200" viewBox="0 0 1480 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ddddf6" />
-            <stop offset="100%" stop-color="#5e5eb5" />
-        </linearGradient>
-    </defs>
-    <path d="M0 199.5C0 199.5 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V200H0V199.5Z" fill="url(#waveGradient)" fill-opacity="0.05"/>
-    <path d="M4.98315 199.568C4.98315 199.568 156.326 149.82 698.702 149.82C1241.08 149.82 1480 39 1480 39V200H4.98315V199.568Z" fill="url(#waveGradient)" fill-opacity="0.15"/>
-    <path d="M0 199.539C0 199.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V200H0V199.539Z" fill="url(#waveGradient)" fill-opacity="0.1"/>
-</svg>
+  </section>
+    <footer class="footer">
+     
+        <div class="divs-c-l"> 
+            <h3>OUR SERVICES
+            </h3><ul>           
+                <li><a href="#" id="aboutus-link">About us</a></li>
+                <li><a href="#" id="help-link">Help</a></li>
+                <li><a href="#" id="policy-link">Privacy Policy</a></li>
+                <li><a href="#" id="term-link">Term Of Use</a></li>
+            </div>
 
-<footer class="footer">
-    <div class="divs-c-l"> 
-        <h3>OUR SERVICES</h3>
-        <ul>           
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Term Of Use</a></li>
-        </ul>
-    </div>
-    <div class="divs-c-s"> 
-        <img src="/projet-p/edulinklogo.png" alt="" />
-        <h4>your ultimate guide for educational excellence!</h4>
-        <button class="button-footer">JOIN US</button>
-    </div>
-    <div>
-        <h3>CONTACT US</h3>
-        <div class="icons">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-linkedin"></i>
-        </div>
-    </div>
-</footer>
-
-<script>
-    function showSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'block';
+       <div class="divs-c-s"> 
+          
+          <img src="/projet-p/edulinklogo.png" alt="" />
+          <h4>your ultimate guide for educational excellence!</h4>
+          <button class="button-footer">JOIN US</button>
+        </ul></div>
+        <div><h3>CONTACT US</h3>
+           <div class="icons">
+       
+          <i class="fab fa-facebook" ></i>
+          <i class="fab fa-twitter" ></i>
+          <i class="fab fa-instagram" ></i>
+          <i class="fab fa-linkedin" ></i>
+         </div></div>
+ </footer>
+ 
+    <script>
+    function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+      
+    }
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+    let schoolName;
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to fetch school details
+    function fetchSchoolDetails(id) {
+        fetch(`http://localhost:3000/school/get?id=${id}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data)
+                // Update the DOM with the received school details
+                schoolName = data[0].name_sch;
+                localStorage.setItem('schoolName', schoolName);
+                document.getElementById("sch_name").textContent = `School name: ${schoolName}`;
+                document.getElementById("contact").textContent = `Contact: ${data[0].number_sch}`;
+                document.getElementById("adresse").textContent = `Address: ${data[0].adress_sch}`;
+            })
+            .catch(error => {
+                console.error('Error fetching school details:', error);
+            });
     }
 
-    function hideSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'none';
+    // Get the ID parameter from the URL
+    var currentUrl = window.location.href;
+    var queryString = currentUrl.split('?')[1];
+    var params = new URLSearchParams(queryString);
+    var id = params.get("id");
+
+    // Call fetchSchoolDetails function with the extracted ID parameter
+    if (id !== null) {
+        fetchSchoolDetails(id);
+        console.log(id)
+    } else {
+        console.log("No ID parameter found in the URL.");
     }
 
-    // Fetch school data from the server
-     // Récupérer l'ID de l'école depuis l'URL
-     const urlParams = new URLSearchParams(window.location.search);
-    const index = urlParams.get('id');
-    console.log(index);
-    // Récupérer l'ID de l'école depuis localStorage
-      let schoolId = 0;
-    if(index == 1) 
-        schoolId = localStorage.getItem('school1');
-    if(index == 2)
-        schoolId = localStorage.getItem('school2');
-    if(index == 3)
-        schoolId = localStorage.getItem('school3');
-    console.log(schoolId)
+    // Other event listeners...
+});
 
-        let request = new XMLHttpRequest();
-        request.open("GET", `http://localhost:3000/projet-p/school/profile?id=${schoolId}`)
-        request.responseType = "json"
-        request.send()
-        request.onreadystatechange = function() {
-         if (request.readyState === 4) {
-        if (request.status === 200) { // Check for successful response
-        let school = request.response;
-          console.log(school)
-        // Display school data using template literals
-        document.getElementById("sch_name").innerHTML = `School Name: ${school[0].name_sch}`;
-        document.getElementById("contact").innerHTML = `Contact: ${school[0].number_sch}`;
-        document.getElementById("adresse").innerHTML = `Location: ${school[0].adress_sch}`;
-        console.log(request.response);
-      } else {
-        console.error("Error fetching school data:", request.statusText);
-        // Handle error cases (e.g., display an error message)
-      }
-    }}
-</script>
 
-</body>
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to handle form submission
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const subject = document.getElementById('subject').value;
+        const school = localStorage.getItem('schoolName'); 
+        console.log('Subject:', subject);
+         console.log('School:', school);
+        // Send enrollment data to the server
+        fetch('/school/enroll', {
+            method: 'POST',
+            headers: {
+        'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({ subject: subject, school: school })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            // Show success message or handle redirection
+            alert(data);
+        })
+        .catch(error => {
+            console.error('Error enrolling student:', error);
+            alert('An error occurred while enrolling. Please try again later.');
+
+        });
+        document.getElementById('successModal').style.display = 'block';
+         // Hide the registration form
+        document.getElementById('registration-form').style.display = 'none';
+          // Change the text of the button
+          document.getElementById('close-popup-btn').innerText = 'Registration Successful';
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    document.getElementById("open-popup-btn").addEventListener("click", function(){
+        document.getElementById("popup").classList.add('active');
+    });
+
+    document.getElementById("close-popup-btn").addEventListener("click", function(){
+        document.getElementById("popup").classList.remove('active');
+    });
+    
+    document.getElementById("close-btn").addEventListener("click", function(){
+        document.getElementById("popup").style.display = 'none';
+    });
+
+    // Function to handle inscription button click
+    document.getElementById('close-popup-btn').addEventListener('click', function() {
+        // Show an alert
+        alert('An email has been sent to the school. They will contact you soon.');
+    });
+});
+
+function dismissModal() {
+    // Redirect to student_search.html or do other actions
+    window.location.href = 'student_search.html';
+}
+
+  </script>
+  </body>
 </html>
-
-

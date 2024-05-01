@@ -18,7 +18,7 @@
         <li><a href="#">Contact</a></li>
         <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="/views/user.png" alt="Pfp" /></a>
             <div class="dropdown-content">
-                <a href="#">My Account</a>
+                <a href="/school - Copie/profil.html"><button type="button" class="dropdown-btn">My Account</button></a>
                 <a href="/logout">Log Out</a>
             </div>
         </li>
@@ -34,7 +34,7 @@
         <li><a class="hideOnMobile" href="#">Contact</a></li>
         <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="/views/user.png" alt="Pfp" /></a>
             <div class="dropdown-content">
-                <a href="#">My Account</a>
+                <a href="/school - Copie/profil.html"><button type="button" class="dropdown-btn">My Account</button></a>
                 <a href="/logout">Log Out</a>
             </div>
         </li>
@@ -156,7 +156,8 @@
     });
 
     function search(){
-   
+        const placeholder = document.getElementById('placeholder');
+    placeholder.style.display = 'none';
    const stateInput = document.getElementById('search-input');
    const state = stateInput.value;
    console.log(state);

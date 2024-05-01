@@ -43,38 +43,40 @@ async function fetchStudentAccount() {
     try {
         // Make a GET request to fetch student account information
         const response = await fetch('http://localhost:3000/student/account');
-
+        console.log(response)
         if (!response.ok) {
             throw new Error('Failed to fetch student account information');
         }
         
         // Parse the JSON response
         const student = await response.json();
+        const birthdate = new Date(student[0].birthdate_s);
+
+       // Get the day, month, and year components of the date
+        const day = birthdate.getDate();
+        const month = birthdate.getMonth() + 1; // Month is zero-based, so add 1
+        const year = birthdate.getFullYear();
+
+       // Construct the date string in 'DD/MM/YYYY' format
+       const formattedBirthdate = `${year}-${month}-${day}`;
         
         // Update the HTML elements with the fetched student information
         document.getElementById('name').textContent = student[0].name_s;
-        document.getElementById('dateOfBirth').textContent = formatDate(student[0].birthdate_s);
+        document.getElementById('dateOfBirth').textContent = formattedBirthdate;
         document.getElementById('email').textContent = student[0].email_s;
     } catch (error) {
         console.error('Error fetching student account:', error);
-        alert('Couldn\'t find student')
         // Handle error (e.g., display an error message to the user)
     }
 }
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString(); // Format the date according to the user's locale
-}
-
 async function saveChanges() {
     const newName = document.getElementById('nameInput').value;
     const oldPassword = document.getElementById('old-password').value;
     const newPassword = document.getElementById('new-password').value;
 
     try {
-        const response = await fetch('http://localhost:3000/student/account/edit', {
-            method: 'PUT',
+        const response = await fetch('/student/account/edit', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },

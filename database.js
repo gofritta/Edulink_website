@@ -84,16 +84,17 @@ async function insertSubject(pool, subject, student, school){
         throw error;
     }
 } 
-// displays all schools
- async function getSchool(){
-    try{
-        const [result] = await pool.query("SELECT * FROM school")
-        return result;
-    }catch(error){
-        console.error("Error:" , error);
-        throw error;
-    }
-}
+async function getStudentByName(pool, name){
+  try{
+   const [result] = await pool.query(`
+   SELECT * FROM student WHERE name_s = ?
+   `, [name]);
+   return result;
+  }catch(error){
+      console.error("Error:" , error);
+      throw error;
+  }
+} 
  async function getSchoolByState(pool , state){
     try{
         const [result] = await pool.query(`
@@ -105,4 +106,51 @@ async function insertSubject(pool, subject, student, school){
         throw error; ;
     }
 };
-export {getStudent, getSchool, getSchoolByState,getSchoolById, getStudentID, insertNewStudent, getStudentByEmail, insertSubject};
+async function updateUserInformation(pool, name, newName, hashedNewPassword){
+  try{
+    const [result] = await pool.query(`
+    UPDATE student SET name_s = ?, password_s = ?
+    WHERE name_s = ?
+    `, [newName, hashedNewPassword, name]);
+    return result.affectedRows
+  }catch(error){
+    console.error("An Error occured :" ,error);
+    throw error;
+  }
+}
+async function updateUserName(pool, name, newName){
+  try {
+    const [result] = await pool.query(`
+    UPDATE student SET name_s= ? WHERE name_s= ?
+    `, [newName, name]);
+    return result.affectedRows;
+  } catch (error) {
+    console.error("An Error occured :" ,error);
+    throw error;
+  }
+}
+async function updateUserPassword(pool,name, oldPassword, hashedNewPassword){
+  try {
+    const [result] = await pool.query(`
+    UPDATE student SET password_s= ? WHERE name_s= ? AND password_s= ?
+    `, [hashedNewPassword, name, oldPassword]);
+    return result.affectedRows ;
+  } catch (error) {
+    console.error("An Error occured :" ,error);
+    throw error;
+  }
+}
+/*try {
+  // Test updating the username
+  const updatedNameResult = await updateUserName(pool, 'Djalil Benouda', 'Djalil Benoudda');
+  console.log('Updated name result:', updatedNameResult);
+
+  // Test updating the password
+  const updatedPasswordResult = await updateUserPassword(pool,'el haouari ikhlas', 'hellokitty', 'stargirl');
+  console.log('Updated password result:', updatedPasswordResult);
+  const updated = await updateUserInformation(pool, 'el haouari ikhlas', 'ikhlas el haouari', 'hellokitty')
+console.log(updated)
+} catch (error) {
+  console.error('Error during test:', error);
+} */
+export {updateUserInformation, updateUserName, updateUserPassword, getStudent, getStudentByName, getSchoolByState,getSchoolById, getStudentID, insertNewStudent, getStudentByEmail, insertSubject};

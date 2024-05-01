@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>student | school infos</title>
-    <link rel="stylesheet" href="ecole-prof.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="/projet-p/ecole-prof.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
     <nav class="sidebar">
       <ul>
           <li><a class="active" href="#">HOME</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
-          <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+          <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="/projet-p/user.png" alt="Pfp" /></a>
               <div class="dropdown-content">
   
                   <a href="/school - Copie/profil.html"><button type="button" class="dropdown-btn">My Account</button></a>
-                  <a href="#">Log Out</a>
+                  <a href="/logout">Log Out</a>
               </div>
           </li>
           <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
@@ -28,15 +25,15 @@
   </nav>
   
   <nav>
-      <label class="logo"><img src="/edulink0.png" alt="Logo" /></label>
+      <label class="logo"><img src="/projet-p/edulink0.png" alt="Logo" /></label>
       <ul>
           <li><a class="hideOnMobile active" href="#">HOME</a></li>
           <li><a class="about-link hideOnMobile" href="#">About</a></li>
           <li><a class="contact-link hideOnMobile" href="#">Contact</a></li>
-          <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="/user.png" alt="Pfp" /></a>
+          <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="/projet-p/user.png" alt="Pfp" /></a>
               <div class="dropdown-content">
                   <a href="/school - Copie/profil.html"><button type="button" class="dropdown-btn">My Account</button></a>
-                  <a href="#">Log Out</a>
+                  <a href="/logout">Log Out</a>
               </div>
           </li>
           <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
@@ -46,7 +43,7 @@
     <div class="profil">
         <div class="info-p">
           <div class="pfp">
-            <img src="profil.jpg" alt="" />
+            <img src="/projet-p/profil.jpg" alt="" />
           </div>
 
           <!--Information ******************************************************-->
@@ -88,6 +85,7 @@
                   </form>
               </div>
           </div>
+
           </div>
 
           <!---*****************************************************************-->
@@ -99,8 +97,8 @@
         <a href="/schedule-s.html"><button class="content-b"><span>SCHEDULE ></span></button></a>
     </div>
     <div class="button-content">
-        <a href="/teachers section/index.html"><button class="content-c"><span>TEACHERS ></span></button></a>
-        <button class="content-d"><span>COMMENTS ></span></button>
+        <a href="/student/teachers?id=<%= schoolId %>"><button class="content-c"><span>TEACHERS ></span></button></a>
+        <a href="/comments?schoolId=<%= schoolId %>"><button class="content-d"><span>COMMENTS ></span></button></a>
     </div>
     </div>    
     </div>
@@ -110,54 +108,137 @@
               <stop offset="0%" stop-color="#ddddf6" />
               <stop offset="100%" stop-color="#5e5eb5" />
           </linearGradient>
-      </defs>
-      <path d="M0 199.5C0 199.5 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V200H0V199.5Z" fill="url(#waveGradient)" fill-opacity="0.05"/>
-      <path d="M4.98315 199.568C4.98315 199.568 156.326 149.82 698.702 149.82C1241.08 149.82 1480 39 1480 39V200H4.98315V199.568Z" fill="url(#waveGradient)" fill-opacity="0.15"/>
-      <path d="M0 199.539C0 199.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V200H0V199.539Z" fill="url(#waveGradient)" fill-opacity="0.1"/>
-  </svg>
+        </defs>
+        <path d="M0 199.5C0 199.5 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V200H0V199.5Z" fill="url(#waveGradient)" fill-opacity="0.05"/>
+        <path d="M4.98315 199.568C4.98315 199.568 156.326 149.82 698.702 149.82C1241.08 149.82 1480 39 1480 39V200H4.98315V199.568Z" fill="url(#waveGradient)" fill-opacity="0.15"/>
+        <path d="M0 199.539C0 199.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V200H0V199.539Z" fill="url(#waveGradient)" fill-opacity="0.1"/>
+    </svg>
   
   
 
   </section>
-  <footer class="footer" id="footer-section">
+    <footer class="footer">
      
-    <div class="divs-c-l"> 
-        <h3>OUR SERVICES
-        </h3><ul>           
-            <li><a href="#" id="aboutus-link">About us</a></li>
-            <li><a href="#" id="help-link">Help</a></li>
-            <li><a href="#" id="policy-link">Privacy Policy</a></li>
-            <li><a href="#" id="term-link">Term Of Use</a></li>
-        </div>
+        <div class="divs-c-l"> 
+            <h3>OUR SERVICES
+            </h3><ul>           
+                <li><a href="#" id="aboutus-link">About us</a></li>
+                <li><a href="#" id="help-link">Help</a></li>
+                <li><a href="#" id="policy-link">Privacy Policy</a></li>
+                <li><a href="#" id="term-link">Term Of Use</a></li>
+            </div>
 
-     <div class="divs-c-s"> 
-        
-        <img src="edulinklogo.png" alt="" />
-        <h4>your ultimate guide for educational excellence!</h4>
-        
-      </ul></div>
-      <div> <div class="icons">
-        <h3>CONTACT US</h3>
-        <i class="fab fa-facebook" id="facebook-icon"></i>
-        <i class="fab fa-linkedin" id="linkedin-icon"></i>
-        <i class="fab fa-instagram" id="instagram-icon"></i>
-        <i class="fa fa-envelope" id="email-icon"></i>
-       </div>
-      </div>
-</footer>
+       <div class="divs-c-s"> 
+          
+          <img src="/projet-p/edulinklogo.png" alt="" />
+          <h4>your ultimate guide for educational excellence!</h4>
+          <button class="button-footer">JOIN US</button>
+        </ul></div>
+        <div><h3>CONTACT US</h3>
+           <div class="icons">
+       
+          <i class="fab fa-facebook" ></i>
+          <i class="fab fa-twitter" ></i>
+          <i class="fab fa-instagram" ></i>
+          <i class="fab fa-linkedin" ></i>
+         </div></div>
  </footer>
  
     <script>
     function showSidebar(){
       const sidebar = document.querySelector('.sidebar')
       sidebar.style.display = 'flex'
+      
     }
     function hideSidebar(){
       const sidebar = document.querySelector('.sidebar')
       sidebar.style.display = 'none'
     }
-//event listeners tae popup registration
-    document.addEventListener("DOMContentLoaded", function() {
+    let schoolName;
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to fetch school details
+    function fetchSchoolDetails(id) {
+        fetch(`http://localhost:3000/school/get?id=${id}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data)
+                // Update the DOM with the received school details
+                schoolName = data[0].name_sch;
+                localStorage.setItem('schoolName', schoolName);
+                document.getElementById("sch_name").textContent = `School name: ${schoolName}`;
+                document.getElementById("contact").textContent = `Contact: ${data[0].number_sch}`;
+                document.getElementById("adresse").textContent = `Address: ${data[0].adress_sch}`;
+            })
+            .catch(error => {
+                console.error('Error fetching school details:', error);
+            });
+    }
+
+    // Get the ID parameter from the URL
+    var currentUrl = window.location.href;
+    var queryString = currentUrl.split('?')[1];
+    var params = new URLSearchParams(queryString);
+    var id = params.get("id");
+
+    // Call fetchSchoolDetails function with the extracted ID parameter
+    if (id !== null) {
+        fetchSchoolDetails(id);
+        console.log(id)
+    } else {
+        console.log("No ID parameter found in the URL.");
+    }
+
+    // Other event listeners...
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to handle form submission
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const subject = document.getElementById('subject').value;
+        const school = localStorage.getItem('schoolName'); 
+        console.log('Subject:', subject);
+         console.log('School:', school);
+        // Send enrollment data to the server
+        fetch('/school/enroll', {
+            method: 'POST',
+            headers: {
+        'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({ subject: subject, school: school })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            // Show success message or handle redirection
+            alert(data);
+        })
+        .catch(error => {
+            console.error('Error enrolling student:', error);
+            alert('An error occurred while enrolling. Please try again later.');
+
+        });
+        document.getElementById('successModal').style.display = 'block';
+         // Hide the registration form
+        document.getElementById('registration-form').style.display = 'none';
+          // Change the text of the button
+          document.getElementById('close-popup-btn').innerText = 'Registration Successful';
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
     
     document.getElementById("open-popup-btn").addEventListener("click", function(){
         document.getElementById("popup").classList.add('active');
@@ -172,155 +253,16 @@
     });
 
     // Function to handle inscription button click
-    document.getElementById('close-popup-btn').addEventListener('click', function() {
-        // Show an alert
-        alert('An email has been sent to the school. They will contact you soon.');
-    });
+    /*document.getElementById('close-popup-btn').addEventListener('click', function() {
+        alert('');
+
+    });*/
 });
 
 function dismissModal() {
     // Redirect to student_search.html or do other actions
     window.location.href = 'student_search.html';
 }
-
-document.getElementById('registration-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Simulate form submission (replace with actual submission logic)
-    // For now, show the success modal
-    document.getElementById('successModal').style.display = 'block';
-    // Hide the registration form
-    document.getElementById('registration-form').style.display = 'none';
-    // Change the text of the button
-    document.getElementById('close-popup-btn').innerText = 'Registration Successful';
-});
-
-  </script> 
-      
-  <script>
-    
-    // Récupérer l'ID de l'école depuis l'URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const index = urlParams.get('id');
-    console.log(index);
-    // Récupérer l'ID de l'école depuis localStorage
-      let schoolId = 0;
-    if(index == 1) 
-        schoolId = localStorage.getItem('school1');
-    if(index == 2)
-        schoolId = localStorage.getItem('school2');
-    if(index == 3)
-        schoolId = localStorage.getItem('school3');
-    
-
-        let request = new XMLHttpRequest();
-        request.open("GET", `http://127.0.0.1:3000/school/id?id_sch=${schoolId}`)
-        request.responseType = "json"
-        request.send()
-        request.onreadystatechange = function() {
-            let school = request.response;
-      
-                document.getElementById("sch_name").innerHTML = `School name: ${school[0].name_sch}</h2>`
-                document.getElementById("contact").innerHTML = `Contact: ${school[0].number_sch}`
-                document.getElementById("adresse").innerHTML = `Adress: ${school[0].adress_sch}`
-                
-                console.log(request.response);
-            }
-
-
-
-
-
-            
-            // Function to scroll to the footer section when the "Contact" link is clicked
-document.addEventListener("DOMContentLoaded", function() {
-    var contactLink = document.querySelector(".contact-link");
-    var footerSection = document.getElementById("footer-section");
-
-    if (contactLink && footerSection) {
-        contactLink.addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            
-            // Scroll smoothly to the footer section
-            footerSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-});
-
-// Function to scroll to the footer section when the "About" link is clicked
-document.addEventListener("DOMContentLoaded", function() {
-    var contactLink = document.querySelector(".about-link");
-    var footerSection = document.getElementById("footer-section");
-
-    if (contactLink && footerSection) {
-        contactLink.addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            
-            // Scroll smoothly to the footer section
-            footerSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    var contactLink = document.querySelector(".contact-link");
-    var footerSection = document.getElementById("footer-section");
-    var facebookIcon = document.getElementById("facebook-icon");
-    var linkedinIcon = document.getElementById("linkedin-icon");
-    var instagramIcon = document.getElementById("instagram-icon");
-    var emailIcon = document.getElementById("email-icon");
-    var iconsShined = false;
-
-    if (contactLink && footerSection) {
-        contactLink.addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            
-            // Scroll smoothly to the footer section
-            footerSection.scrollIntoView({ behavior: 'smooth' });
-
-            // Add the shine effect to icons only once
-            if (!iconsShined) {
-                setTimeout(function() {
-                    facebookIcon.classList.add("shine");
-                    linkedinIcon.classList.add("shine");
-                    instagramIcon.classList.add("shine");
-                    emailIcon.classList.add("shine");
-                    iconsShined = true;
-                }, 1000); // Delay the shining effect by 1 second
-            }
-        });
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    var aboutLink = document.querySelector(".about-link");
-    var footerSection = document.getElementById("footer-section");
-    var aboutusLink = document.getElementById("aboutus-link");
-    var helpLink = document.getElementById("help-link");
-    var policyLink = document.getElementById("policy-link");
-    var termLink = document.getElementById("term-link");
-    var iconsShined = false;
-
-    if (aboutLink && footerSection) {
-        aboutLink.addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            
-            // Scroll smoothly to the footer section
-            footerSection.scrollIntoView({ behavior: 'smooth' });
-
-            // Add the shine effect to icons only once
-            if (!iconsShined) {
-                setTimeout(function() {
-                    aboutusLink.classList.add("shine");
-                    helpLink.classList.add("shine");
-                    policyLink.classList.add("shine");
-                    termLink.classList.add("shine");
-                    iconsShined = true;
-                }, 1000); // Delay the shining effect by 1 second
-            }
-        });
-    }
-});
 
   </script>
   </body>
