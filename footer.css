@@ -1,0 +1,118 @@
+.footer{
+    height: 300px;
+    border-top: 10px solid #9290C3;
+    padding: 20px;
+    background: linear-gradient(to right , #7a7aba,#5e5eb5 );
+}
+.footer{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding:30px 0 ;
+}
+.footer h3{color:#fff;
+    margin-bottom:25px ;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.icons .fab{
+    color:#fff;
+    margin: 0 13px;
+    cursor:pointer;
+    padding:20px 0;
+    font-size: 20px;
+}
+.divs-c-s img{
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 100px;
+    width: 150px;
+}
+.divs-c-s h4{
+    color: #fff;
+}
+footer div{
+height: 200px;
+width: 400px;
+float:left;
+}
+.divs-c-l ul li{
+ list-style: none;
+ margin-bottom: 12px;
+ color: #fff;
+
+}
+.divs-c-l ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+.divs-c-l{
+
+    top:0;
+left: 0px;
+padding-left:10px;}
+
+
+.button-footer{
+
+        background-color: #fff;
+        color: #9290C3;
+        font-size: 12px;
+        padding: 15px 45px;
+        border: 3px #b4b2f0 groove;
+        border-radius: 23px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-top: 30px;
+        cursor: pointer;
+    
+    
+}
+.button-footer:hover{
+    box-shadow: 0 0 5px #ffffff, 0 0 30px #c3b3e1,0 0 90px #7f46e9;
+    transition: 0.5s ease-in-out;
+}
+.divs-c-l h3{
+    padding-left: 30px;
+}
+.icons .fa{
+    color:#fff;
+    margin: 0 13px;
+    cursor:pointer;
+    padding:20px 0;
+    font-size: 20px;
+}
+.icons{ display: flex;
+    justify-content: center;}
+.edu{
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+}
+@media(max-width:700px){
+ footer{
+    font-size: 10px;
+   height: 100%;
+ }
+ footer div{
+    font-size: 10px;
+    height: 120px;
+width: 150px;
+float:left;
+ }
+ .divs-c-s img{
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 80px;
+    width: 120px;
+}
+.divs-c-s h4{
+    color: #fff;
+    font-size: 10px;
+}
+}
+.icons ul li{
+    padding: 5px;
+    margin: 5px;
+}

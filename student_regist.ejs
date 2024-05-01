@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration student</title>
+    <link rel="stylesheet" href="student_regist.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Registration</h1>
+        <form id="registration-form">
+            <p>To register in this school, we kindly request that you select the subject of your interest. This information will be sent along with your other details to the school's administration.</p>
+            <div class="form-group">
+                <label for="subject">Subject of Interest:</label>
+                <select id="subject" name="subject" required>
+                    <option value="Math">Math</option>
+                    <option value="Physics">Physics</option>
+                    
+                </select>
+            </div>
+            <button type="submit" id="registerButton">Register</button>
+        </form>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2>Success!</h2>
+            <p>Your registration request has been sent successfully.</p>
+            <button class="dismiss-btn" onclick="dismissModal()">Dismiss</button>
+        </div>
+    </div>
+
+    <script>
+        function dismissModal() {
+            // Redirect to student_search.html
+            window.location.href = '/views/student_search.html';
+        }
+
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Simulate form submission (replace with actual submission logic)
+            // For now, show the success modal
+            document.getElementById('successModal').style.display = 'block';
+        });
+
+    </script>
+</body>
+</html>
+

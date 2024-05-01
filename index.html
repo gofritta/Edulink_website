@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="popup2.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+</head>
+
+<body>
+    <nav class="sidebar">
+  <ul>
+    <li><a class="active" href="#">HOME</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a class="join-us-buttonn" href="#">Join Us</a></li>
+    <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+  </ul>
+</nav>
+<nav>
+  <label class="logo"><img src="edulink0.png" alt="" /></label>
+  <ul>
+    <li><a class="hideOnMobile active" href="#">HOME</a></li>
+    <li><a class="hideOnMobile" href="#">About</a></li>
+    <li><a class="hideOnMobile" href="#">Contact</a></li>
+    <li><a class="hideOnMobile join-us-button" href="#">Join Us</a></li>
+    <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+  </ul>
+</nav>
+<script>
+  function showSidebar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'flex';
+  }
+  function hideSidebar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'none';
+  }
+</script>
+
+
+<section class="video-section">
+    <video autoplay muted loop>
+      <source src="introvid.mp4" type="video/mp4">
+    </video>
+     <!-- <img src="icon1.png" alt="Location Icon 1" class="location-pin pin1">
+    <img src="icon2.png" alt="Location Icon 2" class="location-pin pin2">
+    <img src="icon3.png" alt="Location Icon 3" class="location-pin pin3">
+    <img src="icon4.png" alt="Location Icon 4" class="location-pin pin4">
+    <img src="icon5.png" alt="Location Icon 5" class="location-pin pin5">
+    <img src="icon6.png" alt="Location Icon 6" class="location-pin pin6">
+   ...add more icons as needed -->
+   <img id="logo1" src="edulink0.png" alt="Logo" class="logo"> 
+    <p id="p1" ></p>
+    <button class="start-button">Get Started</button>
+    <!-- Popup HTML -->
+    <div id="popup-container" class="popup center">
+        <div class="icon">
+            <i class="fa fa-question"></i>
+        </div>
+        <div class="title">
+          Welcome!
+        </div>
+        <div class="description">
+          Please select your role:
+        </div>
+        <div class="buttons">
+            <a href="signin/index.html"><button id="student-btn">Student</button></a>
+            <a href="registration.html"> <button id="school-manager-btn">School Manager</button></a>
+        </div>
+    </div>
+
+
+    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg2">
+        <path d="M0 289.501C0 289.501 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V290H0V289.501Z" fill="#AC6CFF" fill-opacity="0.05"/>
+        <path d="M4.98315 289.568C4.98315 289.568 156.326 168.82 698.702 168.82C1241.08 168.82 1480 39 1480 39V290H4.98315V289.568Z" fill="#AC6CFF" fill-opacity="0.15"/>
+        <path d="M0 289.539C0 289.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V290H0V289.539Z" fill="#AC6CFF" fill-opacity="0.1"/>
+        </svg>        
+</section>
+
+
+<section class="how-it-works parallax-section" id="section2">
+    <h1 class="section-title reveal">How it works?</h1>
+    <div class="content reveal">
+        <div class="video2">
+            <!-- Embed your video here -->
+            <video autoplay muted loop>
+                <source src="vid02.mov" type="video/mp4">
+              </video>
+        </div>
+        <div class="text">
+            <p>Bla bla bla bla ..........................bla bla bla...........................bla bla bla..........................bla vla bla.
+            </p>
+            
+            
+        </div>
+    </div>
+    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#0A1A7D" fill-opacity="0.1"/>
+        <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.1"/>
+        </svg>
+        
+        
+        
+</section>
+<section class="find-best parallax-section" id="section3">
+    <h1 class="section-title reveal">Find  What Suits You Best</h1>
+    <div class="content reveal">
+        <div class="slider">
+            <div class="slides">
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <div class="slide first">
+                    <img src="2.png" alt="">
+                </div>
+                <div class="slide">
+                    <img src="02.png" alt="">
+                </div>
+                <div class="slide">
+                    <img src="03.png" alt="">
+                </div>
+                <div class="slide">
+                    <img src="4.png" alt="">
+                </div>
+                <div class="navigation-auto">
+                    <label class="auto-btn1" for="radio1"></label>
+                    <label class="auto-btn2" for="radio2"></label>
+                    <label class="auto-btn3" for="radio3"></label>
+                    <label class="auto-btn4" for="radio4"></label>
+                </div>
+            </div>
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+        </div>
+        
+   <script type="text/javascript">
+var counter = 1;
+setInterval(function(){
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if(counter > 4){
+        counter = 1;
+    }
+}, 5000);
+
+
+   </script>
+    <div class="search-container">
+        <input type="text" placeholder="Search..." class="search-box">
+        <button class="search-button">Search</button>
+      </div> </div>
+      <svg id="svg1" width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#8F4CC3" fill-opacity="0.05"/>
+        <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#F6BFFF" fill-opacity="0.05"/>
+        <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#571E83" fill-opacity="0.05"/>
+        </svg>
+</section>
+
+<section class="popular-school parallax-section" id="section4">
+    <h1 class="section-title reveal">Explore Our Popular Schools</h1>
+    <div class="school-container reveal">
+        <div class="school" data-name="School Name 1" data-description="Description of School 1">
+            <img src="school3.jpg" alt="School 1">
+            <h3>METIDJA Academy</h3>
+            
+            <div class="school-details">
+                <button class="view-details">View Details</button>
+                <div class="rating hidden">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9734;</span>
+
+                </div>
+                <div class="rating-text hidden">Blida- Boulevard de 20m</div> <!-- Add the text element -->
+            </div>
+        </div>
+        
+        <div class="school" data-name="School Name 2" data-description="Description of School 2">
+            <img src="school1.jpg" alt="School 2">
+            <h3>CoursDZ School</h3>
+            <div class="school-details">
+                <button class="view-details">View Details</button>
+                <div class="rating hidden">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9734;</span>
+                </div>
+                <div class="rating-text hidden">Algiers- Rue Didouche</div> <!-- Add the text element -->
+            </div>
+        </div>
+        
+        <div class="school" data-name="School Name 3" data-description="Description of School 3">
+            <img src="school4.jpg" alt="School 3">
+            <h3>DELTA School</h3>
+            <div class="school-details">
+                <button class="view-details">View Details</button>
+                <div class="rating hidden">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9734;</span>
+                </div>
+                <div class="rating-text hidden">Blida- Boufarik</div> <!-- Add the text element -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="student-feedback parallax-section" id="section5">
+    <h1 class="section-title reveal">Student Feedback</h1>
+
+    <div class="feedback-content reveal">
+        <div class="student-picture">
+            <img class="student-picture-img" src="Screenshot 2024-04-26 201945.png" alt="Student Picture" data-text="ut maximus lacus convallis. Nullam vitae velit nec neque blandit congue.">
+        </div>
+        <div class="feedback-text">
+            <p>ut maximus lacus convallis. Nullam vitae velit nec neque blandit congue.</p>
+            <button class="view-details-button">View Details</button>
+        </div>
+        <div class="popup3">.You have to sign in first!</div> 
+    </div>
+    <div class="related-pictures reveal">
+        <img src="studentboy1.png" alt="Related Picture 1" data-text="the other woman has time to manicure her nails the other woman is perfect where her rival fails" id="std1">
+        <img src="studentgirl2.png" alt="Related Picture 2" data-text="hello i want to say that this website is so amazing thank you" id="std2">
+        <img src="studentboy2.png" alt="Related Picture 3" data-text="why jazz puts women int the mood for love" id="std3">
+    </div>
+    <svg width="1480" height="290" viewBox="0 0 1480 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 289.501C0 289.501 151.854 149.991 696.062 149.991C1240.27 149.991 1480 0 1480 0V290H0V289.501Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        <path d="M0 289.568C0 289.568 151.854 168.82 696.062 168.82C1240.27 168.82 1480 39 1480 39V290H0V289.568Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        <path d="M0 289.539C0 289.539 151.854 160.613 696.062 160.613C1240.27 160.613 1480 22 1480 22V290H0V289.539Z" fill="#0A1A7D" fill-opacity="0.05"/>
+        </svg>
+        
+</section>
+<script src="popup2.js"></script>
+<script src="index1.js"></script>
+
+
+
+
+  
+
+<footer class="footer">
+     
+    <div class="divs-c-l"> 
+        <h3>OUR SERVICES
+        </h3><ul>           
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Term Of Use</a></li>
+        </div>
+
+     <div class="divs-c-s"> 
+        
+        <img src="edulinklogo.png" alt="" />
+        <h4>your ultimate guide for educational excellence!</h4>
+        <button class="button-footer">JOIN US  ></button>
+      </ul></div>
+      <div> <div class="icons">
+        <h3>CONTACT US</h3>
+        <i class="fab fa-facebook" ></i>
+        <i class="fab fa-twitter" ></i>
+        <i class="fab fa-instagram" ></i>
+        <i class="fa fa-envelope" ></i>
+       </div></div>
+</footer>
+
+</body>
+</html>
+

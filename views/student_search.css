@@ -1,0 +1,425 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    /* Set linear gradient background */
+    background: linear-gradient(to right, #ffffff, #d9dafd);
+}
+
+nav {
+    margin-top: 0;
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #614972;
+    font-size: 16px;
+    padding: 7px 13px;
+    border-radius: 15px;
+    text-transform: uppercase;
+}
+
+nav a:hover, a.active {
+    color: #fff;
+    background-color: #614972;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+label.logo {
+    color: #90799f;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.logo img {
+    size: 100px;
+    width: 220px;
+    height: auto;
+    padding-left: 3vw;
+    margin-top: 1vw;
+    margin-left: -1.5vw;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #765b7532;
+    backdrop-filter: blur(12px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.155);
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar ul {
+    width: 100%;
+}
+
+.sidebar a {
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+
+.menu-button {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .hideOnMobile {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .sidebar {
+        display: flex;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        width: 100%;
+    }
+}
+.title-section {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.title-section h1 {
+    margin-bottom: 5px;
+    margin-left: 2vw;
+    margin-top: 1vw;
+    font-size: 2.5rem;
+}
+.subtitle {
+    margin-bottom: 10px;
+    margin-left: 2vw;
+    font-weight: 500;
+}
+.divider {
+    border: none;
+    border-top: 1px solid #333;
+    margin-left: 2vw;
+    width: 95%;
+    margin-bottom: 20px;
+}
+.search-box {
+    display: flex;
+    align-items: center;
+    margin-left: 67.4vw;
+    margin-top: -6vw;
+    position: relative;
+}
+
+#search-input {
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px solid #ccc;
+    width: 24vw;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    font-size: medium;
+}
+
+#search-button {
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 19px;
+    background-color: #8e55b6;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    font-size: medium;
+    font-weight: 500;
+
+}
+.wrapper {
+    width: auto;
+    position: relative;
+    height: auto;
+}
+
+.wrapper i{
+    height: 50px;
+    width: 50px;
+    background: #fff;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 60%;
+    font-size: 1.25rem;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px rgb(0, 0, 0,0.23);
+}
+.wrapper #left {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    left: -5vw; /* Adjust this value to move the left arrow further to the left */
+}
+
+.wrapper i:last-child {
+    right: -5vw;
+}
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3)-12px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+.carousel::-webkit-scrollbar{
+    display: none;
+}
+.carousel :where(.card,.img){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carousel.no-transition{
+    scroll-behavior: auto;
+}
+.carousel.dragging{
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+.carousel.dragging .card{
+    cursor: grab;
+    user-select: none;
+}
+.carousel .card {
+    scroll-snap-align: start;
+    height: 27vw;
+    list-style: none;
+    background: #fff;
+    border-radius: 19px;
+    cursor: pointer;
+    display: flex;
+    padding-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+margin-top: 3vw;
+border: 4px solid #6d6b7e14;
+}
+.card .img {
+    background: #8B53FF;
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+}
+.card .img img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fff;
+}
+.card h2 {
+    font-weight: 500;
+    font-size: 1.56rem;
+    margin: 30px 0 5px;
+}
+.card span {
+    color: #6a6d78;
+    font-size: 1.31rem;
+}
+.card button {
+    border: none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    background-color: #523db1;
+    border-radius: 15px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.2);
+    border: 2px solid #33333361;
+
+}
+    
+.card button:hover {
+    box-shadow: 0 0 5px #a34eca, 0 0 15px #9b8db1, 0 0 29px #c6bdd7, 0 0 150px #8258e4;
+    transition: 0.5s ease-in-out;
+    }
+    
+@media screen and (max-width: 900px){
+    .wrapper .carousel {
+        grid-template-columns: calc((100%/2)-9PX);
+    }
+}
+
+@media screen and (max-width: 600px){
+    .wrapper .carousel {
+        grid-template-columns: 100%;
+    }
+}
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    padding: 0;
+    transition: transform 0.5s ease;
+}
+
+.card {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    width: 300px; /* Largeur de chaque carte d'école */
+}
+#placeholder {
+    color: #75357cb3; 
+    position: absolute; 
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);     
+}
+#placeholder-icon {
+    width: 50px; 
+    height: 50px; 
+    margin-left : 50%; 
+    
+}
+#profile-picture {
+    width: 32px;
+    height: 30px; 
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 10px;
+    text-decoration: none;
+    display: block;
+    border-radius: 0;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    
+}
+/* Dropdown button styles */
+.dropdown-btn {
+    
+    text-decoration: none;
+    display: block;
+    border: none; /* Remove border */
+    background: none; /* Remove background */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: black; /* Make text transparent */
+    font-size: 18px; /* Set font size to 0 to hide text */
+}
+
+/* Apply hover effect to dropdown button */
+.dropdown-btn:hover {
+    color: #ddd; /* Change to match the hover effect color */
+}
+
+
+#suggestions {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position below the search box */
+    left: 0;
+    width: 74%;
+    background-color: #fff;
+    border: 2px solid #d4d3d3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it appears above other elements */
+    max-height: 200px; /* Limit max height to avoid excessive scrolling */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    border-radius: 15px;
+}
+
+/* Style for individual suggestions */
+.suggestion {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.suggestion:hover {
+    background-color: #f5f5f5;
+}

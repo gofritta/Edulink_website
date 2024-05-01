@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <script src="modal.js" defer></script>
+    <link rel="stylesheet" href="modal.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <h2>My Account</h2>
+            <form>
+                <div id="profile-picture-container">
+                    <img id="profile-picture-preview" class="profile-picture" src="#" alt="Profile Picture Preview"/>
+                    <input type="file" id="profile-picture" style="display: none;">
+                    <label for="profile-picture" id="profile-picture-label">Choose Picture</label>
+                </div>
+                
+                <label for="name">Set a New Name:</label><br>
+                <input type="text" id="name"><br>
+                <label for="old-password">Old Password:</label><br>
+                <input type="password" id="old-password"><br>
+                <label for="new-password">New Password:</label><br>
+                <input type="password" id="new-password"><br>
+                <input type="submit" value="Save Changes">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
