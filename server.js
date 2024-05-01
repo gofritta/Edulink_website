@@ -200,6 +200,8 @@ passport.authenticate('linkedin', { failureRedirect: '/student/login' }),
 app.get('/projet-p/school/profile', checkAuthenticated, async (req, res) => {
   try {
       const schoolId = req.query.id;
+      // Add schoolId to session
+      req.session.schoolId = schoolId;
       const school = await getSchoolById(pool, schoolId);
       console.log( school)
       if (school) {
@@ -300,8 +302,8 @@ function checkNotAuthenticated(req, res, next){
 
 // more to go!!
 /********************************teachers li tokhraj l school *************************************** */
-app.get('/schools/:schoolId/teachers', async (req, res) => {
-  const schoolId = req.params.schoolId;
+app.get('/schools/teachers', async (req, res) => {
+  const schoolId = req.query.id;
   try {
       // Fetch teachers associated with the specified school from the database
       const [teachers] = await pool.query(`
@@ -320,8 +322,8 @@ app.get('/schools/:schoolId/teachers', async (req, res) => {
 });
 
 
-app.post('/schools/:schoolId/teachers', async (req, res) => {
-  const schoolId = req.params.schoolId;
+app.post('/schools/teachers', async (req, res) => {
+  const schoolId =  req.query.id;
   const { name, gender, birthdate, employment, speciality } = req.body;
   try {
       // Insert the new teacher into the database
@@ -344,9 +346,9 @@ app.post('/schools/:schoolId/teachers', async (req, res) => {
   }
 });
 
-app.post('/schools/:schoolId/teachers/delete/:teacherId', async (req, res) => {
-  const schoolId = req.params.schoolId;
-  const teacherId = req.params.teacherId;
+app.post('/schools/teachers/delete/:teacherId', async (req, res) => {
+  const schoolId =  req.query.id;
+  const teacherId = req.params.teacherId;// hadi brk manich 3arfa wch rk msami l id ta3 teacher f query 
   try {
       // Delete the teacher from the work_for table to disassociate them from the school
       await pool.query(`
@@ -363,22 +365,22 @@ app.post('/schools/:schoolId/teachers/delete/:teacherId', async (req, res) => {
 });
 /********************************teachrs li tokhraj l student ******************************** */
   
-app.get('/student/:schoolId/teachers', async (req, res) => {
-  const schoolId = req.params.schoolId;
+app.get('/student/teachers', async (req, res) => {
+  const schoolId = req.session.schoolId; // Retrieve schoolId from the query string
   try {
-      // Fetch teachers associated with the specified school from the database
-      const [teachers] = await pool.query(`
-          SELECT t.*
-          FROM teacher t
-          INNER JOIN work_for wf ON t.id_t = wf.id_t
-          WHERE wf.id_sch = ?
-      `, [schoolId]);
-      
-      // Pass the fetched teachers data to the EJS template for rendering
-      res.render('teacher_student', { teachers, schoolId });
+    // Fetch teachers associated with the specified school from the database
+    const [teachers] = await pool.query(`
+        SELECT t.*
+        FROM teacher t
+        INNER JOIN work_for wf ON t.id_t = wf.id_t
+        WHERE wf.id_sch = ?
+    `, [schoolId]);
+    
+    // Pass the fetched teachers data to the EJS template for rendering
+    res.render('teacher_student', { teachers, schoolId });
   } catch (error) {
-      console.error('Error fetching teachers data:', error);
-      res.status(500).send('Internal Server Error');
+    console.error('Error fetching teachers data:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
 
@@ -386,9 +388,9 @@ app.get('/student/:schoolId/teachers', async (req, res) => {
 
 
 
-app.get('/comments/:schoolId', async (req, res) => {
+app.get('/comments', async (req, res) => {
   try {
-      const { schoolId } = req.params;
+      const  schoolId  = req.session.schoolId;
       const connection = await pool.getConnection();
       const userId = req.session.user.id ; 
       const [rows] = await connection.query(`
@@ -408,24 +410,23 @@ app.get('/comments/:schoolId', async (req, res) => {
   }
 });
 
-app.post('/comments/:schoolId/comment', async (req, res) => {
-  const { comment } = req.body;
-  const { schoolId } = req.params;
+app.post('/comments/comment', async (req, res) => {
+  const schoolId = req.session.schoolId
+  const { comment} = req.body; // Access schoolId from req.body
   try {
-     
-      const connection = await pool.getConnection();
-      await connection.query('INSERT INTO review (id_s, comment_text, comment_date, school_id) VALUES (?, ?, NOW(), ?)', [10, comment, schoolId]); // Assuming id_s is 1 for now
-      connection.release();
-      res.redirect(`/comments/${schoolId}`);
+    const connection = await pool.getConnection();
+    await connection.query('INSERT INTO review (id_s, comment_text, comment_date, school_id) VALUES (?, ?, NOW(), ?)', [req.session.user.id, comment, schoolId]);
+    connection.release();
+    res.redirect(`/comments?schoolId=${schoolId}`);
   } catch (error) {
-      console.error(error);
-      res.status(500).send('Internal Server Error');
+    console.error(error);
+    res.status(500).send('Internal Server Error');
   }
 });
 
-app.post('/comments/like/:schoolId', async (req, res) => {
+app.post('/comments/like', async (req, res) => {
   const { comment_id } = req.body;
-  const { schoolId } = req.params;
+  const  schoolId  =  req.session.schoolId;
   const userId = req.session.user.id ; 
 
   try {
@@ -448,10 +449,10 @@ app.post('/comments/like/:schoolId', async (req, res) => {
   }
 });
 
-app.post('/comments/comment/delete/:schoolId', async (req, res) => {
+app.post('/comments/comment/delete', async (req, res) => {
   const { commentId } = req.body;
   const userId =req.session.user.id; 
-  const { schoolId } = req.params;
+  const { schoolId } = req.body;
   try {
       
       const connection = await pool.getConnection();
@@ -482,9 +483,9 @@ app.post('/comments/comment/delete/:schoolId', async (req, res) => {
 
 
 /********************commets ta3 school***************************************** */
-app.get('/comments/school/:schoolId', async (req, res) => {
+app.get('/comments/school', async (req, res) => {
   try {
-      const { schoolId } = req.params;
+      const schoolId  = req.query;
       const connection = await pool.getConnection();
       const [rows] = await connection.query(`
       SELECT 

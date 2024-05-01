@@ -153,11 +153,12 @@
 <body>
     <h1>Comment Section</h1>
     
-    <form action="/comments/<%= schoolId %>/comment" method="POST">
-        <textarea id="comment" name="comment" rows="4" required cols="50" placeholder="Write your comment here..."></textarea><br>
-        <button class="glow-on-hover" type="submit">add comment!</button>
-        
-    </form>
+    
+    <form action="/comments/comment" method="POST">
+      <textarea id="comment" name="comment" rows="4" required cols="50" placeholder="Write your comment here..."></textarea><br>
+      <input type="hidden" name="schoolId" value="<%- schoolId %>">
+      <button class="glow-on-hover" type="submit">add comment!</button>
+  </form>
 
     <h2>Comments</h2>
     <ul>
@@ -178,84 +179,88 @@
             </li>
         <% }) %>
     </ul>
-    <script>
-     document.addEventListener('DOMContentLoaded', () => {
-    // Event listener for like buttons
-    document.querySelectorAll('.like-btn').forEach(button => {
-        const commentId = button.dataset.commentId;
-
-        // Restore the state of liked buttons from local storage
-        const isLiked = localStorage.getItem(`liked_${commentId}`);
-        if (isLiked === 'true') {
-            button.classList.add('active');
-        }
-
-        // Event listener for click on like button
-        button.addEventListener('click', async () => {
-            const schoolId = window.location.pathname.split('/')[2]; // Get the schoolId from the URL path
-            if (!button.classList.contains('active')) {
-                try {
-                    const response = await fetch(`/comments/like/${schoolId}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ comment_id: commentId })
-                    });
-                    const data = await response.json();
-                    if (data.success) {
-                        const likesCount = document.getElementById(`likes_${commentId}`);
-                        likesCount.textContent = parseInt(likesCount.textContent) + 1;
-                        button.classList.add('active');
-                        localStorage.setItem(`liked_${commentId}`, 'true');
-                    } else {
-                        console.error(data.error);
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                }
-            }
-        });
-    });
-});
-    // Event listener for delete buttons
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', async () => {
-            console.log("Delete button clicked");
+    
+     <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Event listener for like buttons
+        document.querySelectorAll('.like-btn').forEach(button => {
             const commentId = button.dataset.commentId;
-            const schoolId = window.location.pathname.split('/')[2]; // Get the schoolId from the URL path
-            console.log("School ID:", schoolId);
-            const confirmDelete = confirm("Are you sure you want to delete this comment?");
-            if (confirmDelete) {
-                try {
-                    const response = await fetch(`/comments/comment/delete/${schoolId}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ commentId: commentId })
-                    });
-                    console.log("Delete request sent");
-                    const data = await response.json();
-                    console.log("Response data:", data);
-                    if (data.success) {
-                        const commentElement = document.getElementById(`comment_${commentId}`);
-                        commentElement.remove();
-                    } else {
-                        if (data.error === 'Unauthorized to delete this comment') {
-                            alert('You cannot delete this comment.');
+
+            // Restore the state of liked buttons from local storage
+            const isLiked = localStorage.getItem(`liked_${commentId}`);
+            if (isLiked === 'true') {
+                button.classList.add('active');
+            }
+
+            // Event listener for click on like button
+            button.addEventListener('click', async () => {
+                const schoolIdInput = document.querySelector('input[name="schoolId"]');
+                const schoolId = schoolIdInput.value;
+
+                if (!button.classList.contains('active')) {
+                    try {
+                      const response = await fetch(`/comments/like?id=${schoolId}`, {
+                          method: 'POST',
+                             headers: {
+                              'Content-Type': 'application/json'
+                          },
+                             body: JSON.stringify({ comment_id: commentId })
+                           });
+                        const data = await response.json();
+                        if (data.success) {
+                            const likesCount = document.getElementById(`likes_${commentId}`);
+                            likesCount.textContent = parseInt(likesCount.textContent) + 1;
+                            button.classList.add('active');
+                            localStorage.setItem(`liked_${commentId}`, 'true');
                         } else {
                             console.error(data.error);
                         }
+                    } catch (error) {
+                        console.error('Error:', error);
                     }
-                } catch (error) {
-                    console.error('Error:', error);
                 }
-            }
+            });
+        });
+
+        // Event listener for delete buttons
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', async () => {
+                console.log("Delete button clicked");
+                const commentId = button.dataset.commentId;
+                const schoolIdInput = document.querySelector('input[name="schoolId"]');
+                const schoolId = schoolIdInput.value;
+
+                console.log("School ID:", schoolId);
+                const confirmDelete = confirm("Are you sure you want to delete this comment?");
+                if (confirmDelete) {
+                    try {
+                        const response = await fetch(`/comments/comment/delete`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ commentId: commentId, schoolId: schoolId })
+                        });
+                        console.log("Delete request sent");
+                        const data = await response.json();
+                        console.log("Response data:", data);
+                        if (data.success) {
+                            const commentElement = document.getElementById(`comment_${commentId}`);
+                            commentElement.remove();
+                        } else {
+                            if (data.error === 'Unauthorized to delete this comment') {
+                                alert('You cannot delete this comment.');
+                            } else {
+                                console.error(data.error);
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                }
+            });
         });
     });
-
-
-    </script>
+</script>
 </body>
 </html>
