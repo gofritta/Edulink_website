@@ -440,8 +440,8 @@ label.logo {
 .divs-c-s img{
     margin-top: 1px;
     margin-bottom: 1px;
-    height: 100px;
-    width: 150px;
+    height: 8vw;
+    width: 16vw;
 }
 .divs-c-s h4{
     color: #070F2B;
@@ -676,3 +676,170 @@ padding-bottom: 5px;
 .dropdown-btn:hover {
     color: #ddd; /* Change to match the hover effect color */
 }
+
+.shine {
+    animation: shine-animation 1s infinite alternate;
+}
+
+@keyframes shine-animation {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+        text-shadow: 0 0 5px #e0aaff, 0 0 10px #d88bff, 0 0 15px #cc7cf7, 0 0 20px #bf64e6, 0 0 25px #b34bd6, 0 0 30px #a632c6, 0 0 35px #961db6;
+    }
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19), opacity 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+    z-index: 9999;
+    background: linear-gradient(to right bottom, #3c3a3d, #000000);
+    border-radius: 15px;
+    padding: 20px;
+  
+    
+}
+.popup.active {
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+.popup-content {
+    font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(to right bottom, #cec2d4, #8989c1);
+    width: 500px;
+    padding: 20px;
+    border-radius: 15px!important;
+    box-shadow: 0 0 1000px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+
+}
+
+  
+  .popup-content h1 {
+    margin-top: 1vw;
+    margin-right: 5vw;
+    color: #000000;
+    text-align: center;
+  }
+  
+  #close-popup-btn {
+    background-color: #ddd;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19), opacity 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  }
+  #close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #666;
+    margin-left: 0;
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19), opacity 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+}
+
+.container {
+    
+    width: 480px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to right bottom, #6808531d, #e2d9e1 50%, #e2d9e1 50%, #6092c462);
+}
+
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.form-group label {
+    width: 100px;
+    margin-right: 20px;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+
+.form-group select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.but {
+    margin: 0 auto;
+    display: block;
+    padding: 10px 20px;
+    background-color: #5b1d69 !important; 
+    color: #fff !important; 
+    border: none;
+    border-radius: 15px!important;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.but:hover {
+    background-color: #3a21a0 !important; 
+}
+
+p {
+text-align: center ;
+margin-top: 2.5vw;
+margin-bottom: 2vw;
+padding: 10px;
+color: #3f2e41a3;
+}
+
+ /* CSS for the popup hna  */
+ .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20vw;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.dismiss-btn {
+    margin-top: 20px;
+}  
