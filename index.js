@@ -5,8 +5,6 @@ import bodyParser from 'body-parser';
 
 const app = express();
 const PORT = 3000;
-
-
 // Configurer l'application pour utiliser body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Parse JSON data

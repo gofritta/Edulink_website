@@ -31,8 +31,8 @@
       <label class="logo"><img src="/edulink0.png" alt="Logo" /></label>
       <ul>
           <li><a class="hideOnMobile active" href="#">HOME</a></li>
-          <li><a class="hideOnMobile" href="#">About</a></li>
-          <li><a class="hideOnMobile" href="#">Contact</a></li>
+          <li><a class="about-link hideOnMobile" href="#">About</a></li>
+          <li><a class="contact-link hideOnMobile" href="#">Contact</a></li>
           <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="/user.png" alt="Pfp" /></a>
               <div class="dropdown-content">
                   <a href="/modal.html"><button type="button" class="dropdown-btn">My Account</button></a>
@@ -56,8 +56,38 @@
             <h4 id="sch_name"></h4>
             <h4 id="contact"></h4>
             <h4 id="adresse"></h4>
-            <a href="/student_regist.html"><button class="Inscription">Inscription</button></a>
+            <button id="open-popup-btn" class="Inscription">Inscription</button>
+            <!--Popup registration--->
+            <div class="popup" id="popup">
+              <div class="popup-content">
+                  <h1>Student Registration</h1>
+                  <i id="close-btn" class="far fa-times-circle"></i>
 
+                  <form id="registration-form">
+                      <p>To register in this school, we kindly request that you select the subject of your interest. This information will be sent along with your other details to the school's administration.</p>
+                      <div class="form-group">
+                          <label for="subject">Subject of Interest:</label>
+                          <select id="subject" name="subject" required>
+                            <option value="Math">Math</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Science">Science</option>
+                            <option value="Arabic">Arabic</option>
+                            <option value="English">English</option>
+                            <option value="French">French</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="German">German</option>
+                            <option value="Islamic Sciences">Islamic Sciences</option>
+                            <option value="philosophy">philosophy</option>
+                            <option value="His/Geo">His/Geo</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                          </select>
+                      </div>
+                      <button type="submit" class="but" id="close-popup-btn">Register</button>
+                  </form>
+              </div>
+          </div>
           </div>
 
           <!---*****************************************************************-->
@@ -89,31 +119,32 @@
   
 
   </section>
-    <footer class="footer">
+  <footer class="footer" id="footer-section">
      
-      <div class="divs-c-l"> 
-          <h3>OUR SERVICES
-          </h3><ul>           
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Help</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Term Of Use</a></li>
-          </div>
+    <div class="divs-c-l"> 
+        <h3>OUR SERVICES
+        </h3><ul>           
+            <li><a href="#" id="aboutus-link">About us</a></li>
+            <li><a href="#" id="help-link">Help</a></li>
+            <li><a href="#" id="policy-link">Privacy Policy</a></li>
+            <li><a href="#" id="term-link">Term Of Use</a></li>
+        </div>
 
-       <div class="divs-c-s"> 
-          
-          <img src="edulinklogo.png" alt="" />
-          <h4>your ultimate guide for educational excellence!</h4>
-          <button class="button-footer">JOIN US</button>
-        </ul></div>
-        <div><h3>CONTACT US</h3>
-           <div class="icons">
-       
-          <i class="fab fa-facebook" ></i>
-          <i class="fab fa-twitter" ></i>
-          <i class="fab fa-instagram" ></i>
-          <i class="fab fa-linkedin" ></i>
-         </div></div>
+     <div class="divs-c-s"> 
+        
+        <img src="edulinklogo.png" alt="" />
+        <h4>your ultimate guide for educational excellence!</h4>
+        
+      </ul></div>
+      <div> <div class="icons">
+        <h3>CONTACT US</h3>
+        <i class="fab fa-facebook" id="facebook-icon"></i>
+        <i class="fab fa-linkedin" id="linkedin-icon"></i>
+        <i class="fab fa-instagram" id="instagram-icon"></i>
+        <i class="fa fa-envelope" id="email-icon"></i>
+       </div>
+      </div>
+</footer>
  </footer>
  
     <script>
@@ -125,6 +156,28 @@
       const sidebar = document.querySelector('.sidebar')
       sidebar.style.display = 'none'
     }
+//event listeners tae popup registration
+    document.addEventListener("DOMContentLoaded", function() {
+    
+    document.getElementById("open-popup-btn").addEventListener("click", function(){
+        document.getElementById("popup").classList.add('active');
+    });
+
+    document.getElementById("close-popup-btn").addEventListener("click", function(){
+        document.getElementById("popup").classList.remove('active');
+    });
+    
+    document.getElementById("close-btn").addEventListener("click", function(){
+        document.getElementById("popup").style.display = 'none';
+    });
+
+    // Function to handle inscription button click
+    document.getElementById('close-popup-btn').addEventListener('click', function() {
+        // Show an alert
+        alert('An email has been sent to the school. They will contact you soon.');
+    });
+});
+
   </script> 
       
   <script>
@@ -156,6 +209,102 @@
                 
                 console.log(request.response);
             }
+
+
+
+
+
+
+            // Function to scroll to the footer section when the "Contact" link is clicked
+document.addEventListener("DOMContentLoaded", function() {
+    var contactLink = document.querySelector(".contact-link");
+    var footerSection = document.getElementById("footer-section");
+
+    if (contactLink && footerSection) {
+        contactLink.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            
+            // Scroll smoothly to the footer section
+            footerSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+});
+
+// Function to scroll to the footer section when the "About" link is clicked
+document.addEventListener("DOMContentLoaded", function() {
+    var contactLink = document.querySelector(".about-link");
+    var footerSection = document.getElementById("footer-section");
+
+    if (contactLink && footerSection) {
+        contactLink.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            
+            // Scroll smoothly to the footer section
+            footerSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var contactLink = document.querySelector(".contact-link");
+    var footerSection = document.getElementById("footer-section");
+    var facebookIcon = document.getElementById("facebook-icon");
+    var linkedinIcon = document.getElementById("linkedin-icon");
+    var instagramIcon = document.getElementById("instagram-icon");
+    var emailIcon = document.getElementById("email-icon");
+    var iconsShined = false;
+
+    if (contactLink && footerSection) {
+        contactLink.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            
+            // Scroll smoothly to the footer section
+            footerSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Add the shine effect to icons only once
+            if (!iconsShined) {
+                setTimeout(function() {
+                    facebookIcon.classList.add("shine");
+                    linkedinIcon.classList.add("shine");
+                    instagramIcon.classList.add("shine");
+                    emailIcon.classList.add("shine");
+                    iconsShined = true;
+                }, 1000); // Delay the shining effect by 1 second
+            }
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var aboutLink = document.querySelector(".about-link");
+    var footerSection = document.getElementById("footer-section");
+    var aboutusLink = document.getElementById("aboutus-link");
+    var helpLink = document.getElementById("help-link");
+    var policyLink = document.getElementById("policy-link");
+    var termLink = document.getElementById("term-link");
+    var iconsShined = false;
+
+    if (aboutLink && footerSection) {
+        aboutLink.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            
+            // Scroll smoothly to the footer section
+            footerSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Add the shine effect to icons only once
+            if (!iconsShined) {
+                setTimeout(function() {
+                    aboutusLink.classList.add("shine");
+                    helpLink.classList.add("shine");
+                    policyLink.classList.add("shine");
+                    termLink.classList.add("shine");
+                    iconsShined = true;
+                }, 1000); // Delay the shining effect by 1 second
+            }
+        });
+    }
+});
 
   </script>
   </body>
