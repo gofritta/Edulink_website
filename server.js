@@ -248,7 +248,7 @@ app.post('/school/enroll', checkAuthenticated, async (req, res) => {
       throw new Error("Your enrollment attempt was unsuccessful.");
     }
     
-    if (result === 1) {
+    if (result >= 1) {
       res.status(201).send('Your enrollment was successful. Please contact the school for further details.')
     //  res.redirect('/student/homepage');
     } else {

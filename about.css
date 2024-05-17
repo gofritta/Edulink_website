@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
 }
@@ -9,10 +9,6 @@ body {
     width: 80%;
     margin: 50px;
     padding: 20px;
-}
-
-h1 {
-    color: #000000;
 }
 
 p {
@@ -47,7 +43,19 @@ h1 button:hover {
 h1, p {
     text-align: left;
 }
-
+p {
+    line-height: 2;
+}
+h3, h1{
+    line-height: 2.5;
+}
+h1{
+    font-size: 2.5em;
+    color: #2d1066;
+}
+h3{
+    color: #4b1264;
+}
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -73,3 +81,23 @@ h1, p {
     max-width: 100px; /* Définissez la largeur maximale de l'image */
     height: auto; /* Assurez-vous que la hauteur s'ajuste automatiquement pour maintenir les proportions */
 }
+.offer-list {
+    padding-left: 20px; /* Adjust the padding as needed */
+    padding-top: 15px;
+}
+
+li {
+    margin-bottom: 10px; /* Adjust the margin between list items as needed */
+}
+section {
+    background: radial-gradient(circle, #c4aee69e, #fef9f9);
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .sticky + .content {
+    padding-top: 60px;
+  }

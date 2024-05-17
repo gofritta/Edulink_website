@@ -6,7 +6,7 @@
 <title>Registration Form</title>
 <link rel="stylesheet" href="registration.css">
 <link rel="stylesheet" href="popup.css">
-<script src="popup.js"></script>
+<!-- <script src="popup.js"></script> -->
 </head>
 <body>
 
@@ -31,7 +31,7 @@
 <div class="container">
     <h1>Registration</h1>
     <div class="subtitle">Fill your details for registration</div>
-    <form action="http://127.0.0.1:3000/inscrit-school" method="post">
+    <form >
         
           <div class="form-group">
             <label for="firstName">First Name:</label>
@@ -59,7 +59,7 @@
             <input type="password" id="passwordsch" name="passwordsch" required>
         </div>
         <div class="form-group">
-          <button type="submit">Register</button>
+          <button id="submitButton" type="submit">Register</button>
           <div class="popup center">
               <div class="icon">
                 <i class="fa fa-check"></i>
@@ -81,6 +81,6 @@
       </div>
     </form>
 </div>
-
+<script src="registration.js"></script>
 </body>
 </html>

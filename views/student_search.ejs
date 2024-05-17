@@ -140,7 +140,7 @@
         searchButton.addEventListener('click', () => {
             const selectedState = searchInput.value.trim();
             if (acceptableStates.includes(selectedState)) {
-                alert(`Searching for: ${selectedState}`);
+                console.log(`Searching for: ${selectedState}`);
                 // Implement your search logic here
             } else {
                 alert('Please enter a valid Algerian state');

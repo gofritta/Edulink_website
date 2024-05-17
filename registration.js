@@ -28,12 +28,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Event listeners for input fields to update button state
-    firstNameInput.addEventListener("input", updateRegisterButton);
-    familyNameInput.addEventListener("input", updateRegisterButton);
-    stateInput.addEventListener("input", updateRegisterButton);
-    addressInput.addEventListener("input", updateRegisterButton);
-    emailInput.addEventListener("input", updateRegisterButton);
-    phoneInput.addEventListener("input", updateRegisterButton);
-    schoolNameInput.addEventListener("input", updateRegisterButton);
-    passwordInput.addEventListener("input", updateRegisterButton);
+    // firstNameInput.addEventListener("input", updateRegisterButton);
+    // familyNameInput.addEventListener("input", updateRegisterButton);
+    // stateInput.addEventListener("input", updateRegisterButton);
+    // addressInput.addEventListener("input", updateRegisterButton);
+    // emailInput.addEventListener("input", updateRegisterButton);
+    // phoneInput.addEventListener("input", updateRegisterButton);
+    // schoolNameInput.addEventListener("input", updateRegisterButton);
+    // passwordInput.addEventListener("input", updateRegisterButton);
+    async function submitData(){
+    try{
+        console.log(firstNameInput.value);
+    const response = await fetch("http://localhost:3000/inscrit-school",{
+        method:"POST",
+        body:{
+            firstName:firstNameInput.value,
+            lastName: familyNameInput.value,
+            namesch:schoolNameInput.value,
+            emailsch:emailInput.value,
+            passwordsch:passwordInput.value,
+            statesch:stateInput.value,
+            adresssch:addressInput.value,
+            numbersch:phoneInput.value
+        }
+
+    })}catch(err){
+        console.log(err)
+        console.log("Error while registering")
+    }
+    }
+    document.getElementById("submitButton").addEventListener("click",submitData);
 });

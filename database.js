@@ -60,7 +60,7 @@ async function insertSubject(pool, subject, student, school){
     const result = await pool.query(
     `INSERT INTO inscription (student_id, school_id, subject)
     VALUES (
-    (SELECT id_s FROM student WHERE name_s = ?), 
+    (SELECT id_s FROM student WHERE name_s = ? ), 
     (SELECT id_sch FROM school WHERE name_sch= ?), 
     ?) `,[student, school, subject]
 );
