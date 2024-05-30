@@ -73,7 +73,11 @@
 
             <span id="bienvenue1">  </span>
 
+<<<<<<< HEAD
             <a href="projet-p/ecole-profile.html?id=1"><button id="view-more-btn" class="view-more-btn button" onclick="handleViewMore(event, 1)">View More</button></a>
+=======
+            <a href="#"><button class="view-more-btn button" onclick="handleViewMore(event, 1)">View More</button></a>
+>>>>>>> origin/master
 
 
         </li>
@@ -83,12 +87,28 @@
             <h2 id="titre2"></h2>
             <span id="bienvenue2"></span>
 
+<<<<<<< HEAD
             <a href="projet-p/ecole-profile.html?id=2"><button id="view-more-btn" class="view-more-btn button" onclick="handleViewMore(event, 2)">View More</button></a>
+=======
+            <a href="#"><button class="view-more-btn button" onclick="handleViewMore(event, 2)">View More</button></a>
+>>>>>>> origin/master
 
             
 
         </li>
+<<<<<<< HEAD
         <div id="card3"></div>
+=======
+        <li class="card">
+            <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
+            <h2 id="titre3"></h2>
+            <span id="bienvenue3" style="font-size: 2Opx;"></span>
+
+            <a href="#"><button class="view-more-btn button" onclick="handleViewMore(event, 3)">View More</button></a>
+
+            
+        </li>
+>>>>>>> origin/master
 
     </ul>
 
@@ -194,6 +214,7 @@
         .then(response => response.json())
         .then(response => {
             console.log(response);
+<<<<<<< HEAD
 
              // Hide the GIF and text placeholder
         const placeholder = document.getElementById('placeholder');
@@ -242,6 +263,86 @@ viewMoreButtons.forEach(button => {
     window.location.href = `./projet-p/ecole-profile.html?id=${index}`;
   });
 });
+=======
+
+             // Hide the GIF and text placeholder
+        const placeholder = document.getElementById('placeholder');
+        placeholder.style.display = 'none';
+        //......................................................................
+            document.getElementById("titre1").innerHTML = `Ecole ${response[0].name_sch}`;
+            document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${response[0].name_sch} `;
+            document.getElementById("titre2").innerHTML = `Ecole ${response[1].name_sch}`;
+            document.getElementById("bienvenue2").innerHTML = ` Bienvenue à l'école de ${response[1].name_sch} `;
+            
+            const school1ID = response[0].id_sch;
+            const school2ID = response[1].id_sch;
+            
+            localStorage.setItem('school1', school1ID);
+            localStorage.setItem('school2', school2ID);
+
+            if (response[2]) {
+                document.getElementById("titre3").innerHTML = `Ecole ${response[2].name_sch}`;
+                document.getElementById("bienvenue3").innerHTML = ` Bienvenue à l'école de ${response[2].name_sch} `;
+                
+                const school3ID = response[2].id_sch;
+                localStorage.setItem('school3', school3ID);
+            }
+        })
+        .catch(error => console.error(error));
+    }
+
+   /* const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+
+    viewMoreButtons.forEach(button => {
+        button.addEventListener('click', event => {
+            event.preventDefault();
+            const schoolId = event.target.parentNode.querySelector('a').href.split('?id=')[1];
+            window.location.href = `./project-p/ecole-profile.html?id=${index}`;
+        });
+    });*/
+ // Function to handle clicking on the "View More" button
+ function handleViewMore(index) {
+    const schoolId = localStorage.getItem(`school${index}`);
+    console.log(schoolId)
+    if (schoolId) {
+        window.location.href = `/projet-p/school/profile?id=${schoolId}`;
+    } else {
+        console.error(`School ID not found for index ${index}`);
+    }
+}
+
+    // Add event listeners to all "View More" buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+        viewMoreButtons.forEach(button => {
+            button.addEventListener('click', handleViewMore);
+        });
+    });
+    // Function to handle logout
+    function handleLogout() {
+        fetch('/logout', { method: 'GET' }) // Send a GET request to the logout route
+        .then(response => {
+            if (response.redirected) {
+                // If the server responds with a redirection, redirect the user to the specified location
+                window.location.href = response.url;
+            }
+        })
+        .catch(error => {
+            console.error('Error logging out:', error);
+        });
+    }
+
+    // Add event listener to the logout link
+    document.addEventListener('DOMContentLoaded', function() {
+        const logoutLink = document.querySelector('a[href="/logout"]');
+        if (logoutLink) {
+            logoutLink.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+                handleLogout(); // Call the function to handle logout
+            });
+        }
+    });
+>>>>>>> origin/master
 
 
  /* Function to handle clicking on the "View More" button

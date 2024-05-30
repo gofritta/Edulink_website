@@ -251,4 +251,8 @@ document.addEventListener("DOMContentLoaded", function() {
             popupContainer.style.display = 'block';
         });
     }
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> origin/master

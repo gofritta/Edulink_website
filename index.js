@@ -5,8 +5,6 @@ import bodyParser from 'body-parser';
 
 const app = express();
 const PORT = 3000;
-
-
 // Configurer l'application pour utiliser body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Parse JSON data
@@ -27,7 +25,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     port: '3306',
     user: 'root',
-    password: 'password',    //utiliser votre mot de passe mySQL
+    password: '123456789*',    //utiliser votre mot de passe mySQL
     database: 'edulink'
 });
 
@@ -85,7 +83,7 @@ app.get('/school/id', (req, res) => {
 app.post('/inscrit-school', (req,res) =>{
     const { firstName, lastName ,namesch, emailsch, passwordsch, statesch, adresssch, numbersch } = req.body;
 
-    db.query('INSERT INTO schoolusers (firstName, lastName, namesch, emailsch, passwordsch, statesch, adresssch, numbersch, registerdate, statussch) VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURDATE(), "Pending")', [firstName, lastName, namesch, emailsch, passwordsch, statesch, adresssch, numbersch], (err, result) => {
+    db.query('INSERT INTO school (fstName, famName, name_sch, email_sch, password_sch, state_sch, adress_sch, number_sch) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [firstName, lastName, namesch, emailsch, passwordsch, statesch, adresssch, numbersch], (err, result) => {
       if(err){
         console.log('Erreur lors de poster votre demande, réessayez : ', err);
         res.status(500).send(`<h3>Erreur lors de poster votre demande, réessayez</h3>`);

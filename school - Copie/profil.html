@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account</title>
+<<<<<<< HEAD
     <script src="./profil.js" defer></script>
+=======
+    <script src="profil.js" defer></script>
+>>>>>>> origin/master
     <link rel="stylesheet" href="profil.css"> <!-- Link to your CSS file -->
 </head>
 <body>
@@ -13,6 +17,7 @@
             
             <h1>My Account</h1>
             <div id="profile-picture-container">
+<<<<<<< HEAD
                 <img id="profile-picture-preview" class="profile-picture" src="./avatar.jpg" alt="Profile Picture Preview"/>
                <input type="file" id="profile-picture" style="display: none;">
              
@@ -29,10 +34,24 @@
                          
                          <label for="name">Set a New Name:</label><br>
                          <input type="text" id="name"><br>
+=======
+                <img id="profile-picture-preview" class="profile-picture" src="avatar.jpg" alt="Profile Picture Preview"/>
+               <input type="file" id="profile-picture" style="display: none;">
+           </div>
+           <h2>Name: <span id="name"></span></h2>
+           <h2>Date Of Birth: <span id="dateOfBirth"></span></h2>
+           <h2>E-mail: <span id="email"></span></h2>
+                <button class="button" id="toggleButton" onclick="toggleOptions()" role="button"><span class="text">Edit Profil</span></button>
+                <div id="options" class="hidden">
+                    <form>  
+                         <label for="name">Set a New Name:</label><br>
+                         <input type="text" id="nameInput"><br>
+>>>>>>> origin/master
                          <label for="old-password">Old Password:</label><br>
                          <input type="password" id="old-password"><br>
                          <label for="new-password">New Password:</label><br>
                          <input type="password" id="new-password"><br>
+<<<<<<< HEAD
                          <button class="button" role="button"><span class="text">SAVE CHANGES</span></button>
                      </form>
                     </div>
@@ -41,5 +60,76 @@
     </div>
 
     
+=======
+                         <button type="submit" class="button" role="button" onclick="saveChanges()"><span class="text">SAVE CHANGES</span></button>
+                     </form>
+                    </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    // Fetch student account information when the page is loaded
+    fetchStudentAccount();
+});
+
+async function fetchStudentAccount() {
+    try {
+        // Make a GET request to fetch student account information
+        const response = await fetch('http://localhost:3000/student/account');
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch student account information');
+        }
+        
+        // Parse the JSON response
+        const student = await response.json();
+        
+        // Update the HTML elements with the fetched student information
+        document.getElementById('name').textContent = student[0].name_s;
+        document.getElementById('dateOfBirth').textContent = formatDate(student[0].birthdate_s);
+        document.getElementById('email').textContent = student[0].email_s;
+    } catch (error) {
+        console.error('Error fetching student account:', error);
+        alert('Couldn\'t find student')
+        // Handle error (e.g., display an error message to the user)
+    }
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(); // Format the date according to the user's locale
+}
+
+async function saveChanges() {
+    const newName = document.getElementById('nameInput').value;
+    const oldPassword = document.getElementById('old-password').value;
+    const newPassword = document.getElementById('new-password').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/student/account/edit', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ newName, oldPassword, newPassword })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to save changes');
+        }
+
+        console.log('Changes saved successfully');
+
+        // Optionally, you can update the UI or show a success message here
+        const responseData = await response.json();
+        console.log(responseData); // You can handle the response data here
+    } catch (error) {
+        console.error('Error saving changes:', error);
+        // Handle error (e.g., display an error message to the user)
+    }
+}
+
+    </script>
+>>>>>>> origin/master
 </body>
 </html>

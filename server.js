@@ -210,7 +210,10 @@ passport.authenticate('linkedin', { failureRedirect: '/student/login' }),
   };
   res.redirect('/student/homepage');
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 app.get('/projet-p/school/profile', checkAuthenticated, async (req, res) => {
   try {
       const schoolId = req.query.id;
@@ -440,6 +443,7 @@ app.post('/schools/teachers/delete/:teacherId', async (req, res) => {
   }
 });
 /********************************teachrs li tokhraj l student ******************************** */
+<<<<<<< HEAD
   
 app.get('/student/teachers', async (req, res) => {
   const schoolId = req.session.schoolId; // Retrieve schoolId from the query string
@@ -773,6 +777,159 @@ db.query(`SELECT * FROM rapport`, (error, results) => {
 app.get('/schedule', (req, res) => {
   res.sendFile('schedule.html', { root: __dirname} )
 })
+=======
+  
+app.get('/student/teachers', async (req, res) => {
+  const schoolId = req.session.schoolId; // Retrieve schoolId from the query string
+  try {
+    // Fetch teachers associated with the specified school from the database
+    const [teachers] = await pool.query(`
+        SELECT t.*
+        FROM teacher t
+        INNER JOIN work_for wf ON t.id_t = wf.id_t
+        WHERE wf.id_sch = ?
+    `, [schoolId]);
+    
+    // Pass the fetched teachers data to the EJS template for rendering
+    res.render('teacher_student', { teachers, schoolId });
+  } catch (error) {
+    console.error('Error fetching teachers data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+/**************************************comments*********************************************** */
+
+
+
+app.get('/comments', async (req, res) => {
+  try {
+      const  schoolId  = req.session.schoolId;
+      const connection = await pool.getConnection();
+      const userId = req.session.user.id ; 
+      const [rows] = await connection.query(`
+          SELECT r.*, s.name_s AS user_name,
+          CASE WHEN l.like_id IS NOT NULL THEN true ELSE false END AS is_liked_by_current_user
+          FROM review r 
+          INNER JOIN student s ON r.id_s = s.id_s
+          LEFT JOIN likes l ON r.comment_id = l.comment_id AND l.id_s = ?
+          WHERE r.school_id = ?
+      `, [userId, schoolId]); 
+      connection.release();
+      res.render('comment', { reviews: rows, schoolId: schoolId });
+    
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+app.post('/comments/comment', async (req, res) => {
+  const schoolId = req.session.schoolId
+  const { comment} = req.body; // Access schoolId from req.body
+  try {
+    const connection = await pool.getConnection();
+    await connection.query('INSERT INTO review (id_s, comment_text, comment_date, school_id) VALUES (?, ?, NOW(), ?)', [req.session.user.id, comment, schoolId]);
+    connection.release();
+    res.redirect(`/comments?schoolId=${schoolId}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.post('/comments/like', async (req, res) => {
+  const { comment_id } = req.body;
+  const  schoolId  =  req.session.schoolId;
+  const userId = req.session.user.id ; 
+
+  try {
+     
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query('SELECT * FROM likes WHERE comment_id = ? AND id_s = ?', [comment_id, userId]);
+      if (rows.length > 0) {
+          res.status(400).json({ success: false, error: 'You have already liked this comment' });
+          return;
+      }
+
+      
+      await connection.query('INSERT INTO likes (comment_id, id_s) VALUES (?, ?)', [comment_id, userId]);
+      await connection.query('UPDATE review SET likes_count = likes_count + 1 WHERE comment_id = ? AND school_id = ?', [comment_id, schoolId]);
+      connection.release();
+      res.json({ success: true });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, error: 'Failed to like the comment' });
+  }
+});
+
+app.post('/comments/comment/delete', async (req, res) => {
+  const { commentId } = req.body;
+  const userId =req.session.user.id; 
+  const { schoolId } = req.body;
+  try {
+      
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query('SELECT id_s, school_id FROM review WHERE comment_id = ?', [commentId]);
+      if (rows.length === 0) {
+          connection.release();
+          res.status(404).json({ success: false, error: 'Comment not found' });
+          return;
+      }
+      const commentAuthorId = rows[0].id_s;
+      const commentSchoolId = rows[0].school_id;
+      if (userId !== commentAuthorId ) {
+          connection.release();
+          res.status(403).json({ success: false, error: "huh is this your comment ? sorry but you can't delete this comment !" });
+          return;
+      }
+      
+      await connection.query('DELETE FROM likes WHERE comment_id = ?', [commentId]);
+      
+      await connection.query('DELETE FROM review WHERE comment_id = ?', [commentId]);
+      connection.release();
+      res.json({ success: true, message: 'Comment deleted successfully' });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, error: 'Failed to delete comment' });
+  }
+});
+
+
+/********************commets ta3 school***************************************** */
+app.get('/comments/school', async (req, res) => {
+  try {
+      const schoolId  = req.query;
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query(`
+      SELECT 
+      r.*,
+      s.name_s AS user_name,
+      COUNT(l.like_id) AS likes_count,
+      CASE WHEN MAX(l.like_id) IS NOT NULL THEN true ELSE false END AS is_liked_by_current_user
+  FROM 
+      review r 
+  INNER JOIN 
+      student s ON r.id_s = s.id_s
+  LEFT JOIN 
+      likes l ON r.comment_id = l.comment_id
+  WHERE 
+      r.school_id = ?
+  GROUP BY 
+      r.comment_id, 
+      s.name_s, 
+      r.comment_text, 
+      r.comment_date
+      `, [schoolId]);
+      connection.release();
+      res.render('comment_school', { reviews: rows, schoolId: schoolId });
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+>>>>>>> origin/master
 
 /***************************************************************************************************88 */
 app.listen(PORT, (error) =>{ 
