@@ -59,7 +59,7 @@
 </script>
 
 <div class="title-section">
-    <h1>Hello, Student's Name!</h1>
+    <h1>Hello, Aymen Beghdad!</h1>
     <p class="subtitle">Let's Find What Suits You Best</p>
     <hr class="divider">
 
@@ -76,10 +76,10 @@
     <i id="left" class="fa-solid fa-angle-left"></i>
     <ul class="carousel">
         <li class="card">
-            <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
-            
-            <h2 id="titre1"></h2>
-            <span id="bienvenue1">  </span>
+            <div class="img">
+                <img id="school-img1" src="" draggable="false"></div>
+                <h2 id="titre1"></h2>
+                <span id="bienvenue1">  </span>
 
             <a href="projet-p/ecole-profile.html?id=1"><button id="view-more-btn" class="button">View More</button></a>
 
@@ -87,24 +87,17 @@
         </li>
     
         <li class="card">
-            <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
-            <h2 id="titre2"></h2>
-            <span id="bienvenue2"></span>
+            <div class="img">
+                <img id="school-img2" src="" draggable="false"></div>
+                <h2 id="titre2"></h2>
+                <span id="bienvenue2"></span>
 
             <a href="projet-p/ecole-profile.html?id=2"><button id="view-more-btn" class="button">View More</button></a>
 
             
 
         </li>
-        <li class="card">
-            <div class="img"><img src="imag/img1.jpg" draggable="false"></div>
-            <h2 id="titre3"></h2>
-            <span id="bienvenue3" style="font-size: 2Opx;"></span>
-
-            <a href="projet-p/ecole-profile.html?id=3"><button id="view-more-btn" class="button">View More</button></a>
-
-            
-        </li>
+        <div id="card3"></div>
 
     </ul>
 
@@ -132,28 +125,36 @@
             
             document.getElementById("titre1").innerHTML = `Ecole ${schools[0].name_sch}`
             document.getElementById("bienvenue1").innerHTML = ` Bienvenue à l'école de ${schools[0].name_sch} `
+            document.getElementById("school-img1").src = schools[0].url;
             document.getElementById("titre2").innerHTML = `Ecole ${schools[1].name_sch}`
             document.getElementById("bienvenue2").innerHTML = ` Bienvenue à l'école de ${schools[1].name_sch} `
-            document.getElementById("titre3").innerHTML = `Ecole ${schools[2].name_sch}`
-            document.getElementById("bienvenue3").innerHTML = ` Bienvenue à l'école de ${schools[2].name_sch} `
+            document.getElementById("school-img2").src = schools[1].url;
+
+            if(schools[2]){
+
+                document.getElementById('card3').innerHTML = `
+        
+                <li class="card" id="card3">
+                    <div class="img">
+                        <img src="${schools[2].url}" draggable="false" ></div>
+                    <h2>Ecole ${schools[2].name_sch}</h2>
+                    <span style="font-size: 2Opx;">Bienvenue à l'école de ${schools[2].name_sch}</span>
+        
+                    <a href="./projet-p/ecole-profileA.html?id=3"><button id="view-more-btn" class="button">View More</button></a>
+                </li>
+                `
+                const school3ID = schools[2].id_sch;
+                localStorage.setItem('school3', school3ID);
+        
+                }
             
-            /*const schoolDataString = JSON.stringify(schools);
 
-            localStorage.setItem('ecolesWilaya', schoolDataString);
+            const school1ID = schools[0].id_sch;
+            const school2ID = schools[1].id_sch;
 
-            /*
-            const school1ID = JSON.stringify(schools[0].id_sch);
-            const school2ID = JSON.stringify(schools[1].id_sch);
-            const school3ID = JSON.stringify(schools[3].id_sch);
-
-        */
-        const school1ID = schools[0].id_sch;
-        const school2ID = schools[1].id_sch;
-        const school3ID = schools[2].id_sch;
 
             localStorage.setItem('school1', school1ID);
             localStorage.setItem('school2', school2ID);
-            localStorage.setItem('school3', school3ID);
              
             console.log(request.response);
         
@@ -166,7 +167,7 @@ viewMoreButtons.forEach(button => {
   button.addEventListener('click', (event) => {
     event.preventDefault();
     const schoolId = event.target.parentNode.querySelector('a').href.split('?id=')[1];
-    window.location.href = `projet-p/ecole-profile.html?id=${index}`;
+    window.location.href = `./projet-p/ecole-profile.html?id=${index}`;
   });
 });
 

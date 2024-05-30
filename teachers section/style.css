@@ -246,7 +246,7 @@ svg {
     color: #ffffff;
     border: none;
     margin-top: auto;
-    margin-bottom: -21.678px;
+    margin-bottom: -1.1vw;
 
 
 }
@@ -291,8 +291,8 @@ svg {
 .divs-c-s img {
     margin-top: 1px;
     margin-bottom: 1px;
-    height: 100px;
-    width: 150px;
+    height: 8.5vw;
+    min-width: 16vw;
 }
 
 .divs-c-s h4 {
@@ -371,7 +371,7 @@ footer div {
         margin-top: 1px;
         margin-bottom: 1px;
         height: 80px;
-        width: 120px;
+        width: 150px;
     }
 
     .divs-c-s h4 {
@@ -655,4 +655,17 @@ footer div {
 .dropdown-btn:hover {
     color: #ddd;
     /* Change to match the hover effect color */
+}
+.shine {
+    animation: shine-animation 1s infinite alternate;
+}
+
+@keyframes shine-animation {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+        text-shadow: 0 0 5px #e0aaff, 0 0 10px #d88bff, 0 0 15px #cc7cf7, 0 0 20px #bf64e6, 0 0 25px #b34bd6, 0 0 30px #a632c6, 0 0 35px #961db6;
+    }
 }

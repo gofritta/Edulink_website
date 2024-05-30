@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <script src="./profil.js" defer></script>
+    <link rel="stylesheet" href="profil.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            
+            <h1>My Account</h1>
+            <div id="profile-picture-container">
+                <img id="profile-picture-preview" class="profile-picture" src="./avatar.jpg" alt="Profile Picture Preview"/>
+               <input type="file" id="profile-picture" style="display: none;">
+             
+              
+           </div>
+          
+                <h3>  Name:</h3>
+                <h3>Date Of Birth:</h3>
+                <h3>E-mail:</h3>
+                
+                <button class="button" id="toggleButton" onclick="toggleOptions()" role="button"><span class="text">Edit Profil</span></button>
+                <div id="options" class="hidden">
+                    <form>
+                         
+                         <label for="name">Set a New Name:</label><br>
+                         <input type="text" id="name"><br>
+                         <label for="old-password">Old Password:</label><br>
+                         <input type="password" id="old-password"><br>
+                         <label for="new-password">New Password:</label><br>
+                         <input type="password" id="new-password"><br>
+                         <button class="button" role="button"><span class="text">SAVE CHANGES</span></button>
+                     </form>
+                    </div>
+        </div>
+       
+    </div>
+
+    
+</body>
+</html>

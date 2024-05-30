@@ -28,12 +28,12 @@
   </nav>
   
   <nav>
-      <label class="logo"><img src="/edulink0.png" alt="Logo" /></label>
+      <label class="logo"><img src="./edulink0.png" alt="Logo" /></label>
       <ul>
           <li><a class="hideOnMobile active" href="#">HOME</a></li>
           <li><a class="hideOnMobile" href="#">About</a></li>
           <li><a class="hideOnMobile" href="#">Contact</a></li>
-          <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="/user.png" alt="Pfp" /></a>
+          <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="/Edulink_website/user.png" alt="Pfp" /></a>
               <div class="dropdown-content">
                   <a href="/modal.html"><button type="button" class="dropdown-btn">My Account</button></a>
                   <a href="#">Log Out</a>
@@ -46,7 +46,7 @@
     <div class="profil">
         <div class="info-p">
           <div class="pfp">
-            <img src="profil.jpg" alt="" />
+            <img src="./profil.jpg" alt="" />
           </div>
 
           <!--Information ******************************************************-->
@@ -56,7 +56,7 @@
             <h4 id="sch_name"></h4>
             <h4 id="contact"></h4>
             <h4 id="adresse"></h4>
-            <a href="/student_regist.html"><button class="Inscription">Inscription</button></a>
+            <a href="/Edulink_website/student_regist.html"><button class="Inscription">Inscription</button></a>
 
           </div>
 
@@ -65,11 +65,11 @@
         </div>
         <div class="info-c">
       <div class="button-content">
-        <a href="/report.html"><button class="content-a"><span>REPORT ></span></button></a>
-        <a href="/schedule-s.html"><button class="content-b"><span>SCHEDULE ></span></button></a>
+        <a href="/Edulink_website/report.html"><button class="content-a" id="rapport-btn"><span>REPORT ></span></button></a>
+        <a href="/Edulink_website/schedule-s.html"><button class="content-b"><span>SCHEDULE ></span></button></a>
     </div>
     <div class="button-content">
-        <a href="/teachers section/index.html"><button class="content-c"><span>TEACHERS ></span></button></a>
+        <a href="/Edulink_website/teachers section/index.html"><button class="content-c"><span>TEACHERS ></span></button></a>
         <button class="content-d"><span>COMMENTS ></span></button>
     </div>
     </div>    
@@ -102,17 +102,17 @@
 
        <div class="divs-c-s"> 
           
-          <img src="edulinklogo.png" alt="" />
+          <img src="./edulinklogo.png" alt="" />
           <h4>your ultimate guide for educational excellence!</h4>
           <button class="button-footer">JOIN US</button>
         </ul></div>
         <div><h3>CONTACT US</h3>
            <div class="icons">
        
-          <i class="fab fa-facebook" ></i>
-          <i class="fab fa-twitter" ></i>
-          <i class="fab fa-instagram" ></i>
-          <i class="fab fa-linkedin" ></i>
+            <a href="https://www.facebook.com/profile.php?id=61558729667955"><i class="fab fa-facebook" id="facebook-icon"></i></a>
+            <a href="https://www.linkedin.com/in/edulink-website-0731a4307/"><i class="fab fa-linkedin" id="linkedin-icon"></i></a>
+            <a href="https://www.instagram.com/edulink_website/"><i class="fab fa-instagram" id="instagram-icon"></i></a>
+            <a href="mailto:edulink.website@gmail.com"><i class="fa fa-envelope" id="email-icon"></i></a>
          </div></div>
  </footer>
  
@@ -139,6 +139,7 @@
         schoolId = localStorage.getItem('school1');
     if(index == 2)
         schoolId = localStorage.getItem('school2');
+    
     if(index == 3)
         schoolId = localStorage.getItem('school3');
     
@@ -156,6 +157,7 @@
                 
                 console.log(request.response);
             }
+
 
   </script>
   </body>

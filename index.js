@@ -104,7 +104,7 @@ app.get('/school-pending', (req, res) => {
   // Exécution de la requête
   db.query(`SELECT * FROM schoolusers WHERE statussch = "pending"`, (error, results) => {
     if (error) {
-      res.status(500).send(error.message);
+      res.status(500).send('Il n\'y a pas des demande en attente pour le moment');
     } else {
       // Envoi du résultat
       
@@ -138,15 +138,15 @@ app.delete('/reject', (req, res)=> {
 //Router pour accepter les demandes des écoles par Admin
 app.post('/accept', (req, res)=> {
   
-  const { name_sch, email_sch, password_sch, state_sch, adress_sch, number_sch } = req.body
+  const { name_sch, email_sch, password_sch, state_sch, adress_sch, number_sch } = req.body 
   
-  db.query(`INSERT INTO school (name_sch, email_sch, password_sch, state_sch, adress_sch, number_sch) VALUES (?, ?, ?, ?, ?, ?)`, [name_sch, email_sch, password_sch, state_sch, adress_sch, number_sch], (err, result)=> {
+  db.query(`INSERT INTO school (name_sch, email_sch, password_sch, state_sch, adress_sch, number_sch, url) VALUES (?, ?, ?, ?, ?, ?, "./image5.jpg")`, [name_sch, email_sch, password_sch, state_sch, adress_sch, number_sch], (err, result)=> {
   if(err){
       console.log('Erreur lors de la suppression du demande');
-      res.status(500);
+      res.status(500).send('Erreur lors l\'insertion');
   }else{
       console.log('Ecole ajouter au base de donnée table school');
-      res.status(201);
+      res.status(201).send('Ecole ajouter à la base de donnée');
     }
   });
 });
@@ -167,6 +167,40 @@ app.get('/schoolsignin', (req,res) => {
   });
 });
 
+
+//Router pour poster un rapport:
+
+app.post('/post-rapport', (req, res)=> {
+  
+  const { name_s, rapport_c } = req.body;
+  
+  db.query(`INSERT INTO rapport (name_s, date_c, rapport_c) VALUES (?, CURDATE(), ?)`, [name_s, rapport_c], (err, result)=> {
+  if(err){
+      console.log('Erreur lors de posting rapport');
+      res.status(500).send('Erreur !!');
+  }else{
+      console.log('posting rapport SUCCESSFULLY');
+      res.status(201).send('posting rapport SUCCESSFULLY');
+    }
+  });
+});
+
+// Route pour obtenir les rapports
+
+app.get('/rapport', (req, res) => {
+    
+
+  // Exécution de la requête
+  db.query(`SELECT * FROM rapport`, (error, results) => {
+    if (error) {
+      res.status(500).send(error.message);
+    } else {
+      // Envoi du résultat
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.json(results);
+    }
+  });
+});
 
 
 // Démarrer le serveur

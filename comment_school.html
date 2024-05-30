@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="comment_school.css">
+    <title>Comment Section</title>
+</head>
+<body>   
+  <nav class="sidebar">
+    <ul>
+        <li><a class="active" href="#">HOME</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="dropdown"><a class="join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+            <div class="dropdown-content">
+
+                <a href="/school - Copie/profil.html"><button type="button" class="dropdown-btn">My Account</button></a>
+                <a href="#">Log Out</a>
+            </div>
+        </li>
+        <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+    </ul>
+</nav>
+
+<nav>
+    <label class="logo"><img src="edulink0.png" alt="Logo" /></label>
+    <ul>
+        <li><a class="hideOnMobile active" href="#">HOME</a></li>
+        <li><a class="about-link hideOnMobile" href="#">About</a></li>
+          <li><a class="contact-link hideOnMobile" href="#">Contact</a></li>
+        <li class="dropdown"><a class="hideOnMobile join-us-button" href="#"><img id="profile-picture" src="user.png" alt="Pfp" /></a>
+            <div class="dropdown-content">
+                <a href="/school - Copie/profil.html"><button type="button" class="dropdown-btn">My Account</button></a>
+                <a href="#">Log Out</a>
+            </div>
+        </li>
+        <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+    </ul>
+</nav>
+  <section>
+    <div class="title">
+      <h1 id="school-name">COMMENTS </h1>
+      <p></p>
+      <div class="line-wrapper">
+        <div class="line"></div>
+      </div>
+    </div>
+   <div class="review">
+    <ul>
+        <!-- Reviews will be dynamically inserted here -->
+    </ul>
+</div>
+    <svg width="100%" height="200" viewBox="0 0 1480 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ddddf6" />
+                <stop offset="100%" stop-color="#5e5eb5" />
+            </linearGradient>
+        </defs>
+        <path d="M0 199.5C0 199.5 151.343 149.991 693.719 149.991C1236.09 149.991 1475.02 0 1475.02 0V200H0V199.5Z" fill="url(#waveGradient)" fill-opacity="0.05"/>
+        <path d="M4.98315 199.568C4.98315 199.568 156.326 149.82 698.702 149.82C1241.08 149.82 1480 39 1480 39V200H4.98315V199.568Z" fill="url(#waveGradient)" fill-opacity="0.15"/>
+        <path d="M0 199.539C0 199.539 153.409 160.613 703.189 160.613C1252.97 160.613 1480 22 1480 22V200H0V199.539Z" fill="url(#waveGradient)" fill-opacity="0.1"/>
+    </svg>
+</section>
+<footer class="footer" id="footer-section">
+ 
+  <div class="divs-c-l"> 
+      <h3>OUR SERVICES
+      </h3><ul>           
+          <li><a href="#" id="aboutus-link">About us</a></li>
+          <li><a href="#" id="help-link">Help</a></li>
+          <li><a href="#" id="policy-link">Privacy Policy</a></li>
+          <li><a href="#" id="term-link">Term Of Use</a></li>
+      </div>
+
+   <div class="divs-c-s"> 
+      
+      <img src="edulinklogo.png" alt="" />
+      <h4>your ultimate guide for educational excellence!</h4>
+      
+    </ul></div>
+    <div> <div class="icons">
+      <h3>CONTACT US</h3>
+      <i class="fab fa-facebook" id="facebook-icon"></i>
+      <i class="fab fa-linkedin" id="linkedin-icon"></i>
+      <i class="fab fa-instagram" id="instagram-icon"></i>
+      <i class="fa fa-envelope" id="email-icon"></i>
+     </div>
+    </div>
+<script>
+    function showSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var contactLink = document.querySelector(".contact-link");
+        var footerSection = document.getElementById("footer-section");
+        var facebookIcon = document.getElementById("facebook-icon");
+        var linkedinIcon = document.getElementById("linkedin-icon");
+        var instagramIcon = document.getElementById("instagram-icon");
+        var emailIcon = document.getElementById("email-icon");
+        var iconsShined = false;
+
+        if (contactLink && footerSection) {
+            contactLink.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                
+                // Scroll smoothly to the footer section
+                footerSection.scrollIntoView({ behavior: 'smooth' });
+
+                // Add the shine effect to icons only once
+                if (!iconsShined) {
+                    setTimeout(function() {
+                        facebookIcon.classList.add("shine");
+                        linkedinIcon.classList.add("shine");
+                        instagramIcon.classList.add("shine");
+                        emailIcon.classList.add("shine");
+                        iconsShined = true;
+                    }, 1000); // Delay the shining effect by 1 second
+                }
+            });
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var aboutLink = document.querySelector(".about-link");
+        var footerSection = document.getElementById("footer-section");
+        var aboutusLink = document.getElementById("aboutus-link");
+        var helpLink = document.getElementById("help-link");
+        var policyLink = document.getElementById("policy-link");
+        var termLink = document.getElementById("term-link");
+        var iconsShined = false;
+
+        if (aboutLink && footerSection) {
+            aboutLink.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                
+                // Scroll smoothly to the footer section
+                footerSection.scrollIntoView({ behavior: 'smooth' });
+
+                // Add the shine effect to icons only once
+                if (!iconsShined) {
+                    setTimeout(function() {
+                        aboutusLink.classList.add("shine");
+                        helpLink.classList.add("shine");
+                        policyLink.classList.add("shine");
+                        termLink.classList.add("shine");
+                        iconsShined = true;
+                    }, 1000); // Delay the shining effect by 1 second
+                }
+            });
+        }
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+    // Assuming 'reviews' is an array containing comments
+    const reviews = [
+        {
+            user_name: "Gus Fring",
+            comment_date: "Thu May 02 2024 02:29:00 GMT+0100 (Central European Standard Time)",
+            comment_text: "excellent teachers!",
+            likes_count: 0
+        },
+        {
+            user_name: "Gus Fring",
+            comment_date: "Sun May 19 2024 17:30:32 GMT+0100 (Central European Standard Time)",
+            comment_text: "A very promising school , i would definitely recommend!",
+            likes_count: 0
+        }
+        // Add more comments as needed
+    ];
+
+    const reviewList = document.querySelector('.review ul');
+    if (reviewList) {
+        reviews.forEach(review => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="user-info">${review.user_name} (<span class="date">${review.comment_date}</span>)</div>
+                <div class="comment-text">${review.comment_text}</div>
+                <div class="likes">Likes: <span id="likes_${review.comment_id}">${review.likes_count}</span></div>
+            `;
+            reviewList.appendChild(li);
+        });
+    }
+});
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Event listener for like buttons
+        document.querySelectorAll('.like-btn').forEach(button => {
+            const commentId = button.dataset.commentId;
+
+            // Restore the state of liked buttons from local storage
+            const isLiked = localStorage.getItem(`liked_${commentId}`);
+            if (isLiked === 'true') {
+                button.classList.add('active');
+            }
+
+            // Event listener for click on like button
+            button.addEventListener('click', async () => {
+                const schoolId = '<%= schoolId %>'; // Pass the schoolId from the server-side template
+                if (!button.classList.contains('active')) {
+                    try {
+                        const response = await fetch(`/comments/like/${schoolId}`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ comment_id: commentId })
+                        });
+                        const data = await response.json();
+                        if (data.success) {
+                            const likesCount = document.getElementById(`likes_${commentId}`);
+                            likesCount.textContent = parseInt(likesCount.textContent) + 1;
+                            button.classList.add('active');
+                            localStorage.setItem(`liked_${commentId}`, 'true');
+                        } else {
+                            console.error(data.error);
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

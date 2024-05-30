@@ -12,10 +12,10 @@
 
     <nav class="sidebar">
         <ul>
-          <li><a class="active" href="#">HOME</a></li>
+          <li><a class="active" href="./index.html">HOME</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
-          <li><a class="join-us-buttonn" href="#">Join Us</a></li>
+          <li><a class="join-us-buttonn" href="">Log out</a></li>
           <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
         </ul>
     </nav>
@@ -23,10 +23,10 @@
     <nav>
         <label class="logo"><img src="edulink0.png" alt="" /></label>
         <ul>
-          <li><a class="hideOnMobile active" href="#">HOME</a></li>
+          <li><a class="hideOnMobile active" href="./index.html">HOME</a></li>
           <li><a class="hideOnMobile" href="#">About</a></li>
           <li><a class="hideOnMobile" href="#">Contact</a></li>
-          <li><a class="hideOnMobile join-us-button" href="#">Join Us</a></li>
+          <li><a class="hideOnMobile join-us-button" href="./index.html">Logout</a></li>
           <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
         </ul>
     </nav>
@@ -45,7 +45,7 @@
    <div class="main-content">
         <div class="title-section">
             <h1>Received Requests</h1>
-            <p class="subtitle">Unlocking Access: Admin's Gateway to Elevate Educational Journeys.</p>
+            <p class="subtitle">Unlocking Access: Admin's Gateway to Elevate Educational Journeys</p>
             <hr class="divider">
         </div>
     
@@ -97,7 +97,7 @@
 
 <!--********************************************************************************************************-->
 
-    <div class="student-rapport">
+    <div class="main-content">
       <div class="title-section">
           <h1>Received Rapports From Students</h1>
           <p class="subtitle">Unlocking Access: Admin's Gateway to Elevate Educational Journeys</p>
@@ -107,8 +107,8 @@
       <div class="container">
           <div class="request-box">
               <div id="admin-home"class="request-details">
-                  <h2>Student Name</h2>
-                  <p>Sent on: April 15, 2024</p> <!-- Until we implement the part where we display the date automatically here -->
+                  <h2 id="std-name"></h2>
+                  <p id="date"></p> <!-- Until we implement the part where we display the date automatically here -->
               </div>
               <button class="details-button-student">Details</button> <!-- Changed class to details-button-student -->
           </div>
@@ -145,15 +145,31 @@
   </div>
   
   <script>
-    fetch("http://localhost:3000/school-pending", {
-        method: 'GET'
-        })
-        .then(response => response.json())
-        .then(response => {
-            document.getElementById('namesch').innerHTML = response[0].namesch;
-            document.getElementById('reg-date').innerHTML = `Registered on: ${response[0].registerdate.substring(0, 10)}`;
-        })
-        .catch(error => alert("Erreur : " + error)); 
+
+        fetch("http://localhost:3000/school-pending", {
+            method: 'GET'
+            })
+            .then(response => response.json())
+            .then(response => {
+                document.getElementById('namesch').innerHTML = response[0].namesch;
+                document.getElementById('reg-date').innerHTML = `Registered on: ${response[0].registerdate.substring(0, 10)}`;
+            })
+            .catch(error => alert("Erreur : Il n\'y a pas des demandes d'inscription pour le moment !")); 
+
+            fetch("http://localhost:3000/rapport", {
+                method: 'GET'
+                })
+                .then(response => response.json())
+                .then(response => {
+                    document.getElementById('std-name').innerHTML = response[0].name_s;
+                    document.getElementById('date').innerHTML = `Sent at: ${response[0].date_c.substring(0, 10)}`;
+                    
+                    const studentname = response[0].name_s;
+                    const rapport = response[0].rapport_c;
+                    
+                    localStorage.setItem('problem', rapport);
+
+                });
   
     </script>
 

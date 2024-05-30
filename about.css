@@ -1,0 +1,103 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    border-style: inset;
+    width: 80%;
+    margin: 50px;
+    padding: 20px;
+}
+
+p {
+    color: #000000;
+    line-height: 3;
+}
+
+/* Style du bouton */
+/* Style du bouton */
+h1 button {
+    background-color: #4c2a55; /* Couleur de fond */
+    border: none; /* Supprime les bordures */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement interne */
+    text-align: center; /* Alignement du texte */
+    text-decoration: none; /* Supprime les décorations de texte par défaut */
+    display: block; /* Changer le bouton en élément de bloc pour le centrer */
+    margin: 0 auto; /* Centre le bouton horizontalement */
+    font-size: 16px; /* Taille de police */
+    cursor: pointer; /* Curseur de la souris */
+    border-radius: 5px; /* Bord arrondi */
+    width: fit-content; /* Ajuste la largeur du bouton en fonction du contenu */
+}
+
+/* Changement de couleur au survol */
+h1 button:hover {
+    background-color: #291723; /* Nouvelle couleur de fond au survol */
+}
+
+
+
+h1, p {
+    text-align: left;
+}
+p {
+    line-height: 2;
+}
+h3, h1{
+    line-height: 2.5;
+}
+h1{
+    font-size: 2.5em;
+    color: #2d1066;
+}
+h3{
+    color: #4b1264;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.premier {
+    flex: 1;
+    text-align: left;
+}
+
+.deux {
+    flex: 1;
+    text-align: left;
+}
+
+.deux img, .premier img {
+    float: right;
+    max-width: 200px; /* Ajustez la taille de la photo selon vos besoins */
+    margin-left: 20px; /* Ajoute un espace entre le texte et l'image */
+}
+
+.premier img {
+    max-width: 100px; /* Définissez la largeur maximale de l'image */
+    height: auto; /* Assurez-vous que la hauteur s'ajuste automatiquement pour maintenir les proportions */
+}
+.offer-list {
+    padding-left: 20px; /* Adjust the padding as needed */
+    padding-top: 15px;
+}
+
+li {
+    margin-bottom: 10px; /* Adjust the margin between list items as needed */
+}
+section {
+    background: radial-gradient(circle, #c4aee69e, #fef9f9);
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .sticky + .content {
+    padding-top: 60px;
+  }

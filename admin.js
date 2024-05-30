@@ -126,7 +126,7 @@ function addSchool() {
 
 }
     
-function acceptRequest() {
+async function acceptRequest() {
     fetch('http://localhost:3000/school-pending')
     .then(response => response.json())
     .then(response => {
@@ -198,7 +198,9 @@ document.querySelectorAll('.details-button-student').forEach(button => {
     button.addEventListener('click', () => {
         const requestBox = button.closest('.request-box');
         const studentName = requestBox.querySelector('h2').textContent.trim();
-        const problem = 'quand je click sur le button il veut pas , regler ca sil vout plai !!'; 
+        
+        const problem = localStorage.getItem('problem');
+        
 
         openModalRapportStudent(studentName, problem);
     });
